@@ -1,0 +1,205 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{fontspec}
+\setmainfont{Arial}
+\usepackage[dvipsnames]{xcolor}     %cambia el color de los caracteres
+\usepackage{caption}    %centrado de epígrafes
+\usepackage[fleqn]{amsmath}
+%\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[font={small,it}]{caption}   %configuracion de epígrafes
+\usepackage{subcaption}
+\usepackage{float}      %for management of tables
+\usepackage{geometry}   %for setting the margins
+ \geometry{
+ a4paper,
+ left=25mm,
+ top=25mm,
+ right=25mm,
+ bottom=25mm
+ }      % Márgenes
+%%Estilo de numeración de páginas
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+
+
+\usepackage{setspace}   %Allows double spacing with the \doublespacing command
+%% Para rellenar con texto sin sentido...
+\usepackage{lipsum}     %Dummy text 
+\usepackage{blindtext}
+%\usepackage[left]{lineno}
+%\linenumbers        %line numbering
+
+%\usepackage[latin1]{inputenc}
+%\usepackage[compress]{cite}
+%For tables
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+%\usepackage[normalem]{ulem}
+%\useunder{\uline}{\ul}{}
+
+%\usepackage{cite}
+\usepackage[maxbibnames=99, sorting=none, citestyle=numeric-comp ]{biblatex} %Imports biblatex package, none uses order of appearance, nyt is for name, year and title
+\addbibresource{references.bib} %Import the bibliography file
+\bibliography{references} % Entries are in the refs.bib file
+
+%\DefineBibliographyStrings{english}{andothers={}} %it removes "et al" from the references
+%\usepackage{cite} % uncompatible with bilatex
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\graphicspath{Imagenes/}
+\usepackage{textcomp}
+%\usepackage[utf8]{inputenc}
+\usepackage{textgreek}
+\renewcommand{\baselinestretch}{1.3} 
+\usepackage{authblk}
+\usepackage{multicol}   %Para texto en varias columnas
+\setlength{\columnsep}{1cm}
+\usepackage{multirow}   %fusionar celdas en una columna
+
+% Para que el t�tulo referencias aparezca en espa�ol puede usar la siguiente sentencia
+\renewcommand{\bibname}{Referencias}
+\renewcommand{\chaptername}{Capítulo}
+\renewcommand*\contentsname{Índice}
+\renewcommand*\appendixname{Apéndice}
+\renewcommand\tablename{Tabla}
+\renewcommand\figurename{Figura}
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\title{	 
+        \LARGE{\textbf{TÍTULO}}\\ %Arial 16 pt, Bold
+        \vskip 60pt
+        \textbf{Por Ing. Christian BERNHARDT}\\ %Arial 16 pt, Bold
+        \vskip 60pt
+        \large{Tesis presentada a la Facultad de Ciencias Exactas, Químicas y Naturales de la Universidad Nacional de Misiones para optar al grado académico de}\\ %Arial 14 pt
+        \textbf{DOCTOR EN CIENCIAS APLICADAS}\\ %Times N Roman 14 pt, Bold
+        %\vskip 60pt    
+       
+
+        %{\large{Universidad Nacional de Misiones} }\\
+        %{\includegraphics{Imagenes/logodca.png} }\\
+}
+
+%\author{Christian Bernhardt}
+%\date{Día, Mes, Año}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%---------------------------------------------------------------------------------------------------------------------
+\maketitle          %Carátula
+\onehalfspacing     %interlineado uno y medio
+% First title page
+\begin{titlepage}
+  \centering
+   {Posadas, República Argentina}\\ %Arial 14 pt
+    \LARGE{\textbf{202.}} %Arial 20 pt, Bold
+  \vskip 60pt  
+  \large {\textbf{Director}}\\
+  \large {Dr. Javier E. Kolodziej}
+  \par  
+  \large {\textbf{Co-Director}}\\
+  \large {Dr. Mario R. Rosenberger}
+  \par
+  \vskip 3em
+  \large {\textbf{TRIBUNAL EXAMINADOR} (Resolución Consejo Directivo Nº...)}\\ \par
+  \vskip 1.5em
+  \begin{multicols}{2}
+Dr. Fulano FULANEZ, \\
+Dr. Mengano MENGANEZ, \\
+Dr. Algún MENGUECHE, \\
+
+Universidad Nacional de ...\\
+Universidad Nacional de ...\\
+Universidad Nacional de ...\\
+\end{multicols}
+
+  \vskip 1.5em
+  %\today
+  \large {\textbf{DEFENSA ORAL Y PÚBLICA} (Disposición Nº...)}\\ \par
+  Posadas, \date{Día, Mes, Año}
+\end{titlepage}
+
+% Second title page
+\begin{titlepage}
+  \centering
+  \vskip 60pt
+  \large {\textbf{TÍTULO TESIS}}\\ %Arial 14 pt
+    \LARGE{\textbf{Christian BERNHARDT}} %Arial 20 pt, Bold
+  \vskip 60pt  
+  \large {\textbf{Lugar de desarrollo del trabajo de tesis}}\\
+  \large {Instituto de Materiales de Misiones (IMAM)}
+  \par  
+  \large {\textbf{COMISIÓN DE SUPERVISIÓN} (Resolución Consejo Directivo Nº 00342018)}\\
+  \vskip 1.5em
+  \begin{multicols}{2}
+Dr. Marcelo Julio MARINELLI  \\
+
+Dr. Héctor Rolando ANOCIBAR  \\
+
+Dr. Guilherme HOLSBACH COSTA \\
+\columnbreak
+Universidad Nacional de Misiones\\
+Universidad Nacional de Misiones\\
+Universidade de Caxias Do Sul\\
+\end{multicols}
+
+  \vskip 1.5em
+  
+  %\today
+  \large {\textbf{CARRERA DE DOCTORADO EN CIENCIAS APLICADAS}}\\
+  Carrera Acreditada con Categoría "A", por Resolución de la Comisión Nacional de Evaluación y Acreditación Universitaria (CONEAU) Nº RESFC-2021-503-APN-CONEAU\#ME
+\\ \par
+
+  \vskip 3em
+  \large %Author A, Author B \par
+  %\vskip 1.5em
+  %\today
+\end{titlepage}
+%---------------------------------------------------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{} % clear existing header/footer entries
+% Place Page X of Y on the right-hand
+% side of the footer
+\fancyfoot[R]{\thepage \hspace{1pt} / \pageref{LastPage}}
+
+\chapter*{Dedicación}
+A quien corresponda...
+\chapter*{Declaración}
+Declaro que...
+\chapter*{Agradecimientos}
+Gracias... totales
+\tableofcontents{Índice}
+%Listado de Abreviaturas (en caso de que lo considere conveniente)
+\chapter*{Resumen}  %Resumen 
+\input{Capitulos/resumen.tex}
+\chapter*{Abstract} %Abstract
+\input{Capitulos/abstract.tex}
+%---------------------------------------------------------------------------------------------------------------------
+\chapter{Introducción}  
+    \input{Capitulos/intro.tex}
+\chapter{Marco Teórico}
+    \input{Capitulos/marco.tex}
+\chapter{Metodología}
+    \input{Capitulos/metodologia.tex}
+\chapter{Resultados y Discusión}    
+    \input{Capitulos/resultados.tex}
+\chapter{Conclusiones}      
+    \input{Capitulos/conclusiones.tex}
+\appendix
+\chapter{Apéndice}  
+    \input{Capitulos/apendice.tex}
+
+●	Carátula (con el formato solicitado por el DCA que se adjunta al presente Anexo)
+●	Agradecimientos
+●	Índice
+●	Listado de Abreviaturas (en caso de que lo considere conveniente)
+	
+
+
+%---------------------------------------------------------------------------------------------------------------------
+\printbibliography[title={Referencias}, heading=bibintoc]
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

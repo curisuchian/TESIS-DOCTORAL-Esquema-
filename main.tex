@@ -29,15 +29,34 @@
 %\usepackage[left]{lineno}
 %\linenumbers        %line numbering
 
+%Para customizar tablas
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{tabularx}
+\newlength{\Oldarrayrulewidth}
+% Cline redefining to add line thickness
+\newcommand{\Cline}[2]{%
+  \noalign{\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}}%
+  \noalign{\global\setlength{\arrayrulewidth}{#1}}\cline{#2}%
+  \noalign{\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}}
+}
+
+%Color de celdas en tablas
+\definecolor{intnull}{RGB}{213,229,255}
+\definecolor{inteins}{RGB}{128,179,255}
+\definecolor{intzwei}{RGB}{42,127,255}
+\definecolor{intdrei}{RGB}{0,85,212}
+\definecolor{intvier}{RGB}{0,51,128}
+\definecolor{intfunf}{RGB}{0,34,85}
+
 %\usepackage[latin1]{inputenc}
 %\usepackage[compress]{cite}
 %For tables
 \usepackage{multirow}
-\usepackage[table,xcdraw]{xcolor}
+%\usepackage[table,xcdraw]{xcolor}
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 %\usepackage[normalem]{ulem}
 %\useunder{\uline}{\ul}{}
-
 %\usepackage{cite}
 \usepackage[maxbibnames=99, sorting=none, citestyle=numeric-comp ]{biblatex} %Imports biblatex package, none uses order of appearance, nyt is for name, year and title
 \addbibresource{references.bib} %Import the bibliography file

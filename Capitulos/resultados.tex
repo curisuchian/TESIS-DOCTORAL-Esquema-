@@ -368,7 +368,7 @@ Superponiendo a una imagen las dos máscaras, una obtenida en forma manual y otr
 
 \subsubsection{Resultados} \label{Resultados}
 Un total de diecinueve imágenes aéreas de selva fueron consideradas para realizar el análisis. Dos de ellas representativas de los diferentes escenarios que fueron cubiertos, se muestran en las figuras \ref{calle} y \ref{tupido}. La figura \ref{calle} muestra una imagen en la que unas pocas copas de árboles se distribuyen por el área capturada, mientras que en la \ref{tupido} el dosel cubre prácticamente toda el área. La delineación manual de las sombras fue realizada como se describe en el apartado de \ref{Metodología}
-Dos ejemplos de máscaras manuales se muestran en figuras \ref{contorno1} y \ref{contorno2}, con trazo rojo bordeando las regiones sombreadas. La figura \ref{} muestra el solapamiento de la máscara manual (en rojo) con la automática (en azul). En la figura \ref{contorno1} el valor de umbral para la máscara binaria se toma del 60º percentil de la distribución de frecuencias, mientras que en la figura \ref{contorno2} el valor de umbral es tomado del 85º percentil.
+Dos ejemplos de máscaras manuales se muestran en figuras \ref{contorno1} y \ref{contorno2}, con trazo rojo bordeando las regiones sombreadas. La figura \ref{superposicion} muestra el solapamiento de la máscara manual (en rojo) con la automática (en azul). En la figura \ref{p60} el valor de umbral para la máscara binaria se toma del 60º percentil de la distribución de frecuencias, mientras que en la figura \ref{p85} el valor de umbral es tomado del 85º percentil.
 
 \begin{figure}
     \includegraphics[width=\textwidth]{Imagenes/street.jpg}
@@ -399,37 +399,90 @@ Dos ejemplos de máscaras manuales se muestran en figuras \ref{contorno1} y \ref
     \label{contorno2}
 \end{figure}
 
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.5\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Imagenes/superposition of masks.png}
+         \caption{Percentil 60º}
+         \label{p60}
+     \end{subfigure}
+     \hfill
+     
+     \begin{subfigure}[b]{0.5\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Imagenes/superposition of masks 2.png}
+         \caption{Percentil 85º}
+         \label{p85}
+     \end{subfigure}
+        \caption{Superposición de máscaras atuomática y manual}
+        \label{superposicion}
+\end{figure}
 
 \begin{figure}
+    \centering
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{Imagenes/blue minus red 85.png}
      \hfill
-     \caption{Escena capturada con pocos árboles}
+     \caption{\textpsi\textsubscript{BR}}
     \label{azulrojo}
-\end{figure}
+ \end{subfigure}
 
-\begin{figure}
+ \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{Imagenes/blue minus green 85.png}
      \hfill
-     \caption{Escena capturada con dosel tupido}
+     \caption{\textpsi\textsubscript{BG}}
     \label{azulverde}
-\end{figure}
+ \end{subfigure}
 
-\begin{figure}
+ \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{Imagenes/green minus red 85.png}
      \hfill
-     \caption{Escena capturada con pocos árboles}
+     \caption{\textpsi\textsubscript{GR}}
     \label{verderojo}
+ \end{subfigure}
+ \caption{Superposición de máscaras atuomática y manual}
+        \label{p85BRBGGR}
 \end{figure}
-
 
 \paragraph{Influencia del valor de percentil y del índice invariante de color}
 
-La figura \ref{azulrojo}, \ref{azulverde} y \ref{verderojo} muestra para la misma escena, diferentes máscaras automáticas obtenidas con diferentes configuraciones de la ecuación \ref{eq1}, usando tres diferentes combinaciones de canales de dos colores. La figura \ref{azulrojo} corresponde a la máscara obtenida usando la diferencia entre el canal azul menos el canal rojo $\Psi_{BR}$, la figura \ref{azulverde} usando la diferencia entre el canal azul menos el canal verde $\Psi_{BG}$ y la figura \ref{verderojo} usando la diferencia entre el canal verde menos el canal rojo $\Psi_{GR}$. En todos los casos el valor de umbral fue tomado del 85º percentil de la distribución de frecuencia. El análisis de las figuras \ref{azulrojo} a \ref{verderojo} muestra que, aplicando la ecuación \ref{eq1} usando ya sea la combinación de canales azul con verde $\Psi_{BG}$ o azul con rojo $\Psi_{BR}$  las máscaras automáticas resultantes para un mismo valor de percentil son de área mayor que las que corresponden al índice calculado con la diferencia entre canal verde y rojo $\Psi_{GR}$, lo que resulta en valores de QI más altos para $\Psi_{BR}$ y $\Psi_{BG}$ que para $\Psi_{GR}$. La comparación entre las distintas influencias del valor de percentil puede observarse en la figura \ref{}, donde resulta evidente que $QI_1$ es el más alto en el percentil bajo 60º y $QI_2$ es el más alto para el percentil alto 95º. Por otro lado el índice $QI_3$ se asemeja a una curva convexa, con valores similares a $QI_1$ para el percentil 60º y similares a $QI_2$ para el percentil 95º, cuyo valor máximo en la curva corresponde al 85º percentil. Un comportamiento similar se observa para los otros índices invariantes de color $\Psi_{BG}$ y $\Psi_{GR}$. La similitud entre QI1 y QI2 en el percentil más bajo se debe al hecho de que la máscara automática selecciona un área de sombra que resulta preponderante en la operación de unión binaria en el denominador de la ecuación \ref{qi3} en el caso de $QI_3$.
+La figura \ref{azulrojo}, \ref{azulverde} y \ref{verderojo} muestra para la misma escena, diferentes máscaras automáticas obtenidas con diferentes configuraciones de la ecuación \ref{eq1}, usando tres diferentes combinaciones de canales de dos colores. La figura \ref{azulrojo} corresponde a la máscara obtenida usando la diferencia entre el canal azul menos el canal rojo $\Psi_{BR}$, la figura \ref{azulverde} usando la diferencia entre el canal azul menos el canal verde $\Psi_{BG}$ y la figura \ref{verderojo} usando la diferencia entre el canal verde menos el canal rojo $\Psi_{GR}$. En todos los casos el valor de umbral fue tomado del 85º percentil de la distribución de frecuencia. El análisis de las figuras \ref{azulrojo} a \ref{verderojo} muestra que, aplicando la ecuación \ref{eq1} usando ya sea la combinación de canales azul con verde $\Psi_{BG}$ o azul con rojo $\Psi_{BR}$  las máscaras automáticas resultantes para un mismo valor de percentil son de área mayor que las que corresponden al índice calculado con la diferencia entre canal verde y rojo $\Psi_{GR}$, lo que resulta en valores de QI más altos para $\Psi_{BR}$ y $\Psi_{BG}$ que para $\Psi_{GR}$. La comparación entre las distintas influencias del valor de percentil puede observarse en la figura \ref{curvas_QI}, donde resulta evidente que $QI_1$ es el más alto en el percentil bajo 60º y $QI_2$ es el más alto para el percentil alto 95º. Por otro lado el índice $QI_3$ se asemeja a una curva convexa, con valores similares a $QI_1$ para el percentil 60º y similares a $QI_2$ para el percentil 95º, cuyo valor máximo en la curva corresponde al 85º percentil. Un comportamiento similar se observa para los otros índices invariantes de color $\Psi_{BG}$ y $\Psi_{GR}$. La similitud entre QI1 y QI2 en el percentil más bajo se debe al hecho de que la máscara automática selecciona un área de sombra que resulta preponderante en la operación de unión binaria en el denominador de la ecuación \ref{qi3} en el caso de $QI_3$.
 Por otro lado, el índice $QI_3$ se aproxima a $QI_1$ cuando la máscara automática selecciona un área pequeña de sombra, por lo tanto la selección manual de sombra resulta dominante en la operación de unión de máscaras en el denominador de la ecuación \ref{qi3}.
-Al maximizar la intersección, se asegura la coincidencia entre las máscaras manual y automática, pero podría excederse en la máscara automática. Luego, al minimizar la unión, se puede controlar el tamaño pleno de la máscara automática. Un punto óptimo es el caso en el que el índice $QI_3$ alcanza el máximo valor. A pesar de la dispersión de los datos (ver figura \ref{}), se puede analizar los valores medios de los índices de calidad QI para los tres casos considerados (ver figuras \ref{}, \ref{}, \ref{}). Se observa que el valor que corresponde al 85º percentil de la distribución de frecuencia del índice invariante de color es el óptimo, ya que corresponde a un máximo del índice $QI_3$.
-Las figuras \ref{}, \ref{} y \ref{} muestran para la misma escena las diferentes máscaras binarias automáticas obtenidas con distintas configuraciones de la ecuación \ref{eq1}, combinando dos canales de color. La figura \ref{} corresponde a la máscara que se obtuvo usando la diferencia entre el canal azul y el canal rojo $\psi_{BR}$, la figura \ref{} usando la diferencia entre el canal azul y el verde $\psi_{BG}$, y la figura \ref{} usando la diferencia entre el canal verde y el rojo $\psi_{GR}$. 
+Al maximizar la intersección, se asegura la coincidencia entre las máscaras manual y automática, pero podría excederse en la máscara automática. Luego, al minimizar la unión, se puede controlar el tamaño pleno de la máscara automática. Un punto óptimo es el caso en el que el índice $QI_3$ alcanza el máximo valor. A pesar de la dispersión de los datos (ver figura \ref{curvas_QI}), se puede analizar los valores medios de los índices de calidad QI para los tres casos considerados (ver figuras \ref{psiBR}, \ref{psiBG}, \ref{psiGR}). Se observa que el valor que corresponde al 85º percentil de la distribución de frecuencia del índice invariante de color es el óptimo, ya que corresponde a un máximo del índice $QI_3$.
 
-In all cases, the threshold value
+By analyzing Fig. 7, where the relationships between the three QIs proposed and an additional index defined as the difference between the maximum value and the minimum value among the three indices as a function of the percentile value used to calculate the
+threshold for the automatic mask, large similarities are observed. In all three cases, a minimum is detectable for the curve that corresponds to the range index (max-min), and this minimum takes place in the 85th percentile. Moreover, for the cases that use both combinations, i.e. blue minus red channel and blue minus green channel, the curve QI3
+reaches a maximum at the value of the 85th percentile, while this maximum of the curve is not evident in the case of green minus red channel. Therefore, of the four indexes analyzed, the most appropriate is QI3
+, which exhibits a more precise optimum percentile value by the minimum of the curve, and is coincident in the three cases of channel combinations.
+
+\paragraph{Influencia del filtro de mediana en la detección automática de sombras}
+
+Fig. 8a, b and 8c expose how the QIs, calculated following equations (5)–(7), are affected by the implementation of the median filter applied to each image. In the case of the 3 x 3 filter, which had a minor effect on the indices, the indices take values larger than
+85\%, for all the forest images. The worst case is that for the 12 x 12 pixel filter, where the comparison between the automatic masks
+obtained with and without filter results in a coincidence of more than 70\%.
+\paragraph{Evaluación humana de máscaras automáticas de sombra}
+
+In this work, the algorithm results are compared to the manual selections of experts. Since there isn't a 100\% certain base of comparison (experts are human persons and therefore still prone to error of commission or omission), there is a limitation of the quality
+index that relies on this issue. Criteria for the manual selection of shadows by experts depends on their particular perception of the
+image, varying with the context. On the other hand the algorithm is based on the calculation of an index, and the definition of a
+threshold value, which was obtained from a series of experiments with images of a specific type. In other contexts with other types of
+images the threshold wouldn't be the same, and even the combination of bands to obtain the index would be different.
+After generating a set of automatic masks corresponding to each of the six percentiles using the three color invariant indices of
+equations (2)–(4) for the 19 selected images, the resulting 342 masks were compared with the manually obtained masks of the 19 images. By superposing both the automatic and the manually generated masks over the original image, the experts evaluated the quality
+of their mutual similarities, giving a score of three levels, namely “good”, “regular” and “bad”. The results are shown in Table 1 and
+Fig. 9. As it can be appreciated, for the three color invariant indices, a minimum in the “bad” level is observed around the 90th percentile. For the “regular” and “good” levels, however, the minimum is not very clear, a fact that can be attributed to some subjectivity
+of the experts.
+
+
+
+\begin{figure}
+         \centering
+         \includegraphics[width=\textwidth]{Imagenes/grafico.png}
+         \hfill
+         \caption{Curvas índice de calidad}
+        \label{curvas_QI}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}
@@ -458,6 +511,17 @@ In all cases, the threshold value
         \label{humanscoring}
 \end{figure}
 \subsubsection{Conclusiones} \label{Conclusiones}
+
+The procedure proposed using the color invariant index can be applied to shadow detection in aerial images of rainforest areas in
+an automatic way, without the need for large computational facilities. The results showed that the 85th percentile from the frequency
+distribution of the color invariant index obtained by means of equation (1) and the difference between channels as the numerator are
+good parameters to calculate the threshold value for binarization and thus obtain the mask that matches the shadow areas. In the two
+cases, the B-G and B–R channels as numerators showed the best results to produce automatic masks. A method of comparison was
+found to evaluate the performance of the algorithm, where the QI was defined as a quotient between the resulting intersection of both
+the manual and the automatic masks, over the resulting union of both. In this manner, if the index approaches a value of 1, it implies a
+higher level of coincidence between the manual and the automatic selection. The results of the algorithm are comparable to the selections of experts, as can be appreciated by looking at the masks overlapped over the images. Although this method has some limitations, it can be applied to RGB images, which also have some capture time conditions, and weather cloud conditions. In order to assure the visibility of shadows in the image, capturing of them must occur from 8 a.m. to 11 a.m. and from 2 p.m. to 5 p.m., depending
+on the season and the latitude. Another limitation is capturing images with a covered sky, since shadows appear very weak. However,
+this method is a suitable option to automate the task of delineation of shadows on aerial images
 \subsection{C3-Filtros de texturas (probados con fantomas)}
 Mediante el filtrado por textura puede implementarse una segmentación o clasificación en imágenes. Se hicieron varias pruebas con imágenes simuladas (cuadrados y rombos)
 \subsection{C4-Mapas autoorganizados (clasificación no supervisada)}

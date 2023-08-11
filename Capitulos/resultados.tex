@@ -476,9 +476,50 @@ La figura \ref{}, \ref{} y \ref{} muestra cómo los índices que son obtenidos p
 \paragraph{Evaluación humana de máscaras automáticas de sombra}
 
 En este trabajo los resultados del algoritmo se comparan con la selección manual llevada a cabo por expertos. Partiendo de que no hay una base de certeza absoluta (los expertos son personas humanas y por lo tanto proclives a errores de omisión o comisión), existe una limitación en el índice de calidad que se basa en este aspecto. El criterio para la selección manual de parte de los expertos depende de su particular percepción de la imagen, variando según el contexto. Por otro lado el algoritmo se basa en el cálculo de un índice y la definición de un valor umbral, obtenido de una serie de experimentos con imágenes de un determinado tipo. En otros contextos con otro tipo de imágenes el valor de umbral no sería el mismo, incluso la combinación de bandas usadas en la ecuación \ref{eq1} para obtener el índice sería diferente.
-Luego de generar un conjunto de máscaras correspondientes a cada uno de los seis percentiles usando los tres índices invariantes de color de las ecuaciones \ref{psibr} a \ref{psigr} para las 19 imágenes seleccionadas, las 342 máscaras resultantes fueron comparadas con las obtenidas manualmente. Superponiéndo ambas, la máscara automática y la manual sobre la imagen original, se evaluó la calidad de las similitudes mutuas, asignando un calificativo en tres niveles, "bueno", "regular" y "malo". Los resultados se muestran en la tabla \ref{tab:tabla} y en la figura \ref{}. Tal como se puede apreciar, para los tres índices invariantes de color se puede observar un mínimo en el nivel "malo" alrededor del percentil 90º. Para los niveles "regular" y "bueno", sin embargo, el mínimo no es tan claro, lo cual puede ser atribuido a cierta subjetividad de los observadores expertos.
+Luego de generar un conjunto de máscaras correspondientes a cada uno de los seis percentiles usando los tres índices invariantes de color de las ecuaciones \ref{psibr} a \ref{psigr} para las 19 imágenes seleccionadas, las 342 máscaras resultantes fueron comparadas con las obtenidas manualmente. Superponiendo ambas, la máscara automática y la manual sobre la imagen original, se evaluó la calidad de las similitudes mutuas, asignando un calificativo en tres niveles, "bueno", "regular" y "malo". Los resultados se muestran en la tabla \ref{tablita} y en la figura \ref{}. Tal como se puede apreciar, para los tres índices invariantes de color se puede observar un mínimo en el nivel "malo" alrededor del percentil 90º. Para los niveles "regular" y "bueno", sin embargo, el mínimo no es tan claro, lo cual puede ser atribuido a cierta subjetividad de los observadores expertos.
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TABLA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+    \centering
+    \caption{Evaluation of the superposition of both masks. the manual and the automatic. carried on by the group of experts}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+       \hline
+        COLOR INVARIANT INDEX & \multicolumn{6}{ |c|}{\textpsi \textsubscript{BR}}\\%\multicolumn{6}{ }{ |c|} \\
+        \hline
+        PERCENTILE & 60 & 70 & 80 & 85 & 90 & 95\\
+        \hline
+        GOOD & 0.0 & 0.0 & 4.5 & 15.8 & 20.5 & 0.0\\
+        \hline
+        REGULAR & 0.0 & 4.5 & 27.3 & 21.1 & 54.5 & 57.9\\
+        \hline
+        BAD & 100.0 & 95.5 & 68.2 & 63.2 & 25.0 & 42.1\\
+        \hline
+        COLOR INVARIANT INDEX & \multicolumn{6}{ |c|}{\textpsi \textsubscript{BG}}\\
+        \hline
+        PERCENTILE & 60 & 70 & 80 & 85 & 90 & 95\\
+        \hline
+        GOOD & 0.0 & 0.0 & 0.0 & 5.3 & 5.3 & 5.3\\
+        \hline
+        REGULAR & 0.0 & 5.3 & 10.5 & 15.8 & 42.1 & 21.1\\
+        \hline
+        BAD & 100.0 & 94.7 & 89.5 & 78.9 & 52.6 & 73.7\\
+        \hline
+        COLOR INVARIANT INDEX & \multicolumn{6}{|c|}{ \textpsi \textsubscript{GR}}\\
+        \hline
+        PERCENTILE & 60 & 70 & 80 & 85 & 90 & 95\\
+        \hline
+        GOOD & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0\\
+        \hline
+        REGULAR & 0.0 & 0.0 & 0.0 & 0.0 & 15.8 & 15.8\\
+        \hline
+        BAD & 100.0 & 100.0 & 100.0 & 100.0 & 84.2 & 84.2\\
+        \hline
+    \end{tabular}
+    \\
+    \raggedleft
+    \label{tablita}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \begin{figure}
@@ -517,16 +558,9 @@ Luego de generar un conjunto de máscaras correspondientes a cada uno de los sei
 \end{figure}
 \subsubsection{Conclusiones} \label{Conclusiones}
 
-The procedure proposed using the color invariant index can be applied to shadow detection in aerial images of rainforest areas in
-an automatic way, without the need for large computational facilities. The results showed that the 85th percentile from the frequency
-distribution of the color invariant index obtained by means of equation (1) and the difference between channels as the numerator are
-good parameters to calculate the threshold value for binarization and thus obtain the mask that matches the shadow areas. In the two
-cases, the B-G and B–R channels as numerators showed the best results to produce automatic masks. A method of comparison was
-found to evaluate the performance of the algorithm, where the QI was defined as a quotient between the resulting intersection of both
-the manual and the automatic masks, over the resulting union of both. In this manner, if the index approaches a value of 1, it implies a
-higher level of coincidence between the manual and the automatic selection. The results of the algorithm are comparable to the selections of experts, as can be appreciated by looking at the masks overlapped over the images. Although this method has some limitations, it can be applied to RGB images, which also have some capture time conditions, and weather cloud conditions. In order to assure the visibility of shadows in the image, capturing of them must occur from 8 a.m. to 11 a.m. and from 2 p.m. to 5 p.m., depending
-on the season and the latitude. Another limitation is capturing images with a covered sky, since shadows appear very weak. However,
-this method is a suitable option to automate the task of delineation of shadows on aerial images
+El procedimiento propuesto usando el índice invariante de color se puede aplicar para la detección de sombras en imágenes aéreas de áreas selváticas, usando recursos computacionales relativamente simples. Los resultados mostraron que el 85º percentil de la distribución de frecuencia del índice invariante de color obtenido por medio de la ecuación \ref{eq1} y la diferencia entre canales como el numerador, son parámetros aceptables para calcular el valor de umbral para la binarización y desde ahí obtener la máscara que corresponde a las áreas sombreadas.
+En ambos casos, en que los numeradores son la diferencia entre azul y verde y azul y rojo, se presentaron los resultados mejores. Se encontró un método de comparación que permite evaluar el desempeño del algoritmo, en el que el índice de calidad QI se definió como el cociente entre la intersección resultante entre ambas máscaras, manual y automática, sobr ela unión resultante de ambas. De esta manera, si el índice se aproxima al valor 1 implica un mayor nivel de coincidencia entre ambas máscaras. Los resultados del algoritmo se comparan con la selección manual llevada a cabo por expertos, como puede apreciarse de las máscaras superpuestas sobre las imágenes. Si bien este método tiene algunas limitaciones, se puede aplicar sobre imágenes RGB, las que tienen algunos condicionantes en el momento de captura, y condiciones meteorológicas, como la presencia de nubes. Para asegurar la visibilidad de sombras en la imagen, la captura de las mismas debe hacerse en una franja horaria de 8 a.m. a 11 a.m. y de 2 p.m. a 5 p.m., dependiendo de la época del año y de la latitud. Otra limitación es la captura de imágenes con un cielo cubierto, ya que las sombras se presentan muy tenues. No obstanteeste método es una opción aceptable para automatizar la tarea de segmentación ed sombras en imágenes aéreas.
+
 \subsection{C3-Filtros de texturas (probados con fantomas)}
 Mediante el filtrado por textura puede implementarse una segmentación o clasificación en imágenes. Se hicieron varias pruebas con imágenes simuladas (cuadrados y rombos)
 \subsection{C4-Mapas autoorganizados (clasificación no supervisada)}

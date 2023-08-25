@@ -3,4 +3,287 @@ Recomendaciones para Trabajos Futuros
 ✔	Publicaciones en Revistas y Capítulos de Libros
 ✔	Presentaciones a Congresos
 ●	Proyecto/s de Investigación dentro del/los cual/es se desarrolló la Tesis (si hubiera/n)
-●	Beca/s y Subsidio/s con los que se financió la Tesis (si hubieran)●	Apéndices o Anexos (se reservan para detallar técnicas originales utilizadas o análisis teóricos que impedirían seguir fluidamente el trabajo si se incluyeran en el texto). Las tablas y figuras de los apéndices o anexos deben comenzar otra numeración diferente a la de los capítulos.
+●	Beca/s y Subsidio/s con los que se financió la Tesis (si hubieran)
+●	Apéndices o Anexos (se reservan para detallar técnicas originales utilizadas o análisis teóricos que impedirían seguir fluidamente el trabajo si se incluyeran en el texto). Las tablas y figuras de los apéndices o anexos deben comenzar otra numeración diferente a la de los capítulos.
+
+Algoritmo morfológico
+Preprocesamiento y eliminación de áreas sin sombra
+En este script se pretende replicar la experiencia con el algoritmo rollingball del paquete
+[baseline] de R.
+Inicialmente se deben tener instalados los paquetes necesarios para el procesamiento de
+las imágenes.
+Este paso puede omitirse si ya se encuentra instalado.
+install.packages("ggplot2")
+install.packages("imager")
+install.packages("mixtools")
+install.packages("baseline")
+install.packages("Matrix")
+install.packages("rgdal")
+install.packages("plotly")
+install.packages("EcoGenetics")
+install.packages("BiocManager")BiocManager::install("EBImage")
+Bioconductor version 3.8 (BiocManager 1.30.10), R 3.5.2 (2018-12-20)
+Incorporamos las dependencias necesarias
+library(mixtools)
+library(baseline)
+library(ggplot2)
+library(imager)
+library(Matrix)
+library(imager)
+library("EBImage")
+El primer paso consiste en cargar la imagen en una variable. La representación de la
+imagen está en el espacio de color RGB.
+#Load and plot the RGB file
+data.file <- '../imagenes_forestal/data/original_referencia.jpg'
+im <- load.image(data.file)
+plot(im)
+La imagen con la que se trabaja es un recorte de la imagen del artículo de referencia. Al
+no disponer de la versión en color RGB se utiliza  una versión en escala de grises.
+La resolución espacial de la fotografía aérea es de 0,5 metro por pixel,
+aproximadamente.
+#data.file <- '../Captura.png'#recorte <- load.image(data.file)
+#plot(recorte)
+#data.file <- '../copa_referencia.png'
+#recorte <- load.image(data.file)
+#plot(recorte)
+Una observación en la imagen del recorte de la copa permite estimar el tamaño que
+abarca la copa en 80 píxeles. Este dato será usado en los parámetros de los filtro
+implementados.
+Para procesar la imagen, debe ser convertida al espacio de color  HSL, del cual se
+tomará la componente L de luminosidad.
+#GPerforms the conversion of the image from RGB to HSL colorspace
+im_hsl <- RGBtoHSL(im)
+plot(im_hsl)El aspecto de la imagen visualizada en su componente L del espacio HSL es de escala
+de grises...
+#prints the image L channel from the HSL colorspace. index 3 is L
+#plot(channel(im_hsl, 3))
+Se extrae la componente L de la imagen HSL y se la almacena en una variable
+#Extracts the L component from HSL colorspace image
+#im_L <- im_hsl[200:500,200:500,3]
+im_L <- im_hsl[,,3]
+2.1.2 Estimación de parámetros de distribución bimodal
+La función normalmixEM() devuelve una estimación de parámetros de la distribución
+de los datos de la componente L de la imagen, considerándola como una distribución
+normal bimodal...
+#Estimation of bimodal distribution parameters
+param <- normalmixEM(as.vector(im_L))
+param$munumber of iterations= 114 
+0.181090432632824
+0.560582899151307
+Desplegamos un histograma de los datos del canal L
+hist(im_L)
+Algoritmo Rolling ball
+Se aplica la función baseline() con el método rollingBall y se grafica el resultado. Los
+parámetros wm y ws corresponden al ancho de ventana local de minimización y
+maximización y de suavizado respectivamente.
+#Rolling ball algorithm
+#bc.rollingBall <- baseline(im_L, wm=80, ws=80, method='rollingBall')
+## Not run: 
+#plot(bc.rollingBall)
+Para visualizar el efecto del filtro aplicado mediante el algoritmo RollingBall
+convertimos los datos corregidos al formato cimg mediante la función as.cimg() y
+graficamos.
+#corregido <- as.cimg(bc.rollingBall@corrected)
+#plot(corregido)Operaciones matemáticas morfológicas
+Se utilizan los operadores matemáticos morfológicos de transformaciones top hat y
+bottom hat, para mejorar el contraste, basándose en un elemento estructural.
+Top hat: es la imagen original en grises menos el resultado de la apertura (erosión
+secundada por dilación)
+Bottom hat: es la imagen resultante de la cerradura (dilación secundada por erosión)
+menos la imagen original en grises Combinando ambos se obtiene el mejoramiento del
+contraste sumando a la imagen original el resultado de la transformación top hat y
+restando el resultado de la transformación bottom hat: If=I+Ith-Ibh
+#Top hat y bottom hat
+#mask <- imfill(78,78,val=1)
+#top_hat <- as.cimg(im_L) - mopening(as.cimg(im_L),mask)
+#bottom_hat <-  mclosing(as.cimg(im_L),mask) - as.cimg(im_L)
+#im_filt <- as.cimg(im_L) + top_hat - bottom_hat
+#plot(im_filt)
+2.1.3 Primer identificación de objetos oscuros
+ENTRADA: escala de grises (canal L)
+SALIDA: sombras interarbóreas intensificadas
+Se lleva a cabo una primera identificación de objetos oscuros, definiéndolos como los
+que tienen un valor por debajo de la media en la distribución de grises en brechas
+(hallada mediante el algoritmo normalmixEM), y a éstos se los iguala a cero.
+entrada3 <- im_L
+#values of image that are lower than mean are set to 0
+salida3 <- (entrada3>param$mu[1])*entrada3
+display(salida3)
+hist(entrada3)
+hist(salida3)2.1.4 Relleno de sombras en grandes copas de árboles
+ENTRADA: escala de grises (canal L)
+SALIDA: imagen filtrada
+La imagen en escala de grises (canal L) se invierte y se le suma el máximo valor de la
+escala de grises. Esto es comparable con una imagen negativa. Se computan dos
+imágenes baseline mediante un filtro RollingBall con un radio de tres píxeles. Las
+imágenes obtenidas se vuelven a invertir, y los valores máximos de la escala de grises se
+usaron para obtener la imagen final suavizada.
+entrada4 <- im_L
+#inversion of grayscale image and addition of maximum grayscale value
+im_L_inv <- entrada4*(-1)+max(entrada4)
+#both baselines bline1 and bline2 are computed considering one input as inverted image
+and the other input as transposed inverted image
+bline1 <- baseline(t(im_L_inv),wm=12, ws=12, method='rollingBall')bline2 <- baseline(im_L_inv,wm=12, ws=12, method='rollingBall')
+#smooth image
+im_smooth <- pmax(t(bline1@baseline)*(-1),(bline2@baseline)*(-1))
+#plot(as.cimg(im_smooth))
+salida4 <- im_smooth
+hist(entrada4)
+hist(salida4)
+display(salida4)
+2.1.5 Identificar y rellenar huecos en grandes copas de árboles
+ENTRADA:
+SALIDA:
+Se identifican las copas con un diámetro mayor a 15 píxeles, que corresponde a 7,5
+metros, mediante una transformación top hat. Para ello se utiliza un elemento
+estructurante circular con un diámetro de 15 píxeles. El resultado de esto es una máscara
+binaria que contiene solamente las copas de diámetro mayor a 15 píxeles. Los huecos
+son rellenados entonces con los valores de escala de grises obtenidos anteriormente.
+entrada5 <- salida3
+#Top hat
+#Structuring element consists in a circular shape of determined radiusradio <- 14 #radius of 7 pixels, corresponding to crown diameter; con 14 se da un mejor
+resultado usando la imagen original de referencia
+mask <- px.circle(radio)
+abertura <- mopening(as.cimg(entrada5),mask,real_mode = FALSE)
+t_hat <- as.cimg(entrada5) - abertura
+abertura <- abertura>0
+display(abertura)
+maskara <- abertura[,,1,1]
+salida5 <- (maskara*salida4)*(-2)
+hist(salida5)
+display(salida5)
+salida5 <- ((!maskara&entrada5)*entrada5+salida5)
+display(salida5)
+hist(entrada5)
+hist(salida5)
+
+Segunda identificación de objetos oscuros
+ENTRADA: salida de la etapa 5
+SALIDA: imagen de copas sin sombra interna
+Bajo la asunción de que la mayoría de los píxeles sombreados de las copas fueron
+removidos, se lleva a cabo una identificación final de píxeles oscuros, los cuales son
+definidos como los píxeles de escala de grises que son menores al 99° percentil en la
+distribuciones en huecos, y se los iguala a cero.
+entrada6 <- salida5
+#a normal distribution (n_gaps) is generated, using the parameters that were found with
+normalmixEM (eg. the media and standard deviation)
+n_gaps <- rnorm(length(entrada6), mean = param$mu[1], sd = param$sigma[1])
+noventaynueve <- quantile(n_gaps,.99)
+salida6 <- (!(entrada6[,]<noventaynueve))*entrada6
+display(salida6)
+noventaynueve
+hist(entrada6)
+hist(salida6)2.1.7 Hallar pequeños huecos en grandes copas
+ENTRADA: escala de grises (im_L)
+SALIDA: imagen binaria
+Las copas grandes poseen píxeles sueltos de sombra que deben ser rellenados para luego
+calcular la distancia de los píxeles al borde (o sea los píxeles oscuros). Mediante una
+ventana de 7 x 7 píxeles se calcula la ocurrencia de valores distintos de cero entorno a
+cada píxel, los cuales poseen una distribución bimodal. Los huecos en las copas se
+definen como aquellos que están por encima del 75° percentil. Al final de esta etapa se
+identifican tres clases de píxel: los de sombra entre árboles, los no sombreados en las
+copas y los aislados de sombras en las copas. Con estas tres clases se compone una
+máscara binaria con 0 para píxeles fuera de copas y 1 para los interiores de copas.
+entrada7 <- salida6
+ti <- proc.time()mat_riz<-cbind(0,0,0,entrada7,0,0,0) #se rellenan tres columnas con ceros por izquierda
+y por derecha
+mat_riz<-rbind(0,0,0,mat_riz,0,0,0) #se rellenan tres filas con ceros por arriba y por
+abajo
+MNZ <- entrada7*0 #MNZ es una matriz de la misma dimensión que mat_riz completa
+con ceros
+for (i in 4:dim(entrada7)[1]+2) { #i es el índice que recorre las columnas
+  for (j in 4:dim(entrada7)[2]+2) { #j es el índice que recorre las filas
+      a <- i-3
+      b <- i+3
+      c <- j-3
+      d <- j+3
+      ventana <- mat_riz[a:b,c:d]
+      MNZ[i-2,j-2] <- nnzero(ventana)
+  }
+ 
+}
+(delta <- proc.time()-ti)
+  user  system elapsed 
+ 24.602   0.001  24.624
+En el artículo de referencia se toma un valor de cuantil del 75%; se ha probado con un
+valor que se acerca al 94% percentil, ya que ahí el resultado es una matriz nula (todo
+negro)
+(setentaycinco <- quantile(entrada7,.75))
+#hist(MNZ)
+#hist(entrada7)
+huecos_copas <- (MNZ>setentaycinco)*entrada7
+salida7 <- huecos_copas
+display(huecos_copas)
+mascara7 <- MNZ>setentaycinco
+display(mascara7)
+display(MNZ)
+75%: 0.6078431372549022.1.8 Homogenización de valores de escala de grises en grandes 
+copas
+ENTRADA: escala de grises (canal L)
+SALIDA: imagen binaria
+Para homogenizar los valores en grises en grandes copas, se calcula la distancia mínima
+entre valores distinto de cero y el valor de cero de la máscara precedente. Todos los
+píxeles con distancia mayor a 7 se identifican como grandes árboles, y se rellenan con el
+valor de la media de los cuatro valores mayores dentro de una ventana de 7 x 7 píxeles.
+entrada8 <- salida7
+im_dist <- distmap(MNZ)
+#display(im_dist)
+mat_riz<-cbind(0,0,0,entrada8,0,0,0) #se rellenan tres columnas con ceros por izquierda
+y por derecha
+mat_riz<-rbind(0,0,0,mat_riz,0,0,0)
+for (i in 4:dim(entrada8)[1]+2) { #i es el índice que recorre las columnas
+  for (j in 4:dim(entrada8)[2]+2) { #j es el índice que recorre las filas
+      a <- i-3
+      b <- i+3      c <- j-3
+      d <- j+3
+      if (im_dist[i-2,j-2] > 7) {
+           ventana <- mat_riz[a:b,c:d]
+      media <- 0
+      for (n in 1:4) {
+          media <- max(ventana)/4 + media
+          ventana[which.max(ventana)] <- 0
+      }
+      entrada8[i-2,j-2] <- media
+      }
+         
+    
+  }
+ 
+}
+media
+salida8 <- entrada8
+display(salida8)
+hist(salida8)
+0.55
+#x = readImage(system.file("images", "shapes.png", package="EBImage"))
+#display(x)
+#dx = distmap(x)#display(dx/10, title='Distance map of x')
+2.1.9 Extracción de copas antes de la segmentación
+ENTRADA: escala de grises (canal L)
+SALIDA: imagen binaria
+Las copas con diámetro mayor a 3 metros se extraen mediante un filtro top bottom hat
+con elemento estructural cuadrado de 6 x 6 píxeles. A partir de esa imagen
+transformada, se aplica un umbral mayor a 0,001° percentil del filtro.
+entrada9 <- salida8
+#Top hat y bottom hat
+mask <- imfill(6,6,val=1)
+top_hat <- as.cimg(entrada9) - mopening(as.cimg(entrada9),mask)
+bottom_hat <-  mclosing(as.cimg(entrada9),mask) - as.cimg(entrada9)
+im_filt <- as.cimg(entrada9) + top_hat - bottom_hat
+display(im_filt)
+umbral <- 0.1
+percentil <- quantile(im_filt,umbral)
+salida9 <- (im_filt>percentil)
+display(salida9)
+#hist(salida9)2.1.10 Delineación de copas individuales
+ENTRADA: escala de grises (canal L)
+SALIDA: imagen binaria
+Se calcula la distancia entre valores cero y distinto de cero, es decir la distancia del
+píxel en la copa al borde. Procesando de manera separada por copas o grupos de copas,
+calculando las distancias de píxeles a los bordes. Luego se calcula el máximo local en
+una ventana cuadrada de la máxima distancia al borde del segmento. Para cada máximo
+local se genera una imagen mediante la dilatación entorno a su locación, con un tamaño
+que duplique el diámetro.
+entrada10 <- salida9
+distancia <- distmap(entrada10)
+display(distancia)

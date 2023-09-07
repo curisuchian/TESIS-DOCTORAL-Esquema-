@@ -1,0 +1,353 @@
+%\documentclass[11pt]{article}
+
+
+%\begin{document}
+    
+%    \maketitle
+    
+    
+
+    
+    \hypertarget{aplicaciuxf3n-de-algoritmo-rollingball}{%
+\section{Aplicación de algoritmo
+RollingBall}\label{aplicaciuxf3n-de-algoritmo-rollingball}}
+
+En este script se pretende replicar la experiencia con el algoritmo
+rollingball del paquete {[}baseline{]} de R.
+
+    Inicialmente se deben tener instalados los paquetes necesarios para el
+procesamiento de las imágenes.
+
+Este paso puede \textbf{omitirse} si ya se encuentra instalado.
+
+    
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n+nf}{install.packages}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{ggplot2\PYZdq{}}\PY{p}{)}
+\PY{n+nf}{install.packages}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{imager\PYZdq{}}\PY{p}{)}
+\PY{n+nf}{install.packages}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{mixtools\PYZdq{}}\PY{p}{)}
+\PY{n+nf}{install.packages}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{baseline\PYZdq{}}\PY{p}{)}
+\PY{n+nf}{install.packages}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Matrix\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+   
+
+    El primer paso consiste en cargar la imagen en una variable. La
+representación de la imagen está en el espacio de color RGB.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{3}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{}Load and plot the RGB file}
+\PY{c+c1}{\PYZsh{}data.file \PYZlt{}\PYZhy{} \PYZsq{}/mnt/usb\PYZhy{}WD\PYZus{}Elements\PYZus{}25A2\PYZus{}575852314531383859503438\PYZhy{}0:0\PYZhy{}part1/CHB/PASANTIA/imagenes\PYZus{}forestal/data/DJI\PYZus{}0805.jpg\PYZsq{}}
+\PY{n}{data.file} \PY{o}{\PYZlt{}\PYZhy{}} \PY{l+s}{\PYZsq{}}\PY{l+s}{../imagenes\PYZus{}forestal/data/original\PYZus{}referencia.jpg\PYZsq{}}
+\PY{n}{im} \PY{o}{\PYZlt{}\PYZhy{}} \PY{n+nf}{load.image}\PY{p}{(}\PY{n}{data.file}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    A los efectos de procesar la porción central de la imagen y reducir así
+los efectos de distorsión de perspectiva por desvío de la línea vertical
+nadir-cenit, además de proporcionar una reducción del tamaño de la
+imagen, se realiza un recorte de la imagen en 300 x 300 píxeles. Una vez
+que la imagen se encuentra cargada en la variable, es posible imprimir
+el gráfico con la función plot
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{4}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{}im\PYZlt{}\PYZhy{}im[200:500,200:500,]}
+\PY{n+nf}{plot}\PY{p}{(}\PY{n}{im}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_10_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    La imagen con la que se trabaja fue obtenida por medio de un dron que
+sobrevolaba la \href{https://sib.gob.ar/area/MISIONES*YB*YABOTY}{reserva
+biósfera Yaboty}, a una altitud aproximada de 600 metros. La resolución
+de la imagen original es de 12 Mpixels (4000 x 3000), pero fue reducida
+a una resolución de 1000 x 750 pixels para aliviar la carga de
+procesamiento.
+
+    Teniendo en cuenta los datos del vuelo, de la
+\href{https://www.dji.com/phantom-4/info}{cámara} y del terreno, podemos
+hallar que la resolución espacial de la fotografía aérea es de 0,5 metro
+por pixel, aproximadamente (esto teniendo en cuenta que la imagen
+original fue reducida en su resolución original de 4000 x 3000 pixeles a
+1000 x 750 pixeles)
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{5}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{}data.file \PYZlt{}\PYZhy{} \PYZsq{}../Captura.png\PYZsq{}}
+\PY{c+c1}{\PYZsh{}recorte \PYZlt{}\PYZhy{} load.image(data.file)}
+\PY{c+c1}{\PYZsh{}plot(recorte)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{6}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{}data.file \PYZlt{}\PYZhy{} \PYZsq{}../copa\PYZus{}referencia.png\PYZsq{}}
+\PY{c+c1}{\PYZsh{}recorte \PYZlt{}\PYZhy{} load.image(data.file)}
+\PY{c+c1}{\PYZsh{}plot(recorte)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    Una observación en la imagen del recorte de la copa permite estimar el
+tamaño que abarca la copa en 80 píxeles. Este dato será usado en los
+parámetros de los filtro implementados.
+
+    Para procesar la imagen, debe ser convertida al espacio de color
+\href{https://es.wikipedia.org/wiki/Modelo_de_color_HSL}{HSL}, del cual
+se tomará la componente \textbf{L} de luminosidad.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{7}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{}GPerforms the conversion of the image from RGB to HSL colorspace}
+\PY{n}{im\PYZus{}hsl} \PY{o}{\PYZlt{}\PYZhy{}} \PY{n+nf}{RGBtoHSL}\PY{p}{(}\PY{n}{im}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{8}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n+nf}{plot}\PY{p}{(}\PY{n}{im\PYZus{}hsl}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_18_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    El aspecto de la imagen visualizada en su componente L del espacio HSL
+es de escala de grises\ldots{}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{9}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{}prints the image L channel from the HSL colorspace. index 3 is L}
+\PY{n+nf}{plot}\PY{p}{(}\PY{n+nf}{channel}\PY{p}{(}\PY{n}{im\PYZus{}hsl}\PY{p}{,} \PY{l+m}{3}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_20_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Se extrae la componente L de la imagen HSL y se la almacena en una
+variable
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{10}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{}Extracts the L component from HSL colorspace image}
+\PY{c+c1}{\PYZsh{}im\PYZus{}L \PYZlt{}\PYZhy{} im\PYZus{}hsl[200:500,200:500,3]}
+\PY{n}{im\PYZus{}L} \PY{o}{\PYZlt{}\PYZhy{}} \PY{n}{im\PYZus{}hsl}\PY{n}{[}\PY{p}{,}\PY{p}{,}\PY{l+m}{3}\PY{n}{]}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{ }{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+
+\end{Verbatim}
+\end{tcolorbox}
+
+    \hypertarget{estimaciuxf3n-de-paruxe1metros-de-distribuciuxf3n-bimodal}{%
+\section{Estimación de parámetros de distribución
+bimodal}\label{estimaciuxf3n-de-paruxe1metros-de-distribuciuxf3n-bimodal}}
+
+    La función normalmixEM() devuelve una estimación de parámetros de la
+distribución de los datos de la componente L de la imagen,
+considerándola como una distribución normal bimodal\ldots{}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{11}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{}Estimation of bimodal distribution parameters}
+\PY{n}{param} \PY{o}{\PYZlt{}\PYZhy{}} \PY{n+nf}{normalmixEM}\PY{p}{(}\PY{n+nf}{as.vector}\PY{p}{(}\PY{n}{im\PYZus{}L}\PY{p}{)}\PY{p}{)}
+\PY{n}{param}\PY{o}{\PYZdl{}}\PY{n}{mu}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+number of iterations= 85
+    \end{Verbatim}
+
+    \begin{enumerate*}
+\item 0.428272211609674
+\item 0.562703451765472
+\end{enumerate*}
+
+
+    
+    Desplegamos un histograma de los datos del canal L
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{12}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n+nf}{hist}\PY{p}{(}\PY{n}{im\PYZus{}L}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_28_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{algoritmo-rolling-ball}{%
+\section{Algoritmo Rolling ball}\label{algoritmo-rolling-ball}}
+
+    Se aplica la función baseline() con el método rollingBall y se grafica
+el resultado. Los parámetros wm y ws corresponden al ancho de ventana
+local de minimización y maximización y de suavizado respectivamente.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{13}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{}Rolling ball algorithm}
+
+\PY{c+c1}{\PYZsh{}bc.rollingBall \PYZlt{}\PYZhy{} baseline(im\PYZus{}L, wm=80, ws=80, method=\PYZsq{}rollingBall\PYZsq{})}
+\PY{c+c1}{\PYZsh{}\PYZsh{} Not run: }
+\PY{c+c1}{\PYZsh{}plot(bc.rollingBall)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    Para visualizar el efecto del filtro aplicado mediante el algoritmo
+RollingBall convertimos los datos corregidos al formato cimg mediante la
+función as.cimg() y graficamos.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{14}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{}corregido \PYZlt{}\PYZhy{} as.cimg(bc.rollingBall@corrected)}
+\PY{c+c1}{\PYZsh{}plot(corregido)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \hypertarget{operaciones-matemuxe1ticas-morfoluxf3gicas}{%
+\section{Operaciones matemáticas
+morfológicas}\label{operaciones-matemuxe1ticas-morfoluxf3gicas}}
+
+    Se utilizan los operadores matemáticos morfológicos de transformaciones
+top hat y bottom hat, para mejorarse el contraste, basándose en un
+elemento estructural.
+
+    \textbf{Top hat}: es la imagen original en grises menos el resultado de
+la apertura (\emph{erosión} secundada por \emph{dilación})
+
+\textbf{Bottom hat}: es la imagen resultante de la cerradura
+(\emph{dilación} secundada por \emph{erosión}) menos la image original
+en grises Combinando ambos se obtiene el mejoramiento del contraste
+sumando a la imagen original el resultado de la transformación top hat y
+restando el resultado de la transformación bottom hat:
+\emph{If=I+Ith-Ibh}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{15}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{}Top hat y bottom hat}
+\PY{c+c1}{\PYZsh{}mask \PYZlt{}\PYZhy{} imfill(78,78,val=1)}
+\PY{c+c1}{\PYZsh{}top\PYZus{}hat \PYZlt{}\PYZhy{} as.cimg(im\PYZus{}L) \PYZhy{} mopening(as.cimg(im\PYZus{}L),mask)}
+\PY{c+c1}{\PYZsh{}bottom\PYZus{}hat \PYZlt{}\PYZhy{}  mclosing(as.cimg(im\PYZus{}L),mask) \PYZhy{} as.cimg(im\PYZus{}L)}
+\PY{c+c1}{\PYZsh{}im\PYZus{}filt \PYZlt{}\PYZhy{} as.cimg(im\PYZus{}L) + top\PYZus{}hat \PYZhy{} bottom\PYZus{}hat}
+\PY{c+c1}{\PYZsh{}plot(im\PYZus{}filt)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \hypertarget{primer-identificaciuxf3n-de-objetos-oscuros}{%
+\section{3. Primer identificación de objetos
+oscuros}\label{primer-identificaciuxf3n-de-objetos-oscuros}}
+
+\textbf{ENTRADA}: escala de grises (canal L)
+
+\textbf{SALIDA}: sombras interarbóreas intensificadas
+
+Se lleva a cabo una primera identificación de objetos oscuros,
+definiéndolos como los que tienen un valor por debajo de la media en la
+distribución de grises en brechas (hallada mediante el algoritmo
+normalmixEM), y a éstos se los iguala a cero.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{16}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{TI\PYZus{}abs} \PY{o}{\PYZlt{}\PYZhy{}} \PY{n+nf}{proc.time}\PY{p}{(}\PY{p}{)}
+\PY{n}{entrada3} \PY{o}{\PYZlt{}\PYZhy{}} \PY{n}{im\PYZus{}L}
+\PY{c+c1}{\PYZsh{}values of image that are lower than mean are set to 0}
+\PY{n}{salida3} \PY{o}{\PYZlt{}\PYZhy{}} \PY{p}{(}\PY{n}{entrada3}\PY{o}{\PYZgt{}}\PY{n}{param}\PY{o}{\PYZdl{}}\PY{n}{mu}\PY{n}{[1}\PY{n}{]}\PY{p}{)}\PY{o}{*}\PY{n}{entrada3}
+\PY{n+nf}{plot}\PY{p}{(}\PY{n+nf}{as.cimg}\PY{p}{(}\PY{n}{salida3}\PY{p}{)}\PY{p}{)}
+\PY{n+nf}{hist}\PY{p}{(}\PY{n}{entrada3}\PY{p}{)}
+\PY{n+nf}{hist}\PY{p}{(}\PY{n}{salida3}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_39_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_39_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_39_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{relleno-de-sombras-en-grandes-copas-de-uxe1rboles}{%
+\section{4. Relleno de sombras en grandes copas de
+árboles}\label{relleno-de-sombras-en-grandes-copas-de-uxe1rboles}}
+
+\textbf{ENTRADA}: escala de grises (canal L)
+
+\textbf{SALIDA}: imagen filtrada
+
+La imagen en escala de grises (canal L) se invierte y se le suma el
+máximo valor de la escala de grises. Esto es comparable con una imagen
+negativa. Se computan dos imágenes baseline mediante un filtro
+RollingBall con un radio de tres píxeles. Las imágenes obtenidas se
+vuelven a invertir, y los valores máximos de la escala de grises se
+usaron para obtener la imagen final suavizada.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{17}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{entrada4} \PY{o}{\PYZlt{}\PYZhy{}} \PY{n}{im\PYZus{}L}
+\PY{c+c1}{\PYZsh{}inversion of grayscale image and addition of maximum grayscale value}
+\PY{n}{im\PYZus{}L\PYZus{}inv} \PY{o}{\PYZlt{}\PYZhy{}} \PY{n}{entrada4}\PY{o}{*}\PY{p}{(}\PY{l+m}{\PYZhy{}1}\PY{p}{)}\PY{o}{+}\PY{n+nf}{max}\PY{p}{(}\PY{n}{entrada4}\PY{p}{)}
+\PY{c+c1}{\PYZsh{}both baselines bline1 and bline2 are computed considering one input as inverted image and the other input as transposed inverted image}
+\PY{n}{bline1} \PY{o}{\PYZlt{}\PYZhy{}} \PY{n+nf}{baseline}\PY{p}{(}\PY{n+nf}{t}\PY{p}{(}\PY{n}{im\PYZus{}L\PYZus{}inv}\PY{p}{)}\PY{p}{,}\PY{n}{wm}\PY{o}{=}\PY{l+m}{12}\PY{p}{,} \PY{n}{ws}\PY{o}{=}\PY{l+m}{12}\PY{p}{,} \PY{n}{method}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{rollingBall\PYZsq{}}\PY{p}{)}
+\PY{n}{bline2} \PY{o}{\PYZlt{}\PYZhy{}} \PY{n+nf}{baseline}\PY{p}{(}\PY{n}{im\PYZus{}L\PYZus{}inv}\PY{p}{,}\PY{n}{wm}\PY{o}{=}\PY{l+m}{12}\PY{p}{,} \PY{n}{ws}\PY{o}{=}\PY{l+m}{12}\PY{p}{,} \PY{n}{method}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{rollingBall\PYZsq{}}\PY{p}{)}
+\PY{c+c1}{\PYZsh{}smooth image}
+\PY{n}{im\PYZus{}smooth} \PY{o}{\PYZlt{}\PYZhy{}} \PY{n+nf}{pmax}\PY{p}{(}\PY{n+nf}{t}\PY{p}{(}\PY{n}{bline1}\PY{o}{@}\PY{n}{baseline}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{l+m}{\PYZhy{}1}\PY{p}{)}\PY{p}{,}\PY{p}{(}\PY{n}{bline2}\PY{o}{@}\PY{n}{baseline}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{l+m}{\PYZhy{}1}\PY{p}{)}\PY{p}{)}
+\PY{n+nf}{plot}\PY{p}{(}\PY{n+nf}{as.cimg}\PY{p}{(}\PY{n}{im\PYZus{}smooth}\PY{p}{)}\PY{p}{)}
+\PY{n}{salida4} \PY{o}{\PYZlt{}\PYZhy{}} \PY{n}{im\PYZus{}smooth}
+\PY{n+nf}{hist}\PY{p}{(}\PY{n}{entrada4}\PY{p}{)}
+\PY{n+nf}{hist}\PY{p}{(}\PY{n}{salida4}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_41_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_41_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_41_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+ 

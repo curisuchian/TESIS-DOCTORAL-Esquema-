@@ -1,17 +1,24 @@
-Recomendaciones para Trabajos Futuros
-●	Producción Científica (surgida del trabajo de Tesis)
-✔	Publicaciones en Revistas y Capítulos de Libros
-✔	Presentaciones a Congresos
-●	Proyecto/s de Investigación dentro del/los cual/es se desarrolló la Tesis (si hubiera/n)
-●	Beca/s y Subsidio/s con los que se financió la Tesis (si hubieran)
-●	Apéndices o Anexos (se reservan para detallar técnicas originales utilizadas o análisis teóricos que impedirían seguir fluidamente el trabajo si se incluyeran en el texto). Las tablas y figuras de los apéndices o anexos deben comenzar otra numeración diferente a la de los capítulos.
+%Recomendaciones para Trabajos Futuros
+%●	Producción Científica (surgida del trabajo de Tesis)
+%✔	Publicaciones en Revistas y Capítulos de Libros
+%✔	Presentaciones a Congresos
+%●	Proyecto/s de Investigación dentro del/los cual/es se desarrolló la Tesis (si hubiera/n)
+%●	Beca/s y Subsidio/s con los que se financió la Tesis (si hubieran)
+%●	Apéndices o Anexos (se reservan para detallar técnicas originales utilizadas o análisis teóricos que impedirían seguir fluidamente el trabajo si se incluyeran en el texto). Las tablas y figuras de los apéndices o anexos deben comenzar otra numeración diferente a la de los capítulos.
 
-Algoritmo morfológico
+\section{Algoritmo morfológico}
+\input{Scripts/steps(10)}
+%After that, you can include a whole Jupyter Notebook in your file just specifying it's file name:
+
+%\jupynotex{morfologico.ipynb}
+%If you do not want to include it completely, you can optionally specify which cells:
+
+%\jupynotex[5-10]{morfologico.ipynb}
+%The cells specification can be numbers separated by comma, or ranges using dashes (defaulting to first and last if any side is not included).
 Preprocesamiento y eliminación de áreas sin sombra
 En este script se pretende replicar la experiencia con el algoritmo rollingball del paquete
 [baseline] de R.
-Inicialmente se deben tener instalados los paquetes necesarios para el procesamiento de
-las imágenes.
+Inicialmente se deben tener instalados los paquetes necesarios para el procesamiento de las imágenes.
 Este paso puede omitirse si ya se encuentra instalado.
 install.packages("ggplot2")
 install.packages("imager")
@@ -32,8 +39,8 @@ library(Matrix)
 library(imager)
 library("EBImage")
 El primer paso consiste en cargar la imagen en una variable. La representación de la
-imagen está en el espacio de color RGB.
-#Load and plot the RGB file
+imagen está en el espacio de color RGB.\\
+\#Load and plot the RGB file\\
 data.file <- '../imagenes_forestal/data/original_referencia.jpg'
 im <- load.image(data.file)
 plot(im)

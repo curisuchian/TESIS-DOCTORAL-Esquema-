@@ -1,3 +1,4 @@
+\color{cyan} %color de texto con 70-80 % o más de avance
 \section{Sensado remoto, plataformas (¿?) (Bloque 1)}
 \subsection{Requerimientos y restricciones}
 Para llevar adelante el relevamiento de las áreas forestales hay que tener en cuenta los requerimientos en el tiempo y en el equipamiento, así como las restricciones que imponen las regulaciones legales y condiciones geográficas y meteorológicas. Dependiendo de cuán grande sea el área a relevar, puede resultar más conveniente alguna de las plataformas de sensado remoto que otra. El criterio que debe ponderarse está basado en cálculos de tiempo, de costos operacionales y de disponibilidad. Para distintos escenarios, reservas grandes de miles de hectáreas de extensión o pequeñas reservas privadas de pocas decenas o centenas de hectáreas, los cálculos arrojarán resultados diferentes.
@@ -9,7 +10,7 @@ Los sensores, esto es, las cámaras que son llevadas como carga útil por las di
 \begin{figure}
     \includegraphics[width=\textwidth]{Imagenes/dron.jpg}
      \hfill
-     \caption{Superposition of manual and automatic shadow masks (red contour and blue colored area), using 60th percentile, using ψ\textsubscript{BR} (blue an red channels) for the Invariant color index}
+     \caption{Acá puede ir o no una imagen ilustrativa; revisar que esté referenciada correctamente}
     \label{dron}
 \end{figure}
 Para hallar el factor de escala $m_b$, relacionamos la altura de vuelo $H_g$ con la distancia focal
@@ -94,12 +95,12 @@ Conociendo el tiempo total que le lleva a la plataforma aérea completar el reco
 Con base en todos los cálculos, es posible establecer una comparación entre las distintas opciones de plataforma de sensado remoto, según el área relevada.
 %% No olvidar mencionar que, por simplicidad en los cálculos se considera cada área como si fuera un cuadrado 
 %%
-En la tabla \ref{Tabla} se sumarizan los resultados, donde se puede observar de forma clara que para el caso de superficies relevadas de pocas hectáreas, el costo de obtención de las imágenes es significativamente inferior al de las imágenes satelitales. Esto se debe fundamentalmente a que la adquisición de imágenes satelitales requiere de una superficie mínima, 25 kilómetros cuadrados si las imágenes son de archivo (> 90 días)\cite{noauthor_satellite_2020}. Ya para el caso de superficies mayores como la reserva Yaboty, el costo total de captura de imágenes equipara e incluso supera al de imágenes satelitales. No solo termina siendo más oneroso el relevamiento fotográfico aéreo con VANT en grandes superficies, ya que adicionalmente se debe tener en cuenta la limitación de autonomía de esos vehículos, que generalmente no superan la media hora \cite{}, o la hora de autonomía en algunos casos \cite{}. Esto indudablemente afecta al flujo de trabajo por la necesaria reposición de baterías, a la vez que deben establecerse numerosas bases operativas en la medida en que se va avanzando con el relevamiento del terreno. Otra limitación que se suma a los VANT es el alcance que tiene el mando de control. Los VANT comerciales más difundidos suelen tener alcances de hasta 10 km \cite{} por lo que esto debe ser tenido en cuenta en la extensión del área a relevar. Por otro lado en el caso de las aeronaves tripuladas puede resultar muy inconvenientes en términos de erogación de dinero cuando se trata de pequeñas extensiones cuyo sobrevuelo de relevamiento no sobrepasa la hora de duración, ya que hay que sumar a toda la operatoria el traslado de la aeronave desde y hacia el aeródromo de base. Resulta evidente que será mayor la incidencia en el costo final la parte que corresponde al traslado en sí, si la superficie a ser relevada es de pocas hectáreas. En la provincia de Misiones existen en un radio menor a cincuenta kilómetros a las tres reservas analizadas algunos aeródromos o pistas que pueden usarse como base.
+En la tabla \ref{Tabla_borrador} se sumarizan los resultados, donde se puede observar de forma clara que para el caso de superficies relevadas de pocas hectáreas, el costo de obtención de las imágenes es significativamente inferior al de las imágenes satelitales. Esto se debe fundamentalmente a que la adquisición de imágenes satelitales requiere de una superficie mínima, 25 kilómetros cuadrados si las imágenes son de archivo (> 90 días)\cite{noauthor_satellite_2020}. Ya para el caso de superficies mayores como la reserva Yaboty, el costo total de captura de imágenes equipara e incluso supera al de imágenes satelitales. No solo termina siendo más oneroso el relevamiento fotográfico aéreo con VANT en grandes superficies, ya que adicionalmente se debe tener en cuenta la limitación de autonomía de esos vehículos, que generalmente no superan la media hora \cite{}, o la hora de autonomía en algunos casos \cite{}. Esto indudablemente afecta al flujo de trabajo por la necesaria reposición de baterías, a la vez que deben establecerse numerosas bases operativas en la medida en que se va avanzando con el relevamiento del terreno. Otra limitación que se suma a los VANT es el alcance que tiene el mando de control. Los VANT comerciales más difundidos suelen tener alcances de hasta 10 km \cite{} por lo que esto debe ser tenido en cuenta en la extensión del área a relevar. Por otro lado en el caso de las aeronaves tripuladas puede resultar muy inconvenientes en términos de erogación de dinero cuando se trata de pequeñas extensiones cuyo sobrevuelo de relevamiento no sobrepasa la hora de duración, ya que hay que sumar a toda la operatoria el traslado de la aeronave desde y hacia el aeródromo de base. Resulta evidente que será mayor la incidencia en el costo final la parte que corresponde al traslado en sí, si la superficie a ser relevada es de pocas hectáreas. En la provincia de Misiones existen en un radio menor a cincuenta kilómetros a las tres reservas analizadas algunos aeródromos o pistas que pueden usarse como base.
 \begin{figure}
     \includegraphics[width=\textwidth]{Imagenes/Tabla comparativa borrador.png}
      \hfill
-     %\caption{Supe}
-        \label{Tabla}
+     \caption{Tabla borrador}
+        \label{Tabla_borrador}
 \end{figure}
 Obtener los datos y características técnicas de los sensores no es tarea sencilla. La información que suele figurar en los sitios web de los fabricantes o en los manuales, no suele ser la que se necesita para calcular. Por ejemplo la distancia focal no suele ser un dato que aparezca en la lista de especificaciones. Puede obtenerse de los metadatos asociados a una imagen que ha sido capturada con ese sensor.
 Del mismo modo tampoco resulta sencillo obtener información sobre las tarifas de vuelos de relevamiento aéreo, ya sea tripulado o no. La información disponible es vaga y escueta, por ejemplo la hora de vuelo tripulado es de 240 dólares estadounidenses si se toma como base el dólar oficial (cotizado en 55 mil pesos argentinos, mayo 2023), y la de VANT es de 195 dólares estadounidenses (cotizado en 45 mil pesos argentinos, mayo 2023).
@@ -141,20 +142,12 @@ Para la selección de sombras binarizadas se recorrió la matriz de la imagen co
 A los efectos de mostrar el funcionamiento del método de búsqueda y conteo de sombras, se exponen las fig. 4, 5 y 6 en las que se visualizan la imagen satelital en escala de grises de una porción de la reserva privada Sombra de Toro, ubicada en el norte de la provincia de Misiones, la imagen binarizada luego del filtrado homomórfico y las sombras seleccionadas, respectivamente.
 
 
+\color{black} 
 \subsection{Procesamiento morfológico (Pasantía)}
-Durante la pasantía se ejecutaron las etapas de procesamiento de imágenes aéreas de
-una cubierta selvática, que posibilitaron una segmentación de las copas de los árboles. 
-Para el desarrollo del trabajo se tomó como base de la metodología descripta en el
-artículo de referencia \cite{hubert_wagner_individual_2018}. Partiendo de una imagen en escala de grises, se realizó una
-secuencia de pasos en los que se implementan diferentes filtros para identificar cada una
-de las copas, de un modo que finalmente se obtuvo una imagen binarizada con la cual se
-pudo obtener un conteo de las copas. El primer paso consistió en hacer una clara identificación de los bordes y del área de
-copas. Luego se aplicó un algoritmo de Rolling Ball \cite{} que produce un suavizado en
-los niveles de grises dentro de las copas. En una siguiente etapa, distinguiendo copas
-grandes de pequeñas, se identificaban huecos en las copas grandes, para posteriormente
-rellenarlos con un valor promedio. Una vez rellenos todos los huecos y uniformadas
-todas las copas, se procede a segmentarlas, obteniéndose una imagen binarizada, con
-cada copa de árbol aislada e identificada en su posición.
+Partiendo de una imagen en escala de grises, se realizó una secuencia de pasos en los que se implementan diferentes filtros para identificar cada una
+de las copas, de un modo que finalmente se obtuvo una imagen binarizada con la cual se pudo obtener un conteo de las copas. El primer paso consistió en hacer una clara identificación de los bordes y del área de
+copas. Luego se aplicó un algoritmo de Rolling Ball \cite{sternberg_biomedical_1983} que produce un suavizado en los niveles de grises dentro de las copas. En una siguiente etapa, distinguiendo copas
+grandes de pequeñas, se identificaban huecos en las copas grandes, para posteriormente rellenarlos con un valor promedio. Una vez rellenos todos los huecos y uniformadas todas las copas, se procede a segmentarlas, obteniéndose una imagen binarizada, con cada copa de árbol aislada e identificada en su posición.
 
 Secuencia de actividades para el tratamiento de las imágenes\\
 1. Preprocesamiento\\
@@ -169,22 +162,13 @@ Secuencia de actividades para el tratamiento de las imágenes\\
 10.  Delineación de copas individuales\\
 
 
-3 Evaluación de la influencia de diferentes parámetros en los 
-algoritmos
-Se evaluó el desempeño de los algoritmos modificando en un determinado rango el
-valor de distintos parámetros en cada etapa del procesamiento, para observar en qué
-modo se ven afectados los resultados. Se procedió a lo que se denomina “Gridsearch”,
-estableciendo valores de parámetros en grillas y los correspondientes resultados del procesamiento de las imágenes. En este procedimiento se evidencia la importancia y la
-vinculación que tienen los parámetros en las diferentes etapas con la resolución espacial
-de la imagen con la que se trabaja. En tanto en la última etapa se observó que el umbral
-que se definió para separar (y por lo tanto binarizar la imagen) las copas segmentadas,
-en el artículo de referencia sugiere utilizar el umbral del 0,001 percentil, pero al hacer la
-prueba de Gridsearch con diferentes valores hasta el 0,9 percentil, resultaba notable que
-excepto el correspondiente al percentil 0,9 los demás resultados no eran visiblemente
-diferentes.
+3 Evaluación de la influencia de diferentes parámetros en los algoritmos Se evaluó el desempeño de los algoritmos modificando en un determinado rango el
+valor de distintos parámetros en cada etapa del procesamiento, para observar en qué modo se ven afectados los resultados. Se procedió a lo que se denomina “Gridsearch”, estableciendo valores de parámetros en grillas y los correspondientes resultados del procesamiento de las imágenes. En este procedimiento se evidencia la importancia y la vinculación que tienen los parámetros en las diferentes etapas con la resolución espacial de la imagen con la que se trabaja. En tanto en la última etapa se observó que el umbral
+que se definió para separar (y por lo tanto binarizar la imagen) las copas segmentadas, en el artículo de referencia sugiere utilizar el umbral del 0,001 percentil, pero al hacer la prueba de Gridsearch con diferentes valores hasta el 0,9 percentil, resultaba notable que excepto el correspondiente al percentil 0,9 los demás resultados no eran visiblemente diferentes.
 
 
 
+\color{cyan} %color de texto con 70-80 % o más de avance
 \subsection{Invariante de color (paper RSASE)}
 \subsubsection{Metodología propuesta IIC}
 En esta sección se describen los pasos del método de procesamiento necesarios para obtener la máscara automática de sombras de la imagen aérea. La figura \ref{diagrama_procesamiento} representa la secuencia de procesamiento.
@@ -283,6 +267,7 @@ en donde $M_{NF}$ es la máscara binaria automática obtenida sin filtrado, y $M
 \subsubsection{Validación IIC} \label{Validacion}
 Superponiendo a una imagen las dos máscaras, una obtenida en forma manual y otra en forma automática, tres expertos realizaron un análisis, calificando el grado de ajuste entre ambas máscaras como "bueno", "regular" o "malo". Este procedimiento fue aplicado a cada una de las 19 imágenes analizadas, de modo que se obtuvieron 19 máscaras automáticas por medio del algoritmo para ser comparadas con las respectivas máscaras obtenidas en forma manual. Las superposiciones calificadas como "buenas" o "regulares" son usadas para seleccionar la mejor máscara automática. Un procedimiento similar se siguió para evaluar el filtrado de la imagen.
 
+\color{black} 
 \subsection{Machine learning (¿?)}
 
 

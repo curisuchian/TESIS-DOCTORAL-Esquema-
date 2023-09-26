@@ -142,12 +142,10 @@ Para la selección de sombras binarizadas se recorrió la matriz de la imagen co
 A los efectos de mostrar el funcionamiento del método de búsqueda y conteo de sombras, se exponen las fig. 4, 5 y 6 en las que se visualizan la imagen satelital en escala de grises de una porción de la reserva privada Sombra de Toro, ubicada en el norte de la provincia de Misiones, la imagen binarizada luego del filtrado homomórfico y las sombras seleccionadas, respectivamente.
 
 
-\color{black} 
+\color{cyan} %color de texto con 70-80 % o más de avance
 \subsection{Procesamiento morfológico (Pasantía)}
-Partiendo de una imagen en escala de grises, se realizó una secuencia de pasos en los que se implementan diferentes filtros para identificar cada una
-de las copas, de un modo que finalmente se obtuvo una imagen binarizada con la cual se pudo obtener un conteo de las copas. El primer paso consistió en hacer una clara identificación de los bordes y del área de
-copas. Luego se aplicó un algoritmo de Rolling Ball \cite{sternberg_biomedical_1983} que produce un suavizado en los niveles de grises dentro de las copas. En una siguiente etapa, distinguiendo copas
-grandes de pequeñas, se identificaban huecos en las copas grandes, para posteriormente rellenarlos con un valor promedio. Una vez rellenos todos los huecos y uniformadas todas las copas, se procede a segmentarlas, obteniéndose una imagen binarizada, con cada copa de árbol aislada e identificada en su posición.
+Una réplica del trabajo de \cite{ferreira_tree_2019}
+Partiendo de una imagen en escala de grises, se realizó una secuencia de pasos en los que se implementan diferentes filtros para identificar cada una de las copas, de un modo que finalmente se obtuvo una imagen binarizada con la cual se pudo obtener un conteo de las copas. El primer paso consistió en hacer una clara identificación de los bordes y del área de copas. Luego se aplicó un algoritmo de Rolling Ball \cite{sternberg_biomedical_1983} que produce un suavizado en los niveles de grises dentro de las copas. En una siguiente etapa, distinguiendo copas grandes de pequeñas, se identificaban huecos en las copas grandes, para posteriormente rellenarlos con un valor promedio. Una vez rellenos todos los huecos y uniformadas todas las copas, se procede a segmentarlas, obteniéndose una imagen binarizada, con cada copa de árbol aislada e identificada en su posición.
 
 Secuencia de actividades para el tratamiento de las imágenes\\
 1. Preprocesamiento\\
@@ -161,6 +159,25 @@ Secuencia de actividades para el tratamiento de las imágenes\\
 9. Extracción de copas de segmentación\\
 10.  Delineación de copas individuales\\
 
+\subsubsection{Preprocesamiento y eliminación de áreas sin sombra}
+La imagen es presentada en el formato de escala de grises (formato HSL, de Hue-color, Saturation-saturación, Luminosity-luminosidad) y recortada en el área de interés (las que contienen sombras)
+\subsubsection{Primera identificación de objetos oscuros}
+Una primera identificación de objetos oscuros se logra a partir de definir a los píxeles de la imagen que tienen un valor menor que la media en la distribución de grises.
+\subsubsection{Relleno de sombras en copas}
+Este paso es para "suavizar" la textura de las copas de los árboles, rellenando los espacios de sombras.
+Si se invierte los valores de los píxeles de la imagen y se le suma el máximo valor de la escala de grises, se obtiene un equivalente a una imagen negativa. Luego se aplica un filtro Rolling Ball con radio de tres píxeles. La imagen resultante se vuelve a invertir.
+\subsubsection{Identificación y relleno de huecos en grandes copas}
+Según la resolución espacial de la imagen utilizada, una copa de árbol de 7,5 m de diámetro abarca 15 píxeles. Se lleva a cabo una transformación top hat, con un elemento estructurante circular de diámetro de 15 píxeles. Se obtiene entonces una máscara binaria que contiene solamente copas grandes (mayores a 7,5 metros de diámetro).
+\subsubsection{ Segunda identificación de objetos oscuros}
+Se asume que la mayoría de los píxeles oscuros dentro de las copas de los árboles fueron removidos. Se realiza entonces una segunda identificación de píxeles oscuros, definidos como aquellos menores al 99º percentil de distribuciones en huecos.
+\subsubsection{Búsqueda de pequeños huecos en grandes copas}
+En las copas grandes existen áreas de huecos o sombras que a los efectos de facilitar la tarea de conteo de copas, es conveniente rellenarlos. Para realizarlo se analiza en una ventana de 7 por 7 píxeles la ocurrencia de valores distintos de cero alrededor de cada píxel. Estos tienen una distribución bimodal, donde los huecos en las copas son aquellos cuyos valores están por encima del 75º percentil. Al finalizar la etapa se identifican tres clases de píxel: los que corresponden a sombras entre árboles, los no sombreados en copas y los que son sombras en las copas. Se constituye una máscara binaria asignando 0 para píxeles fuera de copas y 1 para píxeles dentro de copas.
+\subsubsection{Homogeneización de escala de grises en grandes árboles}
+Los píxeles de las copas grandes son rellenados con la media de los cuatro mayores valores en una ventana de 7 por 7 píxeles.
+\subsubsection{Extracción de copas de segmentación}
+Mediante un filtro top bottom se efectua la extracción de copas de diámetro mayor a 3 m, usando un elemento estructural de 6 por 6 píxeles. Luego se umbraliza la imagen con el valor del 0,001 percentil.
+\subsubsection{Delineación de copas individuales}
+En esta etapa se calcula la distancia entre valores cero y distinto de cero, es decir la distancia del píxel al borde de la copa. Por medio de una ventana cuadrada se calcula el máximo local, y se genera una dilatación que duplique el diámetro.
 
 3 Evaluación de la influencia de diferentes parámetros en los algoritmos Se evaluó el desempeño de los algoritmos modificando en un determinado rango el
 valor de distintos parámetros en cada etapa del procesamiento, para observar en qué modo se ven afectados los resultados. Se procedió a lo que se denomina “Gridsearch”, estableciendo valores de parámetros en grillas y los correspondientes resultados del procesamiento de las imágenes. En este procedimiento se evidencia la importancia y la vinculación que tienen los parámetros en las diferentes etapas con la resolución espacial de la imagen con la que se trabaja. En tanto en la última etapa se observó que el umbral

@@ -13,6 +13,19 @@ Con el objeto de evaluar la correspondiente afectación en el histograma de las 
 \subsection{B-Replicación del paper de Wagner}
 A partir de un trabajo publicado por \cite{hubert_wagner_individual_2018}, se intentó replicar una parte del mismo que implementaba una serie de procedimientos morfológicos a una imagen aérea o satelital en escala de grises de una porción de selva, para delinear copas individuales previo a realizar una clasificación de especies.
 
+\begin{figure}
+    \includegraphics[width=\textwidth]{Imagenes/Resultados script morfologico/output_10_0.png}
+     \hfill
+     \caption{Escena }
+    \label{morfologico_entrada}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\textwidth]{Imagenes/Resultados script morfologico/output_18_0.png}
+     \hfill
+     \caption{Escena }
+    \label{etapa1}
+\end{figure}
 3 Evaluación de la influencia de diferentes parámetros en los 
 algoritmos
 Se evaluó el desempeño de los algoritmos modificando en un determinado rango el
@@ -26,14 +39,15 @@ en el artículo de referencia sugiere utilizar el umbral del 0,001 percentil, pe
 prueba de Gridsearch con diferentes valores hasta el 0,9 percentil, resultaba notable que
 excepto el correspondiente al percentil 0,9 los demás resultados no eran visiblemente
 diferentes.
-\subsubsection{RESULTADOS HOMOMÓRFICO}
+
+\subsection{RESULTADOS HOMOMÓRFICO}
 Los resultados de las pruebas se exponen en la Tabla I. Allí se visualiza para distintas imágenes la cantidad de sombras detectadas, y se comparan los resultados de conteo automático con distintos tamaños de ventana, con el método de búsqueda de forma manual. Nótese el cambio de signo para el error medio entre los tamaños de ventana de 25 y de 20 píxeles, indicando que la selección de un tamaño de ventana menor resultará en una mayor 
 cantidad de sombras detectadas que la que se obtiene por conteo manual. En cambio un tamaño de ventana mayor podría obviar varias sombras que serían tenidas en cuenta para el conteo manual. De acuerdo con la resolución de las imágenes de prueba, el tamaño de ventana cuadrada de 20 píxeles por lado se correspondería con un área de 100 metros cuadrados.
 
 
 
 \color{cyan} %color de texto con 70-80 % o más de avance
-\subsubsection{Resultados IIC} \label{Resultados}
+\subsection{Resultados IIC} \label{Resultados}
 Un total de diecinueve imágenes aéreas de selva fueron consideradas para realizar el análisis. Dos de ellas representativas de los diferentes escenarios que fueron cubiertos, se muestran en las figuras \ref{calle} y \ref{tupido}. La figura \ref{calle} muestra una imagen en la que unas pocas copas de árboles se distribuyen por el área capturada, mientras que en la \ref{tupido} el dosel cubre prácticamente toda el área. La delineación manual de las sombras fue realizada como se describe en el apartado de \ref{Metodología}
 Dos ejemplos de máscaras manuales se muestran en figuras \ref{contorno1} y \ref{contorno2}, con trazo rojo bordeando las regiones sombreadas. La figura \ref{superposicion} muestra el solapamiento de la máscara manual (en rojo) con la automática (en azul). En la figura \ref{p60} el valor de umbral para la máscara binaria se toma del 60º percentil de la distribución de frecuencias, mientras que en la figura \ref{p85} el valor de umbral es tomado del 85º percentil.
 

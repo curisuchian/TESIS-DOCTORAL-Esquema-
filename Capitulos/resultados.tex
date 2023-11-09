@@ -26,18 +26,10 @@ A partir de un trabajo publicado por \cite{hubert_wagner_individual_2018}, se in
      \caption{Escena }
     \label{etapa1}
 \end{figure}
-3 Evaluación de la influencia de diferentes parámetros en los 
-algoritmos
-Se evaluó el desempeño de los algoritmos modificando en un determinado rango el
-valor de distintos parámetros en cada etapa del procesamiento, para observar en qué
-modo se ven afectados los resultados. Se procedió a lo que se denomina “Gridsearch”,
-estableciendo valores de parámetros en grillas y los correspondientes resultados delprocesamiento de las imágenes. En este procedimiento se evidencia la importancia y la
-vinculación que tienen los parámetros en las diferentes etapas con la resolución espacial
-de la imagen con la que se trabaja. En tanto en la última etapa se observó que el umbral
-que se definió para separar (y por lo tanto binarizar la imagen) las copas segmentadas,
-en el artículo de referencia sugiere utilizar el umbral del 0,001 percentil, pero al hacer la
-prueba de Gridsearch con diferentes valores hasta el 0,9 percentil, resultaba notable que
-excepto el correspondiente al percentil 0,9 los demás resultados no eran visiblemente
+\subsubsection{Evaluación de la influencia de diferentes parámetros en los algoritmos}
+Se evaluó el desempeño de los algoritmos modificando en un determinado rango el valor de distintos parámetros en cada etapa del procesamiento, para observar en qué modo se ven afectados los resultados. Se procedió a lo que se denomina “Gridsearch”,
+estableciendo valores de parámetros en grillas y los correspondientes resultados del procesamiento de las imágenes. En este procedimiento se evidencia la importancia y la vinculación que tienen los parámetros en las diferentes etapas con la resolución espacial de la imagen con la que se trabaja. En tanto en la última etapa se observó que el umbral
+que se definió para separar (y por lo tanto binarizar la imagen) las copas segmentadas, en el artículo de referencia sugiere utilizar el umbral del 0,1º percentil, pero al hacer la prueba de Gridsearch con diferentes valores hasta el 90º percentil, resultaba notable que excepto el correspondiente al percentil 90º los demás resultados no eran visiblemente
 diferentes.
 
 \subsection{RESULTADOS HOMOMÓRFICO}

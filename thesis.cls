@@ -324,8 +324,9 @@ Químicas y Naturales "SPECIFICATIONS for Preparation of Doctor's Thesis}
 	\normalfont
 	\EmphReset	% bold or underlined?
 	\doublespacing	% footnotes and floats still singlespaced
-	\setcounter{tocdepth}{2}
-	\setcounter{secnumdepth}{\value{th@SecNum}}
+	\setcounter{tocdepth}{6}
+        \setcounter{secnumdepth}{6}
+	%\setcounter{secnumdepth}{\value{th@SecNum}}
 % Redefine the bibliography command here, just in case someone
 % uses a custom *.sty file that redefines bibliography command
 	\let\th@OldBib\thebibliography

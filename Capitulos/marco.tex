@@ -2,57 +2,19 @@
 \section{Sensado remoto, plataformas (Bloque 1)}
 \subsection{Fotointerpretación}
 En el marco de la teledetección, la fotointerpretación consiste en el análisis de imágenes, generalmente aéreas sobre un terreno, para extraer información, identificar objetos, clasificar, etc. Se parte de una captura de fotogramas, mediante alguna plataforma que puede ser una aeronave tripulada o no, o un satélite. Durante un tiempo la fotointerptretación era llevada a cabo de manera manual, valiéndose el fotointerpretador de una imagen impresa y herramientas como estereoscopio, reglas, marcadores. Con la mayor accesibilidad y disponibilidad de herramientas digitales, se vuelve más atractivo el uso de métodos que automaticen la tarea.
-\subsection{Reservas de bosque nativo de la Selva Paranaense en la Provincia de Misiones}
-El remanente en pie del bioma conocido como Bosque Atlántico o Selva Paranaense representa hoy un 5\% de la histórica extensión, que cubría desde toda la provincia de Misiones, buena parte del Paraguay y el sur de Brasil. En la provincia de Misiones está presente casi la mitad de ese remanente, existiendo varias reservas, tanto públicas como privadas. Algunas de ellas son descriptas en el presente trabajo.
-\subsubsection{Reserva Biósfera Yaboty}
-Para conocer de manera aproximada el tiempo que sería necesario para completar un relevamiento fotográfico aéreo territorial, tomamos como ejemplo el área de la biosfera Yaboty, cuya extensión es de 253.773 ha [1].
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|c|c|c|}
-        \hline
-        \textbf{Reserva} & Biósfera Yaboty &   \multirow{ 3}{*}{\includegraphics[width=30mm]{Imagenes/Yaboty.png}}\\ 
-        \textbf{Administración} & Pública\\
-        \textbf{Ubicación} & E 53° 40’, O 54° 18’, N 26° 37’ S 27° 12’ \\
-        \textbf{Superficie} & 253.773 ha\\
-        \hline
-    \end{tabular}
-    \label{Yaboty}
-\end{table}
-\subsubsection{Reserva San Sebastián de la Selva}
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline
- \textbf{Reserva} & San Sebastián de la Selva &   \multirow{ 3}{*}{\includegraphics[width=30mm]{Imagenes/San Sebastian.png}}\\ 
-\textbf{Administración} & Privada\\
-        
-        \textbf{Ubicación} & -25.857, -53.976 \\
-         
-        \textbf{Superficie} & 92 ha\\
-\hline        
-\end{tabular}
 
-\label{Profundidad}
-\end{table}
-La reserva San Sebastián de la Selva es una reserva privada de cien hectáreas, que contiene áreas de selva virgen y de selva en restauración. Está ubicada en la localidad de Comandante Andresito, al norte de la provincia de Misiones, sobre la ruta nacional 101, entre los parques Urugua-í y Foerster. 
-\subsubsection{Parque Provincial Cañadón de Profundidad}
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline
- \textbf{Reserva} & Parque Provincial Cañadón de Profundidad &   \multirow{ 3}{*}{\includegraphics[width=30mm]{Imagenes/Profundidad.png}}\\ 
-\textbf{Administración} & Pública\\
-        
-        \textbf{Ubicación} & -27.558, -55.702 \\
-         
-        \textbf{Superficie} & 19 ha\\
-\hline        
-\end{tabular}
+En el caso de las imágenes aéreas es muy probable que sean necesarias varias imágenes para cubrir la zona de interés. Si se pretende construir un ortomosaico con esas imágenes, es necesario garantizar al momento de realizar las capturas un mínimo nivel de solapamiento entre capturas consecutivas (60\%) y entre aquellas que pertenecen a líneas de vuelo adyacentes (25\%). Los satélites son básicamente cámaras que orbitan alrededor del planeta que capturan imágenes de manera regular, continua, las cuales se  almacenan temporalmente en el satélite y son descargadas a estaciones de enlace para luego ser comercializadas. De modo que a requerimiento, las imágenes suelen estar disponibles. diferente es el caso de las imágenes aéreas, para las cuales se define un vuelo específico- Eso conlleva otros tiempos, ya que implica programar y preparar el vuelo, eventualmente trasladar la aeronave si es tripulada desde el aeródromo del cual despega y al cual regresa para aterrizar, y la duración misma del procedimiento de captura. Entre las variables que intervienen en la duración del vuelo en la fase de captura de imágenes se puede mencionar la de la extensión del área de interés, la velocidad de desplazamiento, la altura de vuelo. Esto también tendrá incidencia en la resolución espacial de las imágenes y en el espacio de almacenamiento requerido. Finalmente en el costo total del procedimiento, en el caso de aeronaves tripuladas incidirá el tiempo que lleve desde la puesta en marcha del motor hasta su apagado, ya que todo eso se contempla como hora de vuelo.
+Los sensores, esto es, las cámaras que son llevadas como carga útil por las diferentes plataformas, están definidos por sus características. La distancia focal es un atributo de cada cámara. El factor de escala está dado por la altura de vuelo sobre el terreno, que puede variar incluso durante el vuelo, y por la distancia focal de la cámara, que es fija. 
+\begin{figure}
+    \includegraphics[width=\textwidth]{Imagenes/dron.jpg}
+     \hfill
+     \caption{Acá puede ir o no una imagen ilustrativa; revisar que esté referenciada correctamente}
+    \label{dron}
+\end{figure}
 
-\label{Profundidad}
-\end{table}
 \subsection{Plataformas para el sensado remoto}
 En este apartado se analizarán las principales características de las opciones de plataformas para el sensado remoto. El análisis se limitará a la opción de uso de sensores de espectro visible.
+Los sensores remotos que serán tratados en el presente trabajo son del tipo pasivo, es decir, están compuestos por detectores que registran las ondas de luz solar reflejadas en el terreno. Particularmente nos interesan los que cubren el espectro visible. Básicamente constituyen una cámara fotográfica, que se compone de un arreglo de lentes y espejos que refractan y reflejan la luz, proyectándola sobre un sensor fotosensible, generalmente es un rectángulo conformado como un arreglo de detectores, cada uno de ellos representa a un pixel de la imagen. Según las características de estos sensores y la configuración de lentes, la distancia al objetivo, la resolución espacial queda determinada. 
 \subsubsection{Imaginería satelital}
 Se entiende por satélite artificial a todo dispositivo fabricado por el humano que es puesto en órbita alrededor del planeta Tierra con diversos propósitos que abarcan desde el establecimiento de comunicaciones hasta la observación terrestre por medio del sensado remoto. Éste último es el que reviste interés para el presente trabajo. Los satélites para sensado remoto van generalmente equipados con sensores multiespectrales, con múltiples bandas. La operación de los satélites es de manera continua desde que son puestos en órbita hasta el fin de su vida útil, varios años después. El lanzamiento y puesta en órbita requiere de infraestructura adecuada a tal fin, de las cuales hay muy pocas en el mundo, concentradas en no más de una decena de países. Los datos recopilados por los satélites son transmitidos a estaciones terrenas ubicadas en distintos puntos del planeta, y el acceso a las imágenes de alta resolución suele ser restringido a una contraprestación monetaria. No obstante suele haber acceso gratuito a imágenes con menor resolución. Las imágenes satelitales se definen por sus características de resolución, que son cuatro: resolución espacial, espectral, temporal y radiométrica.
 
@@ -128,8 +90,15 @@ CAMPO DE VISIÓN50° HFOV x 38° VFOV (MS) / 44° HFOV x 38° VFOV (PAN)
 \section{Procesamiento de imágenes (Bloque 2)}
 \color{black}
 \subsection{Concepto de imagen, espacios de color, entidad matricial)}
+
+\subsection{Sombras en dosel selvático}
+La presencia de sombras en las imágenes aéreas del dosel selvático puede aportar información sobre la eventual existencia de ejemplares de capa emergente. Asimismo puede ser un signo descriptivo de la estructura de la porción de selva estudiada, evidenciando claros, huecos en la selva que denoten algún tipo de acción extractiva, o la presencia de especies de flora exótica amenazantes.
 \subsection{Filtrado homomórfico (Javier)}
+\subsubsection{C1-Lógica difusa y procesamiento homomórfico (sombras)}
+Según el modelo Stockham \cite{stockham_image_1972} una imagen puede descomponerse en dos partes, una la denominada iluminación y la otra componente es la reflexión. Llevadas al plano de frecuencias, se confirma el hecho de que la componente de iluminación tiene una variación más lenta, es decir, se corresponde con las frecuencias bajas. De modo similar, la componente de reflexión se corresponde con frecuencias altas \cite{oppenheim_nonlinear_1968}. Entendiendo esto, es factible implementar un filtrado en la imagen para realzar las sombras, separando la componente de iluminación de la de reflexión. Esta técnica fue utilizada en la remoción de sombras en imágenes de piezas de manufactura \cite{yang_research_2012} y en la detección automática de sombras en objetos oscuros \cite{etemadnia_automatic_2003}. En el presente trabajo, la aplicación a la detección de especies arbóreas es novedosa. 
 \subsection{Procesamiento morfológico (Wagner)}
+Una réplica del trabajo de \cite{ferreira_tree_2019}
+Partiendo de una imagen en escala de grises, se realizó una secuencia de pasos en los que se implementan diferentes filtros para identificar cada una de las copas, de un modo que finalmente se obtuvo una imagen binarizada con la cual se pudo obtener un conteo de las copas. El primer paso consistió en hacer una clara identificación de los bordes y del área de copas. Luego se aplicó un algoritmo de Rolling Ball \cite{sternberg_biomedical_1983} que produce un suavizado en los niveles de grises dentro de las copas. En una siguiente etapa, distinguiendo copas grandes de pequeñas, se identificaban huecos en las copas grandes, para posteriormente rellenarlos con un valor promedio. Una vez rellenos todos los huecos y uniformadas todas las copas, se procede a segmentarlas, obteniéndose una imagen binarizada, con cada copa de árbol aislada e identificada en su posición.
 El tratamiento automático de clasificación de especies arbóreas a partir de imágenes requiere de un conjunto de habilidades informáticas que van desde la manipulación el tratamiento de
 las imágenes hasta el entrenamiento de modelos de aprendizaje automático. Para obtener una
 aceptable clasificación de copas es necesario realizar procesamiento a la imagen
@@ -159,6 +128,10 @@ propuestos en el plan de trabajo de la tesis doctoral relacionada con la detecci
 de especies de árboles nativos en la selva atlántica. 
 \color{cyan} %color de texto con 70-80 % o más de avance
 \subsection{Invariante de color (paper turco)}
+\color{cyan}
+\subsection{C2-Índice invariante de color (sombras)}
+Un método que dio resultados interesantes en la detección de sombras es el que implementaba el cálculo del índice invariante de color (IIC). Probando con distintos valores de umbral, se observó que el que producía resultados más satisfactorios era el que correspondía al 85º percentil de la distribución de los valores de IIC.
+El punto de partida del método es la adquisición de imágenes aéreas. No hay requerimientos especiales, excepto que se den las condiciones para proyección de sombras. Se tomaron imágenes de un área representativa de la selva nativa en la provincia de Misiones, las cuales fueron capturadas desde un VANT que sobrevoló las áreas de interés. A los efectos de obtener imágenes con presencia de sombras, se estableció un adecuado rango temporal de captura de imagenes, en este caso de 3 a 4 pm. Las imágenes fueron adquiridas en el invierno meridional, en el mes de agosto, cuando la proyección de sombras es mayor debido a la posición relativa del sol. Se utilizó un dron Mini 2, del fabricante DJI, equipado con una cámara de 12 megapíxeles. La altura de vuelo sobre el terreno fue de 50 metros. la resolución espacial de las imágenes son de 3 cm/píxel.
 \subsubsection{Introducción IIC}
 La conservación de áreas naturales forestales tiene cada vez mayor relevancia a nivel mundial debido a que los bosques nativos tienen un rol probado en la mitigación del cambio climático. En ese sentido se han propuestos numerosas acciones usando diversas herramientas para ayudar a conservar los bosques. Entre dichas herramientas el relevamiento y monitoreo de bosques mediante imágenes aéreas es un campo promisorio. En particular el monitoreo de la Selva Atlántica es un tópico que ha recibido mucha atención en las últimas décadas, desgraciadamente porque se ha convertido en uno de los ecosistemas más amenazados en el mundo. Siendo originalmente de una extensión de 1.290.692,46 km$^2$ durante los últimos siglos, que abarcaba parte de Brasil, Argentina y Paraguay, hoy la Selva Atlántica está reducida a casi 162.000 km$^2$, lo que representa sólo un 12,4 \% de la extensión original \cite{de_lima_erosion_2020}, y se ubica principalmente en la Provincia de Misiones en Argentina. A pesar de de este escenario adverso, la diversidad de especies que habitan en la Selva Atlántica es aún una de las más grandes del mundo \cite{lima_how_2015}. Sin embargo algunas especies de fauna y flora están en un estado de conservación crítico, como por ejemplo algunas especies de árboles cuya copa sobresale del dosel, situándose en lo que se conoce como capa emergente, a treinta metros o más respecto del suelo \cite{noauthor_rainforest_2015}, por lo que sería recomendable conocer la cantidad y geolocalización de este tipo de árboles. También sería de interés determinar la distribución y localización de algunas especies como bambú y lianas, que podrían ser indicadores de niveles de preservación \cite{bedrij_selective_2022}. En este contexto el monitoreo forestal representa un rol crítico en la evaluación de la eficacia de estrategias de restauración, identificando acciones correctivas, comparando resultados entre proyectos y aprendiendo de proyectos pasados para determinar futuros lineamientos en restauración \cite{viani_protocol_2017}
 El nivel de preservación de la Selva Atlántica ha sido evaluado con varios métodos. El más difundido es la exploración in situ, restringido a áreas pequeñas, con posibilidad de ser extrapolados los resultados a áreas más grandes con el correspondiente error de estimación. En esta forma tradicional, el monitoreo forestal es una tarea ardua y demandante de tiempo, por lo que al transcurrir el tiempo entre revisitas, las condiciones ambientales podrían haber cambiado de modo considerable. Además el desplazamiento dentro de la selva resulta difícil y puede generar disturbios en la flora y en la fauna locales. Todo esto puede evitarse con el monitoreo forestal por medio de análisis de imágenes aéreas o satelitales. Éstas últimas representan una fuente interesante de datos, principalmente debido al inmenso área que puede cubrir una simple escena (cientos de kilómetros cuadrados) con múltiples bandas espectrales, especialmente más allá del espectro visible. Sin embargo tienen usualmente una relativamente baja resolución espacial y baja disponibilidad. En el mejor de los casos la resolución espacial de estas imágenes está en el orden de 30 cm por pixel \cite{poli_radiometric_2014}, siendo su adquisición onerosa, que puede ser de varios miles de dólares por cada escena \cite{noauthor_geocento_2022}. La obtención de estas imágenes está condicionada a la disponibilidad en el tiempo, ya que en algunos casos la frecuencia de revisita de determinados sitios puede ser de varios días \cite{li_global_2017}.
@@ -168,4 +141,4 @@ En resumen, la propuesta del presente estudio es un método de detección autom�
 Los detalles de la metodología propuesta se desarrollan en la sección \ref{Metodología}. La validación es descripta en \ref{Validacion}, y los resultados se muestran en \ref{Resultados}. Finalmente las conclusiones son discutidas en \ref{Conclusiones}
 
 \color{black}
-\subsection{Machine learning (¿?)}
+

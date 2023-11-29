@@ -139,9 +139,9 @@ Obtener los datos y características técnicas de los sensores no es tarea senci
 Del mismo modo tampoco resulta sencillo obtener información sobre las tarifas de vuelos de relevamiento aéreo, ya sea tripulado o no. La información disponible es vaga y escueta, por ejemplo la hora de vuelo tripulado es de 240 dólares estadounidenses si se toma como base el dólar oficial (cotizado en 55 mil pesos argentinos, mayo 2023), y la de VANT es de 195 dólares estadounidenses (cotizado en 45 mil pesos argentinos, mayo 2023).
 \subsubsection{Hardware}
 Los que se pueden seleccionar con mayor grado de libertad son los que están relacionados con el hardware asociado a la tarea, como es el sensor de la cámara, o las características de funcionamiento de la aeronave no tripulada. Una cámara con mayor resolución demandará mayor espacio de almacenamiento. Asimismo si se trata de sensores ópticos en el rango del espectro visible, la posibilidad de operar se limitará a las horas diurnas. No así si se trata de sensores que trabajan en otro rango de longitudes de onda, como los infrarrojos, o sensores activos, como LiDAR.
-\subsubsection{Marco regulatorio}
+\subsubsection{Marco regulatorio} %Marco teórico
 
-\subsubsection{Almacenamiento necesario}
+\subsubsection{Almacenamiento necesario} %fusionar con Hardware
 Dependiendo de la resolución espacial y espectral de las imágenes, los requerimientos de almacenamiento aumentarán en proporción a las mismas. Siguiendo con el ejemplo antes expuesto, las casi seis millones y medio de fotografías en RGB, con 5 Megapíxeles por cada una, con una profundidad de color de 8 bit por canal necesitarían un espacio de almacenamiento de alrededor de 7,5 Terabytes.
 
 \section{Procesamiento de imágenes (Bloque 2)}
@@ -156,7 +156,7 @@ La ecuación que representa al filtro es
 \end{equation}
 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
-
+%agregar flowchart
 
 donde $D_0$ es la frecuencia de corte, $c$ controla la forma y pendiente del filtro en la región de trancisión entre $\gamma_L$ y $\gamma_H$. $D(u,v)$ es la distancia al origen del plano de frecuencias.
 
@@ -167,7 +167,7 @@ Luego se efectuó la selección de las sombras binarizadas, con lo que se descar
 
 \color{cyan} %color de texto con 70-80 % o más de avance
 \subsection{Procesamiento morfológico (Pasantía)}
-
+%revisar definiciones que pueden ir en el marco teórico y aquellas que se definen aquí
 Secuencia de actividades para el tratamiento de las imágenes\\
 1. Preprocesamiento\\
 2. Eliminación de áreas sin sombra\\
@@ -303,7 +303,7 @@ en donde $M_{NF}$ es la máscara binaria automática obtenida sin filtrado, y $M
 
 
 \color{black} 
-\subsection{Machine learning (¿?)}
+%\subsection{Machine learning (¿?)}
 
 
 

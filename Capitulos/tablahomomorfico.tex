@@ -1,24 +1,29 @@
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 \begin{table}[]
-\begin{tabular}{l|l|lllll|}
-\cline{2-7}
-\multirow{2}{*}{}                    & \textbf{CM} & \multicolumn{5}{l|}{\textbf{Tamaño de ventana}}                                                                             \\ \cline{3-7} 
-                                     & -           & \multicolumn{1}{l|}{10}     & \multicolumn{1}{l|}{15}     & \multicolumn{1}{l|}{20}    & \multicolumn{1}{l|}{25}    & 30    \\ \hline
-\multicolumn{1}{|l|}{\textbf{Par1d}} & 5           & \multicolumn{1}{l|}{7}      & \multicolumn{1}{l|}{4}      & \multicolumn{1}{l|}{1}     & \multicolumn{1}{l|}{0}     & 0     \\ \hline
-\multicolumn{1}{|l|}{\textbf{Par2d}} & 2           & \multicolumn{1}{l|}{7}      & \multicolumn{1}{l|}{4}      & \multicolumn{1}{l|}{1}     & \multicolumn{1}{l|}{0}     & 0     \\ \hline
-\multicolumn{1}{|l|}{\textbf{PNI1}}  & 14          & \multicolumn{1}{l|}{84}     & \multicolumn{1}{l|}{49}     & \multicolumn{1}{l|}{31}    & \multicolumn{1}{l|}{16}    & 10    \\ \hline
-\multicolumn{1}{|l|}{\textbf{PNI2}}  & 14          & \multicolumn{1}{l|}{48}     & \multicolumn{1}{l|}{35}     & \multicolumn{1}{l|}{20}    & \multicolumn{1}{l|}{14}    & 7     \\ \hline
-\multicolumn{1}{|l|}{\textbf{PNI3}}  & 32          & \multicolumn{1}{l|}{110}    & \multicolumn{1}{l|}{73}     & \multicolumn{1}{l|}{48}    & \multicolumn{1}{l|}{29}    & 9     \\ \hline
-\multicolumn{1}{|l|}{\textbf{PNI3d}} & 22          & \multicolumn{1}{l|}{56}     & \multicolumn{1}{l|}{42}     & \multicolumn{1}{l|}{21}    & \multicolumn{1}{l|}{7}     & 0     \\ \hline
-\multicolumn{1}{|l|}{\textbf{PS1}}   & 6           & \multicolumn{1}{l|}{35}     & \multicolumn{1}{l|}{16}     & \multicolumn{1}{l|}{4}     & \multicolumn{1}{l|}{1}     & 1     \\ \hline
-\multicolumn{1}{|l|}{\textbf{YB1}}   & 10          & \multicolumn{1}{l|}{10}     & \multicolumn{1}{l|}{5}      & \multicolumn{1}{l|}{3}     & \multicolumn{1}{l|}{1}     & 1     \\ \hline
-\multicolumn{1}{|l|}{\textbf{YB2}}   & 9           & \multicolumn{1}{l|}{14}     & \multicolumn{1}{l|}{8}      & \multicolumn{1}{l|}{4}     & \multicolumn{1}{l|}{0}     & 0     \\ \hline
-\multicolumn{1}{|l|}{\textbf{ST1}}   & 18          & \multicolumn{1}{l|}{40}     & \multicolumn{1}{l|}{25}     & \multicolumn{1}{l|}{16}    & \multicolumn{1}{l|}{7}     & 6     \\ \hline
-\multicolumn{1}{|l|}{\textbf{ST2}}   & 9           & \multicolumn{1}{l|}{42}     & \multicolumn{1}{l|}{30}     & \multicolumn{1}{l|}{18}    & \multicolumn{1}{l|}{9}     & 7     \\ \hline
-\multicolumn{1}{|l|}{\textbf{em}}    & -           & \multicolumn{1}{l|}{-28,36} & \multicolumn{1}{l|}{-13,64} & \multicolumn{1}{l|}{-2,36} & \multicolumn{1}{l|}{5,18}  & 9,09  \\ \hline
-\multicolumn{1}{|l|}{\textbf{se2}}   & -           & \multicolumn{1}{l|}{628,6}  & \multicolumn{1}{l|}{211,14} & \multicolumn{1}{l|}{63,69} & \multicolumn{1}{l|}{25,42} & 48,45 \\ \hline
-\multicolumn{1}{|l|}{\textbf{se}}    & -           & \multicolumn{1}{l|}{25,07}  & \multicolumn{1}{l|}{14,53}  & \multicolumn{1}{l|}{7,98}  & \multicolumn{1}{l|}{5,04}  & 6,96  \\ \hline
-\end{tabular}
-\label{homomorfico}
+    \begin{threeparttable}[b]
+        \caption{Evaluación de la superposición de ambas máscaras, manual y automática.}
+        \begin{tabular}{l|l|lllll|}
+            \cline{2-7}
+            \multirow{2}{*}{}                    & \textbf{CM\tnote{1}} & \multicolumn{5}{l|}{\textbf{Tamaño de ventana}}                                                                             \\ \cline{3-7} 
+                                                 & -           & \multicolumn{1}{l|}{10}     & \multicolumn{1}{l|}{15}     & \multicolumn{1}{l|}{20}    & \multicolumn{1}{l|}{25}    & 30    \\ \hline
+            \multicolumn{1}{|l|}{\textbf{Par1d}} & 5           & \multicolumn{1}{l|}{7}      & \multicolumn{1}{l|}{4}      & \multicolumn{1}{l|}{1}     & \multicolumn{1}{l|}{0}     & 0     \\ \hline
+            \multicolumn{1}{|l|}{\textbf{Par2d}} & 2           & \multicolumn{1}{l|}{7}      & \multicolumn{1}{l|}{4}      & \multicolumn{1}{l|}{1}     & \multicolumn{1}{l|}{0}     & 0     \\ \hline
+            \multicolumn{1}{|l|}{\textbf{PNI1}}  & 14          & \multicolumn{1}{l|}{84}     & \multicolumn{1}{l|}{49}     & \multicolumn{1}{l|}{31}    & \multicolumn{1}{l|}{16}    & 10    \\ \hline
+            \multicolumn{1}{|l|}{\textbf{PNI2}}  & 14          & \multicolumn{1}{l|}{48}     & \multicolumn{1}{l|}{35}     & \multicolumn{1}{l|}{20}    & \multicolumn{1}{l|}{14}    & 7     \\ \hline
+            \multicolumn{1}{|l|}{\textbf{PNI3}}  & 32          & \multicolumn{1}{l|}{110}    & \multicolumn{1}{l|}{73}     & \multicolumn{1}{l|}{48}    & \multicolumn{1}{l|}{29}    & 9     \\ \hline
+            \multicolumn{1}{|l|}{\textbf{PNI3d}} & 22          & \multicolumn{1}{l|}{56}     & \multicolumn{1}{l|}{42}     & \multicolumn{1}{l|}{21}    & \multicolumn{1}{l|}{7}     & 0     \\ \hline
+            \multicolumn{1}{|l|}{\textbf{PS1}}   & 6           & \multicolumn{1}{l|}{35}     & \multicolumn{1}{l|}{16}     & \multicolumn{1}{l|}{4}     & \multicolumn{1}{l|}{1}     & 1     \\ \hline
+            \multicolumn{1}{|l|}{\textbf{YB1}}   & 10          & \multicolumn{1}{l|}{10}     & \multicolumn{1}{l|}{5}      & \multicolumn{1}{l|}{3}     & \multicolumn{1}{l|}{1}     & 1     \\ \hline
+            \multicolumn{1}{|l|}{\textbf{YB2}}   & 9           & \multicolumn{1}{l|}{14}     & \multicolumn{1}{l|}{8}      & \multicolumn{1}{l|}{4}     & \multicolumn{1}{l|}{0}     & 0     \\ \hline
+            \multicolumn{1}{|l|}{\textbf{ST1}}   & 18          & \multicolumn{1}{l|}{40}     & \multicolumn{1}{l|}{25}     & \multicolumn{1}{l|}{16}    & \multicolumn{1}{l|}{7}     & 6     \\ \hline
+            \multicolumn{1}{|l|}{\textbf{ST2}}   & 9           & \multicolumn{1}{l|}{42}     & \multicolumn{1}{l|}{30}     & \multicolumn{1}{l|}{18}    & \multicolumn{1}{l|}{9}     & 7     \\ \hline
+            \multicolumn{1}{|l|}{\textbf{em}}    & -           & \multicolumn{1}{l|}{-28,36} & \multicolumn{1}{l|}{-13,64} & \multicolumn{1}{l|}{-2,36} & \multicolumn{1}{l|}{5,18}  & 9,09  \\ \hline
+            \multicolumn{1}{|l|}{\textbf{se2}}   & -           & \multicolumn{1}{l|}{628,6}  & \multicolumn{1}{l|}{211,14} & \multicolumn{1}{l|}{63,69} & \multicolumn{1}{l|}{25,42} & 48,45 \\ \hline
+            \multicolumn{1}{|l|}{\textbf{se}}    & -           & \multicolumn{1}{l|}{25,07}  & \multicolumn{1}{l|}{14,53}  & \multicolumn{1}{l|}{7,98}  & \multicolumn{1}{l|}{5,04}  & 6,96  \\ \hline
+        \end{tabular}
+        \begin{tablenotes}
+       \item [1]Conteo manual.
+     \end{tablenotes}
+  \end{threeparttable}
 \end{table}

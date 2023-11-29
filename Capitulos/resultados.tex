@@ -8,18 +8,20 @@
 Con base en todos los cálculos, es posible establecer una comparación entre las distintas opciones de plataforma de sensado remoto, según el área relevada.
 %% No olvidar mencionar que, por simplicidad en los cálculos se considera cada área como si fuera un cuadrado 
 %%
-En la tabla \ref{Tabla_borrador} se sumarizan los resultados, donde se puede observar de forma clara que para el caso de superficies relevadas de pocas hectáreas, el costo de obtención de las imágenes es significativamente inferior al de las imágenes satelitales. Esto se debe fundamentalmente a que la adquisición de imágenes satelitales requiere de una superficie mínima, 25 kilómetros cuadrados si las imágenes son de archivo (> 90 días)\cite{noauthor_satellite_2020}. Ya para el caso de superficies mayores como la reserva Yaboty, el costo total de captura de imágenes equipara e incluso supera al de imágenes satelitales. No solo termina siendo más oneroso el relevamiento fotográfico aéreo con VANT en grandes superficies, ya que adicionalmente se debe tener en cuenta la limitación de autonomía de esos vehículos, que generalmente no superan la media hora \cite{}, o la hora de autonomía en algunos casos \cite{}. Esto indudablemente afecta al flujo de trabajo por la necesaria reposición de baterías, a la vez que deben establecerse numerosas bases operativas en la medida en que se va avanzando con el relevamiento del terreno. Otra limitación que se suma a los VANT es el alcance que tiene el mando de control. Los VANT comerciales más difundidos suelen tener alcances de hasta 10 km \cite{} por lo que esto debe ser tenido en cuenta en la extensión del área a relevar. Por otro lado en el caso de las aeronaves tripuladas puede resultar muy inconvenientes en términos de erogación de dinero cuando se trata de pequeñas extensiones cuyo sobrevuelo de relevamiento no sobrepasa la hora de duración, ya que hay que sumar a toda la operatoria el traslado de la aeronave desde y hacia el aeródromo de base. Resulta evidente que será mayor la incidencia en el costo final la parte que corresponde al traslado en sí, si la superficie a ser relevada es de pocas hectáreas. En la provincia de Misiones existen en un radio menor a cincuenta kilómetros a las tres reservas analizadas algunos aeródromos o pistas que pueden usarse como base.
-\begin{figure}
-    \includegraphics[width=\textwidth]{Imagenes/Tabla comparativa borrador.png}
-     \hfill
-     \caption{Tabla borrador}
-        \label{Tabla_borrador}
-\end{figure}
-\subsubsection{Cálculo presupuestario}
+En las tablas \ref{tab:yaboty}, \ref{tab:sanse} y \ref{tab:profundidad} se sumarizan los resultados, donde se puede observar de forma clara que para el caso de superficies relevadas de pocas hectáreas, el costo de obtención de las imágenes es significativamente inferior al de las imágenes satelitales. Esto se debe fundamentalmente a que la adquisición de imágenes satelitales requiere de una superficie mínima, 25 kilómetros cuadrados si las imágenes son de archivo (> 90 días)\cite{noauthor_satellite_2020}. Ya para el caso de superficies mayores como la reserva Yaboty, el costo total de captura de imágenes equipara e incluso supera al de imágenes satelitales. No solo termina siendo más oneroso el relevamiento fotográfico aéreo con VANT en grandes superficies, ya que adicionalmente se debe tener en cuenta la limitación de autonomía de esos vehículos, que generalmente no superan la media hora \cite{noauthor_dji_nodate}, o la hora de autonomía en algunos casos \cite{noauthor_specs_nodate}, aunque hay algunos que llegan a dos horas de autonomía \cite{noauthor_us-1_nodate}. Esto indudablemente afecta al flujo de trabajo por la necesaria reposición de baterías, a la vez que deben establecerse numerosas bases operativas en la medida en que se va avanzando con el relevamiento del terreno. Otra limitación que se suma a los VANT es el alcance que tiene el mando de control. Los VANT comerciales más difundidos suelen tener alcances de hasta 10 km \cite{noauthor_dji_nodate} por lo que esto debe ser tenido en cuenta en la extensión del área a relevar. Por otro lado en el caso de las aeronaves tripuladas puede resultar muy inconvenientes en términos de erogación de dinero cuando se trata de pequeñas extensiones cuyo sobrevuelo de relevamiento no sobrepasa la hora de duración, ya que hay que sumar a toda la operatoria el traslado de la aeronave desde y hacia el aeródromo de base. Resulta evidente que será mayor la incidencia en el costo final la parte que corresponde al traslado en sí, si la superficie a ser relevada es de pocas hectáreas. En la provincia de Misiones existen en un radio menor a cincuenta kilómetros a las tres reservas analizadas algunos aeródromos o pistas que pueden usarse como base.
+%\subsubsection{Cálculo presupuestario} %revisar si corresponde que quede aquí, en relación al párrafo precedente
 Partiendo de las características del terreno a relevar (su extensión) y de la plataforma usada para la captura (dron con cámara/sensor) es posible acotar un marco presupuestario para llevar a cabo la tarea. Con los datos recabados puede afirmarse que para un relevamiento aéreo de un área pequeña de veinte hectáreas, es conveniente un VANT, ya que el costo total no excedería los 10 dólares, mientras que en un avión tripulado el costo total sería por lo menos diez veces, y una imagen satelital tendría un costo de 375 dólares. En el caso de un área un poco más grande, de cien hectáreas, el costo total con VANT sigue siendo más bajo que con las otras plataformas, con menos de 50 dólares. Finalmente para el caso de un área mucho más grande, de varios miles de hectáreas como la reserva Yaboty, se torna más conveniente el avión tripulado con alrededor de 20 mil dólares estadounidenses, un poco más que la mitad de lo que cuesta la imagen satelital, y muy por debajo del costo del VANT, que supera holgadamente el millón de dólares.
-\input{Capitulos/tablas}
+\input{Capitulos/tabla_comparativa}
 
+%agregar gráfico final
+\begin{figure}[h!]
+    \includegraphics[width=\textwidth]{Imagenes/grafico bloque 1.png}
+     \hfill
+     \caption{Gráfico comparativo de costo de relevamiento con distintas plataformas versus superficie relevada}
+    \label{grafico_comparativo}
+\end{figure}
 
+En la figura \ref{grafico_comparativo} se muestra un gráfico en el que se expone cómo varía el costo de relevamiento expresado en dólares estadounidenses en relación a la superficie relevada, expresada en hectáreas, según la plataforma usada, VANT, aeronaves tripuladas o satélites. Como se observa, en el caso de los VANT es claramente inferior el costo cuando se trata de superficies menores a mil hectáreas. A partir de ese valor el costo de relevamiento se asemeja al de la obtención de imágenes satelitales. Con este gráfico resulta evidente la conveniencia del uso de VANT para relevar las pequeñas reservas públicas y privadas en la provincia de Misiones.
 
 \section{ Propuesta de Herramientas de Bajo Costo (Económico y Computacional) para el relevamiento del bosque atlántico}
 %\subsection{RESULTADOS Relación de iluminación natural con histogramas de color}
@@ -28,28 +30,28 @@ Partiendo de las características del terreno a relevar (su extensión) y de la 
 \subsection{RESULTADOS Replicación del paper de Wagner}
 Con base en el trabajo realizado por \cite{hubert_wagner_individual_2018}, se llevó a cabo un análisis de desempeño del algoritmo de procesamiento morfológico de imágenes mediante la técnica de "Gridsearch", evaluando diferentes valores de parámetros. En la figura \ref{Rollingball} se muestran los resultados del análisis para diferentes tamaños de ventana en  píxeles. En la figura \ref{segundaoscuros} se visualizan los resultados para distintos valores de percentil en la etapa de segunda selección de objetos oscuros. En la figura \ref{pequenoshuecos} se observan los resultados del procesamiento para hallar pequeños huecos en grandes copas, usando distintos valores de percentil. 
 
-\begin{figure}
+\begin{figure}[h!]
     \includegraphics[width=\textwidth]{Imagenes/Resultados script morfologico/GS04.png}
      \hfill
      \caption{Resultado de Rollingball para tamaños de ventana de 6,9,12,15,18 y 24 píxeles}
     \label{Rollingball}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h!]
     \includegraphics[width=\textwidth]{Imagenes/Resultados script morfologico/GS06.png}
      \hfill
      \caption{Resultado de la segunda selección de objetos oscuros con distintos valores de percentil, 99, 0,1, 1, 10, 50 y 90 }
     \label{segundaoscuros}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h!]
     \includegraphics[width=\textwidth]{Imagenes/Resultados script morfologico/GS07.png}
      \hfill
      \caption{Resultado de la búsqueda de pequeños huecos con distintos valores de percentil, 10, 30, 50, 75, 80 y 90 }
     \label{pequenoshuecos}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h!]
     \includegraphics[width=\textwidth]{Imagenes/Resultados script morfologico/GS09.png}
      \hfill
      \caption{Resultado del filtrado con topbottom y binarizado con distintos valores de percentil, 0,1, 1, 10, 20, 50 y 90 }
@@ -63,7 +65,7 @@ diferentes.
 
 \color{cyan} %color de texto con 70-80 % o más de avance
 \subsection{RESULTADOS HOMOMÓRFICO}
-Los resultados de las pruebas se exponen en la Tabla \ref{homomorfico}. Allí se visualiza para distintas imágenes la cantidad de sombras detectadas, y se comparan los resultados de conteo automático con distintos tamaños de ventana, con el método de búsqueda de forma manual. Nótese el cambio de signo para el error medio entre los tamaños de ventana de 25 y de 20 píxeles, indicando que la selección de un tamaño de ventana menor resultará en una mayor 
+Los resultados de las pruebas se exponen en la Tabla \ref{tablahomomorfico}. Allí se visualiza para distintas imágenes la cantidad de sombras detectadas, y se comparan los resultados de conteo automático con distintos tamaños de ventana, con el método de búsqueda de forma manual. Nótese el cambio de signo para el error medio entre los tamaños de ventana de 25 y de 20 píxeles, indicando que la selección de un tamaño de ventana menor resultará en una mayor 
 cantidad de sombras detectadas que la que se obtiene por conteo manual. En cambio un tamaño de ventana mayor podría obviar varias sombras que serían tenidas en cuenta para el conteo manual. De acuerdo con la resolución de las imágenes de prueba, el tamaño de ventana cuadrada de 20 píxeles por lado se correspondería con un área de 100 metros cuadrados.
 \input{Capitulos/tablahomomorfico}
 
@@ -72,21 +74,21 @@ En el proceso de binarización, se definió como umbral que correspondía a un v
 Para la selección de sombras binarizadas se recorrió la matriz de la imagen con una ventana de inspección que abarcaba 25 píxeles por lado, de modo que se evalúa un conjunto de 625 píxeles. Se estableció un umbral de 0,45 para clasificar las sombras, de modo que los recintos de píxeles blancos que superaban ese umbral eran catalogados como sombras de árboles grandes.
 A los efectos de mostrar el funcionamiento del método de búsqueda y conteo de sombras, se exponen las figuras \ref{sombratorogris}, \ref{mascaraST} y \ref{seleccionadaST} en las que se visualizan la imagen satelital en escala de grises de una porción de la reserva privada Sombra de Toro, ubicada en el norte de la provincia de Misiones, la imagen binarizada luego del filtrado homomórfico y las sombras seleccionadas, respectivamente.
 
-\begin{figure}
+\begin{figure}[h!]
     \includegraphics[width=\textwidth]{Imagenes/Homomorfico/ST2.jpg}
      \hfill
      \caption{Imagen aérea (satelital) de reserva privada Sombra de Toro, en escala de grises}
     \label{sombratorogris}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h!]
     \includegraphics[width=\textwidth]{Imagenes/Homomorfico/ST2_bin.jpg}
      \hfill
      \caption{Máscara binaria}
     \label{mascaraST}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h!]
     \includegraphics[width=\textwidth]{Imagenes/Homomorfico/ST2_masked.jpg}
      \hfill
      \caption{Sombras seleccionadas}
@@ -98,14 +100,14 @@ A los efectos de mostrar el funcionamiento del método de búsqueda y conteo de 
 Un total de diecinueve imágenes aéreas de selva fueron consideradas para realizar el análisis. Dos de ellas representativas de los diferentes escenarios que fueron cubiertos, se muestran en las figuras \ref{calle} y \ref{tupido}. La figura \ref{calle} muestra una imagen en la que unas pocas copas de árboles se distribuyen por el área capturada, mientras que en la \ref{tupido} el dosel cubre prácticamente toda el área. La delineación manual de las sombras fue realizada como se describe en el apartado de \ref{Metodología}
 Dos ejemplos de máscaras manuales se muestran en figuras \ref{contorno1} y \ref{contorno2}, con trazo rojo bordeando las regiones sombreadas. La figura \ref{superposicion} muestra el solapamiento de la máscara manual (en rojo) con la automática (en azul). En la figura \ref{p60} el valor de umbral para la máscara binaria se toma del 60º percentil de la distribución de frecuencias, mientras que en la figura \ref{p85} el valor de umbral es tomado del 85º percentil.
 
-\begin{figure}
+\begin{figure}[h!]
     \includegraphics[width=\textwidth]{Imagenes/street.jpg}
      \hfill
      \caption{Escena capturada con pocos árboles}
     \label{calle}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h!]
     \includegraphics[width=\textwidth]{Imagenes/dense canopy.jpg}
      \hfill
      \caption{Escena capturada con dosel tupido}
@@ -113,21 +115,21 @@ Dos ejemplos de máscaras manuales se muestran en figuras \ref{contorno1} y \ref
 \end{figure}
 
 
-\begin{figure}
+\begin{figure}[h!]
     \includegraphics[width=\textwidth]{Imagenes/contours.png}
      \hfill
      \caption{Contornos de sombras en dosel tupido}
     \label{contorno1}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h!]
     \includegraphics[width=\textwidth]{Imagenes/contours2.png}
      \hfill
      \caption{Contorno de sombras en imagen con pocos árboles}
     \label{contorno2}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h!]
      \centering
      \begin{subfigure}[b]{0.5\textwidth}
          \centering
@@ -147,7 +149,7 @@ Dos ejemplos de máscaras manuales se muestran en figuras \ref{contorno1} y \ref
         \label{superposicion}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h!]
     \centering
   \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{Imagenes/blue minus red 85.png}
@@ -178,7 +180,7 @@ Dos ejemplos de máscaras manuales se muestran en figuras \ref{contorno1} y \ref
 La figura \ref{azulrojo}, \ref{azulverde} y \ref{verderojo} muestra para la misma escena, diferentes máscaras automáticas obtenidas con diferentes configuraciones de la ecuación \ref{invariante de color}, usando tres diferentes combinaciones de canales de dos colores. La figura \ref{azulrojo} corresponde a la máscara obtenida usando la diferencia entre el canal azul menos el canal rojo $\Psi_{BR}$, la figura \ref{azulverde} usando la diferencia entre el canal azul menos el canal verde $\Psi_{BG}$ y la figura \ref{verderojo} usando la diferencia entre el canal verde menos el canal rojo $\Psi_{GR}$. En todos los casos el valor de umbral fue tomado del 85º percentil de la distribución de frecuencia. El análisis de las figuras \ref{azulrojo} a \ref{verderojo} muestra que, aplicando la ecuación \ref{eq1} usando ya sea la combinación de canales azul con verde $\Psi_{BG}$ o azul con rojo $\Psi_{BR}$  las máscaras automáticas resultantes para un mismo valor de percentil son de área mayor que las que corresponden al índice calculado con la diferencia entre canal verde y rojo $\Psi_{GR}$, lo que resulta en valores de QI más altos para $\Psi_{BR}$ y $\Psi_{BG}$ que para $\Psi_{GR}$. La comparación entre las distintas influencias del valor de percentil puede observarse en la figura \ref{curvas_QI}, donde resulta evidente que $QI_1$ es el más alto en el percentil bajo 60º y $QI_2$ es el más alto para el percentil alto 95º. Por otro lado el índice $QI_3$ se asemeja a una curva convexa, con valores similares a $QI_1$ para el percentil 60º y similares a $QI_2$ para el percentil 95º, cuyo valor máximo en la curva corresponde al 85º percentil. Un comportamiento similar se observa para los otros índices invariantes de color $\Psi_{BG}$ y $\Psi_{GR}$. La similitud entre QI1 y QI2 en el percentil más bajo se debe al hecho de que la máscara automática selecciona un área de sombra que resulta preponderante en la operación de unión binaria en el denominador de la ecuación \ref{qi3} en el caso de $QI_3$.
 Por otro lado, el índice $QI_3$ se aproxima a $QI_1$ cuando la máscara automática selecciona un área pequeña de sombra, por lo tanto la selección manual de sombra resulta dominante en la operación de unión de máscaras en el denominador de la ecuación \ref{qi3}.
 Al maximizar la intersección, se asegura la coincidencia entre las máscaras manual y automática, pero podría excederse en la máscara automática. Luego, al minimizar la unión, se puede controlar el tamaño pleno de la máscara automática. Un punto óptimo es el caso en el que el índice $QI_3$ alcanza el máximo valor. A pesar de la dispersión de los datos (ver figura \ref{curvas_QI}), se puede analizar los valores medios de los índices de calidad QI para los tres casos considerados (ver figuras \ref{psiBR}, \ref{psiBG}, \ref{psiGR}). Se observa que el valor que corresponde al 85º percentil de la distribución de frecuencia del índice invariante de color es el óptimo, ya que corresponde a un máximo del índice $QI_3$.
-En el análisis e la figura \ref{}, se observan grandes similitudes, donde se grafican las relaciones entre los tres índices de calidad propuestos y un índice adicional definido como la diferencia entre el valor máximo y el mínimo entre los tres índices en función del valor de percentil usado para calcular el umbral de la máscara binaria automática. En los tres casos se detecta un valor mínimo para la curva que corresponde al índice adicional, es decir el rango (max - min), y este valor mínimo corresponde al percentil 85º. Además para los casos que usan sendas combinaciones en la ecuación \ref{eq1} resta de canal azul menos rojo y azul menos verde, la curva del índice $QI_3$ alcanza un valor máximo en el que corresponde al 85º percentil, mientras que este punto máximo no se hace evidente para el caso de de la combinación verde menos rojo. Por lo tanto de los cuatro índices que fueron analizados, el más conveniente es el $QI_3$, que exhibe un valor óptimo de percentil más preciso por medio del mínimo en la curva, y en los tres casos de combinaciones de canales es coincidente.
+En el análisis de la figura \ref{}, se observan grandes similitudes, donde se grafican las relaciones entre los tres índices de calidad propuestos y un índice adicional definido como la diferencia entre el valor máximo y el mínimo entre los tres índices en función del valor de percentil usado para calcular el umbral de la máscara binaria automática. En los tres casos se detecta un valor mínimo para la curva que corresponde al índice adicional, es decir el rango (max - min), y este valor mínimo corresponde al percentil 85º. Además para los casos que usan sendas combinaciones en la ecuación \ref{eq1} resta de canal azul menos rojo y azul menos verde, la curva del índice $QI_3$ alcanza un valor máximo en el que corresponde al 85º percentil, mientras que este punto máximo no se hace evidente para el caso de de la combinación verde menos rojo. Por lo tanto de los cuatro índices que fueron analizados, el más conveniente es el $QI_3$, que exhibe un valor óptimo de percentil más preciso por medio del mínimo en la curva, y en los tres casos de combinaciones de canales es coincidente.
 
 \paragraph{Influencia del filtro de mediana en la detección automática de sombras}
 
@@ -187,53 +189,12 @@ La figura \ref{}, \ref{} y \ref{} muestra cómo los índices que son obtenidos p
 \paragraph{Evaluación humana de máscaras automáticas de sombra}
 
 En este trabajo los resultados del algoritmo se comparan con la selección manual llevada a cabo por expertos. Partiendo de que no hay una base de certeza absoluta (los expertos son personas humanas y por lo tanto proclives a errores de omisión o comisión), existe una limitación en el índice de calidad que se basa en este aspecto. El criterio para la selección manual de parte de los expertos depende de su particular percepción de la imagen, variando según el contexto. Por otro lado el algoritmo se basa en el cálculo de un índice y la definición de un valor umbral, obtenido de una serie de experimentos con imágenes de un determinado tipo. En otros contextos con otro tipo de imágenes el valor de umbral no sería el mismo, incluso la combinación de bandas usadas en la ecuación \ref{invariante de color} para obtener el índice sería diferente.
-Luego de generar un conjunto de máscaras correspondientes a cada uno de los seis percentiles usando los tres índices invariantes de color de las ecuaciones \ref{psibr} a \ref{psigr} para las 19 imágenes seleccionadas, las 342 máscaras resultantes fueron comparadas con las obtenidas manualmente. Superponiendo ambas, la máscara automática y la manual sobre la imagen original, se evaluó la calidad de las similitudes mutuas, asignando un calificativo en tres niveles, "bueno", "regular" y "malo". Los resultados se muestran en la tabla \ref{tablita} y en la figura \ref{}. Tal como se puede apreciar, para los tres índices invariantes de color se puede observar un mínimo en el nivel "malo" alrededor del percentil 90º. Para los niveles "regular" y "bueno", sin embargo, el mínimo no es tan claro, lo cual puede ser atribuido a cierta subjetividad de los observadores expertos.
+Luego de generar un conjunto de máscaras correspondientes a cada uno de los seis percentiles usando los tres índices invariantes de color de las ecuaciones \ref{psibr} a \ref{psigr} para las 19 imágenes seleccionadas, las 342 máscaras resultantes fueron comparadas con las obtenidas manualmente. Superponiendo ambas, la máscara automática y la manual sobre la imagen original, se evaluó la calidad de las similitudes mutuas, asignando un calificativo en tres niveles, "bueno", "regular" y "malo". Los resultados se muestran en la tabla \ref{tablaiic} y en la figura \ref{}. Tal como se puede apreciar, para los tres índices invariantes de color se puede observar un mínimo en el nivel "malo" alrededor del percentil 90º. Para los niveles "regular" y "bueno", sin embargo, el mínimo no es tan claro, lo cual puede ser atribuido a cierta subjetividad de los observadores expertos.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TABLA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[H]
-    \centering
-    \caption{Evaluation of the superposition of both masks. the manual and the automatic. carried on by the group of experts}
-    \begin{tabular}{|c|c|c|c|c|c|c|c|}
-       \hline
-        COLOR INVARIANT INDEX & \multicolumn{6}{ |c|}{\textpsi \textsubscript{BR}}\\%\multicolumn{6}{ }{ |c|} \\
-        \hline
-        PERCENTILE & 60 & 70 & 80 & 85 & 90 & 95\\
-        \hline
-        GOOD & 0.0 & 0.0 & 4.5 & 15.8 & 20.5 & 0.0\\
-        \hline
-        REGULAR & 0.0 & 4.5 & 27.3 & 21.1 & 54.5 & 57.9\\
-        \hline
-        BAD & 100.0 & 95.5 & 68.2 & 63.2 & 25.0 & 42.1\\
-        \hline
-        COLOR INVARIANT INDEX & \multicolumn{6}{ |c|}{\textpsi \textsubscript{BG}}\\
-        \hline
-        PERCENTILE & 60 & 70 & 80 & 85 & 90 & 95\\
-        \hline
-        GOOD & 0.0 & 0.0 & 0.0 & 5.3 & 5.3 & 5.3\\
-        \hline
-        REGULAR & 0.0 & 5.3 & 10.5 & 15.8 & 42.1 & 21.1\\
-        \hline
-        BAD & 100.0 & 94.7 & 89.5 & 78.9 & 52.6 & 73.7\\
-        \hline
-        COLOR INVARIANT INDEX & \multicolumn{6}{|c|}{ \textpsi \textsubscript{GR}}\\
-        \hline
-        PERCENTILE & 60 & 70 & 80 & 85 & 90 & 95\\
-        \hline
-        GOOD & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0\\
-        \hline
-        REGULAR & 0.0 & 0.0 & 0.0 & 0.0 & 15.8 & 15.8\\
-        \hline
-        BAD & 100.0 & 100.0 & 100.0 & 100.0 & 84.2 & 84.2\\
-        \hline
-    \end{tabular}
-    \\
-    \raggedleft
-    \label{tablita}
-\end{table}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Capitulos/tabla_iic} %idioma, comas por puntos
 
-
-\begin{figure}
+%tamaño
+\begin{figure} [h!]
          \centering
          \includegraphics[width=\textwidth]{Imagenes/grafico.png}
          \hfill
@@ -242,7 +203,7 @@ Luego de generar un conjunto de máscaras correspondientes a cada uno de los sei
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}
+\begin{figure}[h!]
      \centering
      \begin{subfigure}[b]{0.3\textwidth}
          \centering
@@ -270,7 +231,8 @@ Luego de generar un conjunto de máscaras correspondientes a cada uno de los sei
 \subsubsection{Validación IIC} \label{Validacion}
 Superponiendo a una imagen las dos máscaras, una obtenida en forma manual y otra en forma automática, tres expertos realizaron un análisis, calificando el grado de ajuste entre ambas máscaras como "bueno", "regular" o "malo". Este procedimiento fue aplicado a cada una de las 19 imágenes analizadas, de modo que se obtuvieron 19 máscaras automáticas por medio del algoritmo para ser comparadas con las respectivas máscaras obtenidas en forma manual. Las superposiciones calificadas como "buenas" o "regulares" son usadas para seleccionar la mejor máscara automática. Un procedimiento similar se siguió para evaluar el filtrado de la imagen.
 
-\color{black} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\color{orange} %ver si esto lo dejamos o no...
 \subsection{C3-Filtros de texturas (probados con fantomas)}
 Mediante el filtrado por textura puede implementarse una segmentación o clasificación en imágenes. Se hicieron varias pruebas con imágenes simuladas (cuadrados y rombos)
 \subsection{C4-Mapas autoorganizados (clasificación no supervisada)}

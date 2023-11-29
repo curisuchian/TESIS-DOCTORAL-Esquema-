@@ -30,7 +30,19 @@
 \usepackage{blindtext}
 %\usepackage[left]{lineno}
 %\linenumbers        %line numbering
+\usepackage{threeparttable} % to use table notes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Numeración de párrafos y subpárrafos
+\usepackage{chngcntr}
+\usepackage{enumitem}
 
+\newlist{paragraphlist}{enumerate}{1}
+
+
+\setlist[paragraphlist,1]{leftmargin=*,label={\bfseries \arabic*}}
+
+\counterwithin{paragraphlisti}{subsubsection}
+\setcounter{secnumdepth}{4}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Para customizar tablas
 \usepackage{color}
 \usepackage{colortbl}

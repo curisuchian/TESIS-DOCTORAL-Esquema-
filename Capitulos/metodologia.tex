@@ -205,7 +205,7 @@ En esta etapa se calcula la distancia entre valores cero y distinto de cero, es 
 
 
 \color{cyan} %color de texto con 70-80 % o más de avance
-\subsection{Invariante de color (paper RSASE)}
+\subsection{Invariante de color (paper RSASE)} \label{Metodología}
 \subsubsection{Metodología propuesta IIC}
 En esta sección se describen los pasos del método de procesamiento necesarios para obtener la máscara automática de sombras de la imagen aérea. La figura \ref{diagrama_procesamiento} representa la secuencia de procesamiento.
 
@@ -219,7 +219,7 @@ En esta sección se describen los pasos del método de procesamiento necesarios 
 \paragraph{Adquisición de la imagen}
 El punto de partida de la metodología propuesta es la captura de imágenes aéreas. Entre los pocos requerimientos en esta etapa se destaca que las condiciones de luz solar deben ser las apropiadas para generar proyecciones de sombra. Aquí se consideran imagenes representativas de un área de selva nativa en la provincia de Misiones, Argentina, que han sido capturadas mediante VANT sobrevolando porciones de selva en parques y reservas naturales, en las cuales habría presencia de ejemplares de árboles de interés. Para garantizar una mejor captura de imágenes con sombra, se seleccionó un intervalo de tiempo que abarca desde las 3 p.m. hasta las 4 p.m., que es cuando la posición relativa del sol facilita la proyección de sombras sobre el dosel. Las imágenes fueron capturadas durante el invierno meridional, específicamente en el mes de agosto, cuando las sombras proyectadas son mayores para ese horario. Se usó un VANT modelo Mini 2 del fabricante DJI, equipado con una cámara con resolución de 12 Megapíxeles. La altura de vuelo sobre el terreno fue de 50 metros, y el modo en que estuvo configurada la cámara era automático. Las imágens capturadas están en formato JPG con una resolución de 4000 x 2250 píxeles, con una resolución espacial de 3 cm/pixel aproximadamente. Para ejecutar el algoritmo se usó una computadora laptop común con un procesador Intel Core i5. En cuanto a los scripts, están basados en códigos de Octave. Se analizó un total de 19 imágenes.
 
-\paragraph{Preprocesamiento de imagen} \label{Metodología}
+\paragraph{Preprocesamiento de imagen} 
 Para facilitar el procesamiento y posterior análisis, las imágenes de los diferentes sitios deben ser recortadas par anormalizar el tamaó y ser filtradas para estandarizar algunos atributos.
 \paragraph{Cálculo de índice invariante de color}
 Con base en imágenes filtradas RGB, el invariante de color $\Psi$ se calcula por medio de la ecuación \ref{invariante de color}

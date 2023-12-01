@@ -65,7 +65,7 @@ diferentes.
 
 \color{cyan} %color de texto con 70-80 % o más de avance
 \subsection{RESULTADOS HOMOMÓRFICO}
-Los resultados de las pruebas se exponen en la Tabla \ref{tablahomomorfico}. Allí se visualiza para distintas imágenes la cantidad de sombras detectadas, y se comparan los resultados de conteo automático con distintos tamaños de ventana, con el método de búsqueda de forma manual. Nótese el cambio de signo para el error medio entre los tamaños de ventana de 25 y de 20 píxeles, indicando que la selección de un tamaño de ventana menor resultará en una mayor 
+Los resultados de las pruebas se exponen en la Tabla \ref{tab_homomorfico}. Allí se visualiza para distintas imágenes la cantidad de sombras detectadas, y se comparan los resultados de conteo automático con distintos tamaños de ventana, con el método de búsqueda de forma manual. Nótese el cambio de signo para el error medio entre los tamaños de ventana de 25 y de 20 píxeles, indicando que la selección de un tamaño de ventana menor resultará en una mayor 
 cantidad de sombras detectadas que la que se obtiene por conteo manual. En cambio un tamaño de ventana mayor podría obviar varias sombras que serían tenidas en cuenta para el conteo manual. De acuerdo con la resolución de las imágenes de prueba, el tamaño de ventana cuadrada de 20 píxeles por lado se correspondería con un área de 100 metros cuadrados.
 \input{Capitulos/tablahomomorfico}
 
@@ -94,6 +94,8 @@ A los efectos de mostrar el funcionamiento del método de búsqueda y conteo de 
      \caption{Sombras seleccionadas}
     \label{seleccionadaST}
 \end{figure}
+
+De acuerdo con la resolución espacial de las imágenes analizadas, el tamaño de ventana de 20 píxeles se corresponde con un área de aproximadamente cien metros cuadrados.
 
 \color{cyan} %color de texto con 70-80 % o más de avance
 \subsection{RESULTADOS IIC} \label{Resultados}
@@ -151,21 +153,21 @@ Dos ejemplos de máscaras manuales se muestran en figuras \ref{contorno1} y \ref
 
 \begin{figure}[h!]
     \centering
-  \begin{subfigure}[b]{0.3\textwidth}
+  \begin{subfigure}[b]{\textwidth}
     \includegraphics[width=\textwidth]{Imagenes/blue minus red 85.png}
      \hfill
      \caption{\textpsi\textsubscript{BR}}
     \label{azulrojo}
  \end{subfigure}
 
- \begin{subfigure}[b]{0.3\textwidth}
+ \begin{subfigure}[b]{\textwidth}
     \includegraphics[width=\textwidth]{Imagenes/blue minus green 85.png}
      \hfill
      \caption{\textpsi\textsubscript{BG}}
     \label{azulverde}
  \end{subfigure}
 
- \begin{subfigure}[b]{0.3\textwidth}
+ \begin{subfigure}[b]{\textwidth}
     \includegraphics[width=\textwidth]{Imagenes/green minus red 85.png}
      \hfill
      \caption{\textpsi\textsubscript{GR}}
@@ -205,21 +207,21 @@ Luego de generar un conjunto de máscaras correspondientes a cada uno de los sei
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[h!]
      \centering
-     \begin{subfigure}[b]{0.3\textwidth}
+     \begin{subfigure}[b]{\textwidth}
          \centering
          \includegraphics[width=\textwidth]{Imagenes/psiBR.png}
          \caption{\textpsi \textsubscript{BR}}
          \label{psiBR}
      \end{subfigure}
      \hfill
-     \begin{subfigure}[b]{0.3\textwidth}
+     \begin{subfigure}[b]{\textwidth}
          \centering
          \includegraphics[width=\textwidth]{Imagenes/psiBG.png}
          \caption{\textpsi \textsubscript{BG}}
          \label{psiBG}
      \end{subfigure}
      \hfill
-     \begin{subfigure}[b]{0.3\textwidth}
+     \begin{subfigure}[b]{\textwidth}
          \centering
          \includegraphics[width=\textwidth]{Imagenes/psiGR.png}
          \caption{\textpsi \textsubscript{GR}}

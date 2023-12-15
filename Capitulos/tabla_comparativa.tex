@@ -4,162 +4,165 @@
 % Beamer presentation requires \usepackage{colortbl} instead of \usepackage[table,xcdraw]{xcolor}
 % \usepackage[normalem]{ulem}
 % \useunder{\uline}{\ul}{}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage[table,xcdraw]{xcolor}
+% Beamer presentation requires \usepackage{colortbl} instead of \usepackage[table,xcdraw]{xcolor}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage[table,xcdraw]{xcolor}
+% Beamer presentation requires \usepackage{colortbl} instead of \usepackage[table,xcdraw]{xcolor}
 \begin{table}[]
-\centering
-\caption{Tabla comparativa de tiempos y costos de relevamiento para la reserva Yaboty}
-\label{tab:yaboty}
-\begin{tabular}{cclll}
-\hline
-\multicolumn{2}{c}{} &
-  \multicolumn{3}{c}{\cellcolor[HTML]{F4B084}\textbf{Yaboty}} \\ \hline
-\multicolumn{1}{l}{} &
-  {\ul } &
-  \cellcolor[HTML]{F4B084}tiempo {[}h{]} &
-  \cellcolor[HTML]{F4B084}\$ &
-  \cellcolor[HTML]{F4B084}\% \\
-\cellcolor[HTML]{9BC2E6} &
-  \cellcolor[HTML]{9BC2E6}{\color[HTML]{0563C1} Pleiades} &
-   &
-  37.500,00 USD &
-   \\
-\cellcolor[HTML]{9BC2E6} &
-  \cellcolor[HTML]{9BC2E6}{\color[HTML]{0563C1} Satellogic} &
-   &
-  37.500,00 USD &
-   \\
-\multirow{-3}{*}{\cellcolor[HTML]{9BC2E6}Satélite} & \cellcolor[HTML]{9BC2E6}{\color[HTML]{0563C1} IKONOS} &        & 37.500,00 USD & \multirow{-3}{*}{}  \\
-\cellcolor[HTML]{70AD47} &
-  \cellcolor[HTML]{70AD47}{\color[HTML]{0563C1} avion} &
-  69,13 &
-  16.590,65 USD &
-  \textgreater{}90,00 \\
-\multirow{-2}{*}{\cellcolor[HTML]{70AD47}Aeronave} &
-  \cellcolor[HTML]{70AD47} {\color[HTML]{0563C1}helicoptero} &
-   &
-   &
-  \textgreater{}90,00 \\
-\cellcolor[HTML]{FFC000} &
-  \cellcolor[HTML]{FFC000}{\color[HTML]{0563C1} mavic   3m} &
-  144,09 &
-  28.098,33 USD &
-  \textgreater{}90,00 \\
-\cellcolor[HTML]{FFC000} &
-  \cellcolor[HTML]{FFC000}{\color[HTML]{0563C1} asesor/9} &
-  361,11 &
-  70.416,36 USD &
-  \textgreater{}90,00 \\
-\multirow{-3}{*}{\cellcolor[HTML]{FFC000}VANT}     & \cellcolor[HTML]{FFC000}{\color[HTML]{0563C1} mini 2} & 314,23 & 61.275,69 USD & \textgreater{}90,01 \\ 
-\end{tabular}
+    \begin{threeparttable}[b]
+        \centering
+        \caption{Tabla comparativa de tiempos y costos de relevamiento para la reserva Yaboty}
+        \label{tab:yaboty}
+        \begin{tabular}{ccccc}
+            %\rowcolor[HTML]{C65911} 
+            \hline 
+            \hline 
+            \multicolumn{2}{c}{\textbf{Yaboty}} &
+              \multicolumn{3}{c}{\textbf{Superficie   250.000 ha}} \\
+              \hline    
+            %\rowcolor[HTML]{C65911} 
+            \multicolumn{2}{c}{\textbf{Plataforma/modelo o tipo}} &
+              \textbf{Tiempo {[}h{]}} &
+              \textbf{Costo en USD \tnote{*}} &
+              \textbf{Porcentaje útil de   imagen capturada} \\
+              \hline 
+              \hline 
+             &
+              { Pleiades} &
+               &
+              37.500,00 &
+               \\
+             &
+              { Satellogic} &
+               &
+              37.500,00 &
+               \\
+            \multirow{-3}{*}{Satélite} &
+              { IKONOS} &
+              \multirow{-3}{*}{}{\tnote{**}} &
+              37.500,00 &
+              \multirow{-3}{*}{}{\tnote{***}} \\
+             &
+              { avion} &
+              69,13 &
+              16.590,65 &
+              \textgreater{}90 \\
+            \multirow{-2}{*}{Aeronave} &
+              { helicoptero} &
+              \multicolumn{2}{c} {s/d \tnote{****}}&
+              \textgreater{}90 \\
+             &
+              { mavic   3m} &
+              144,09 &
+              28.098,33 &
+              \textgreater{}90 \\
+             &
+              { asesor/9} &
+              361,11 &
+              70.416,36 &
+              \textgreater{}90 \\
+            \multirow{-3}{*}{VANT} &
+              { mini 2} &
+              314,23 &
+              61.275,69 &
+              \textgreater{}90 \\
+             \hline
+             \hline
+        \end{tabular}
+        \begin{tablenotes}
+            %\footnotesize{
+            \tiny{
+           \item [*]Dólares estadounidenses.
+           \item [**]El tiempo de captura de imágenes satelitales no se tiene en cuenta para el análisis de costo.
+           \item [***]El porcentaje útil del área de la imagen no puede conocerse previamente, ya que depende de cuántas imágenes son necesarias para cubrir el área de interés, que a su vez dependen de la disponibilidad de las mismas.
+           \item [****] sin datos
+           }
+         \end{tablenotes}
+  \end{threeparttable}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage[table,xcdraw]{xcolor}
+% Beamer presentation requires \usepackage{colortbl} instead of \usepackage[table,xcdraw]{xcolor}
+\begin{table}[]
+    \begin{threeparttable}[b]
+        \centering
+        \caption{Tabla comparativa de tiempos y costos de relevamiento para la reserva San Sebastián}
+        \label{tab:sanse}
+        \begin{tabular}{llclc}
+            \hline
+            \hline
+            \multicolumn{2}{l}{\textbf{San Sebastián}}                                                                            & \multicolumn{3}{l}{\textbf{Superficie   100 ha}} \\ \hline
+            \multicolumn{2}{l}{\cellcolor[HTML]{FFFFFF}\textbf{Plataforma/modelo o tipo}} &
+              \multicolumn{1}{l}{\textbf{Tiempo {[}min{]}}} &
+              
+               \textbf{Costo en USD \tnote{*}}&
+              \multicolumn{1}{l}{\textbf{Porcentaje útil de imagen capturada}} \\ \hline
+            \cellcolor[HTML]{FFFFFF}                           & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} Pleiades}   &          & 375,00 USD   & \multicolumn{1}{l}{}   \\
+            \cellcolor[HTML]{FFFFFF}                           & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} Satellogic} &  {\tnote{**}}  & 375,00 USD   & 4                   \\
+            \multirow{-3}{*}{\cellcolor[HTML]{FFFFFF}Satélite} & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} IKONOS}     &         & 375,00 USD   & \multicolumn{1}{l}{}   \\ \hline
+            \cellcolor[HTML]{FFFFFF}                           & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} avion}      & 42,24    & 3,74 USD     & \textgreater{}90    \\
+            \multirow{-2}{*}{\cellcolor[HTML]{FFFFFF}Aeronave} & {\color[HTML]{000000} helicoptero}                        & \multicolumn{2}{c}{s/d \tnote{***}} & \textgreater{}90    \\ \hline
+                                                               & {\color[HTML]{000000} mavic   3m}                         & 5,12     & 16,63 USD    & \textgreater{}90    \\
+                                                               & {\color[HTML]{000000} asesor/9}                           & 10,38    & 33,73 USD    & \textgreater{}90    \\
+            \multirow{-3}{*}{VANT}                             & {\color[HTML]{000000} mini 2}                             & 9,34     & 30,37 USD    & \textgreater{}90    \\ \hline
+            \hline
+        \end{tabular}
+        \begin{tablenotes}
+            %\footnotesize{
+            \tiny{
+           \item [*]Dólares estadounidenses.
+           \item [**]El tiempo de captura de imágenes satelitales no se tiene en cuenta para el análisis de costo.
+           \item [***] sin datos
+           }
+         \end{tablenotes}
+     \end{threeparttable}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage[table,xcdraw]{xcolor}
+% Beamer presentation requires \usepackage{colortbl} instead of \usepackage[table,xcdraw]{xcolor}
 \begin{table}[]
-\centering
-\caption{Tabla comparativa de tiempos y costos de relevamiento para la reserva San Sebastián}
-\label{tab:sanse}
-\begin{tabular}{ccccc}
-\hline
-\multicolumn{2}{c}{} &
-  \multicolumn{3}{c}{\cellcolor[HTML]{F4B084}\textbf{San   Sebastián}} \\ \hline
-\multicolumn{1}{l}{} &
-  {\ul } &
-  \cellcolor[HTML]{F4B084}tiempo {[}min{]} &
-  \cellcolor[HTML]{F4B084}\$ &
-  \cellcolor[HTML]{F4B084}\% \\
-\cellcolor[HTML]{9BC2E6} &
-  \cellcolor[HTML]{9BC2E6}{\color[HTML]{0563C1} Pleiades} &
-   &
-  375,00 USD &
-   \\
-\cellcolor[HTML]{9BC2E6} &
-  \cellcolor[HTML]{9BC2E6}{\color[HTML]{0563C1} Satellogic} &
-   &
-  375,00 USD &
-   \\
-\multirow{-3}{*}{\cellcolor[HTML]{9BC2E6}Satélite} &
-  \cellcolor[HTML]{9BC2E6}{\color[HTML]{0563C1} IKONOS} &
-   &
-  375,00 USD &
-  \multirow{-3}{*}{} \\
-\cellcolor[HTML]{70AD47} &
-  \cellcolor[HTML]{70AD47}{\color[HTML]{0563C1} avion} &
-  2,24 &
-  8,97 USD &
-  \textgreater{}90,00 \\
-\multirow{-2}{*}{\cellcolor[HTML]{70AD47}Aeronave} &
-  \cellcolor[HTML]{70AD47}{\color[HTML]{0563C1}helicoptero }&
-   &
-   &
-  \textgreater{}90,00 \\
-\cellcolor[HTML]{FFC000} &
-  \cellcolor[HTML]{FFC000}{\color[HTML]{0563C1} mavic   3m} &
-  5,12 &
-  16,63 USD &
-  \textgreater{}90,00 \\
-\cellcolor[HTML]{FFC000} &
-  \cellcolor[HTML]{FFC000}{\color[HTML]{0563C1} asesor/9} &
-  10,38 &
-  33,73 USD &
-  \textgreater{}90,00 \\
-\multirow{-3}{*}{\cellcolor[HTML]{FFC000}VANT} &
-  \cellcolor[HTML]{FFC000}{\color[HTML]{0563C1} mini 2} &
-  9,34 &
-  30,37 USD &
-  \textgreater{}90,01 \\ %\cline{2-5} 
-\end{tabular}
-\end{table}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[]
-\centering
-\caption{Tabla comparativa de tiempos y costos de relevamiento para la reserva Profundidad}
-\label{tab:profundidad}
-\begin{tabular}{cclll}
-\hline
-\multicolumn{2}{c}{} &
-  \multicolumn{3}{c}{l}{\cellcolor[HTML]{F4B084}\textbf{Profundidad}} \\ \hline
-\multicolumn{1}{l}{} &
-  {\ul } &
-  \cellcolor[HTML]{F4B084}tiempo {[}min{]} &
-  \cellcolor[HTML]{F4B084}\$ &
-  \cellcolor[HTML]{F4B084}\% \\
-\cellcolor[HTML]{9BC2E6} &
-  \cellcolor[HTML]{9BC2E6}{\color[HTML]{0563C1} Pleiades} &
-   &
-  375,00 USD &
-   \\
-\cellcolor[HTML]{9BC2E6} &
-  \cellcolor[HTML]{9BC2E6}{\color[HTML]{0563C1} Satellogic} &
-   &
-  375,00 USD &
-   \\
-\multirow{-3}{*}{\cellcolor[HTML]{9BC2E6}Satélite} &
-  \cellcolor[HTML]{9BC2E6}{\color[HTML]{0563C1} IKONOS} &
-   &
-  375,00 USD &
-  \multirow{-3}{*}{} \\
-\cellcolor[HTML]{70AD47} &
-  \cellcolor[HTML]{70AD47}{\color[HTML]{0563C1} avion} &
-  0,42 &
-  1,67 USD &
-  \textgreater{}90,00 \\
-\multirow{-2}{*}{\cellcolor[HTML]{70AD47}Aeronave} &
-  \cellcolor[HTML]{70AD47} {\color[HTML]{0563C1}helicoptero} &
-   &
-   &
-  \textgreater{}90,00 \\
-\cellcolor[HTML]{FFC000} &
-  \cellcolor[HTML]{FFC000}{\color[HTML]{0563C1} mavic   3m} &
-  1,22 &
-  3,98 USD &
-  \textgreater{}90,00 \\
-\cellcolor[HTML]{FFC000} &
-  \cellcolor[HTML]{FFC000}{\color[HTML]{0563C1} asesor/9} &
-  2,19 &
-  7,13 USD &
-  \textgreater{}90,00 \\
-\multirow{-3}{*}{\cellcolor[HTML]{FFC000}VANT} &
-  \cellcolor[HTML]{FFC000}{\color[HTML]{0563C1} mini 2} &
-  2,25 &
-  7,31 USD &
-  \textgreater{}90,01 \\ 
-\end{tabular}
+    \begin{threeparttable}[b]
+        \centering
+        \caption{Tabla comparativa de tiempos y costos de relevamiento para la reserva Profundidad}
+        \label{tab:profundidad}
+        \begin{tabular}{llclc}
+            \hline
+            \hline
+            \multicolumn{2}{l}{\textbf{Profundidad}}                                                                            & \multicolumn{3}{l}{\textbf{Superficie   20 ha}} \\ \hline
+            \multicolumn{2}{l}{\cellcolor[HTML]{FFFFFF}\textbf{Plataforma/modelo o tipo}} &
+              \multicolumn{1}{l}{\textbf{Tiempo {[}min{]}}} &
+              
+               \textbf{Costo en USD \tnote{*}}&
+              \multicolumn{1}{l}{\textbf{Porcentaje útil de imagen capturada}} \\ \hline
+            \cellcolor[HTML]{FFFFFF}                           & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} Pleiades}   &          & 375,00 USD   & \multicolumn{1}{l}{}   \\
+            \cellcolor[HTML]{FFFFFF}                           & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} Satellogic} &  {\tnote{**}}  & 375,00 USD   & 0,8                   \\
+            \multirow{-3}{*}{\cellcolor[HTML]{FFFFFF}Satélite} & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} IKONOS}     &         & 375,00 USD   & \multicolumn{1}{l}{}   \\ \hline
+            \cellcolor[HTML]{FFFFFF}                           & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} avion}      & 40,42  & 3,74 USD     & \textgreater{}90    \\
+            \multirow{-2}{*}{\cellcolor[HTML]{FFFFFF}Aeronave} & {\color[HTML]{000000} helicoptero}                        & \multicolumn{2}{c}{s/d \tnote{***}} & \textgreater{}90    \\ \hline
+                                                               & {\color[HTML]{000000} mavic   3m}                         & 1,22     & 16,63 USD    & \textgreater{}90    \\
+                                                               & {\color[HTML]{000000} asesor/9}                           & 2,19    & 33,73 USD    & \textgreater{}90    \\
+            \multirow{-3}{*}{VANT}                             & {\color[HTML]{000000} mini 2}                             & 2,25     & 30,37 USD    & \textgreater{}90    \\ \hline
+            \hline
+        \end{tabular}
+        \begin{tablenotes}
+            %\footnotesize{
+            \tiny{
+           \item [*]Dólares estadounidenses.
+           \item [**]El tiempo de captura de imágenes satelitales no se tiene en cuenta para el análisis de costo.
+           \item [***] sin datos
+           }
+         \end{tablenotes}
+     \end{threeparttable}
 \end{table}

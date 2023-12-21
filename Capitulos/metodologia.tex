@@ -1,4 +1,4 @@
-\color{cyan} %color de texto con 70-80 % o más de avance
+%\color{cyan} %color de texto con 70-80 % o más de avance
 \section{Sensado remoto, plataformas (¿?) (Bloque 1)}
 \subsection{Reservas de bosque nativo de la Selva Paranaense en la Provincia de Misiones}
 El remanente en pie del bioma conocido como Bosque Atlántico o Selva Paranaense representa hoy un 5\% de la histórica extensión, que cubría desde toda la provincia de Misiones, buena parte del Paraguay y el sur de Brasil. En la provincia de Misiones está presente casi la mitad de ese remanente, existiendo varias reservas, tanto públicas como privadas. Algunas de ellas son descriptas en el presente trabajo.
@@ -146,10 +146,10 @@ Los que se pueden seleccionar con mayor grado de libertad son los que están rel
 Dependiendo de la resolución espacial y espectral de las imágenes, los requerimientos de almacenamiento aumentarán en proporción a las mismas. Siguiendo con el ejemplo antes expuesto, las casi seis millones y medio de fotografías en RGB, con 5 Megapíxeles por cada una, con una profundidad de color de 8 bit por canal necesitarían un espacio de almacenamiento de alrededor de 7,5 Terabytes.
 
 \section{Procesamiento de imágenes (Bloque 2)}
-\subsection{Filtrado homomórfico (CRICTE 2017)}
-Tomando como base el modelo de iluminación de Stockham para descomponer partes iluminadas de sombreadas, adoptando el concepto de frecuencia espacial, se implementó un procedimiento que incluía una etapa de filtrado homomórfico seguida de una etapa de aplicación de lógica difusa para discriminar sombras en imágenes aéreas de porciones de selva.
+\subsection{Filtrado homomórfico (CRICTE 2017)} \label{homomorfico}
+Tomando como base el modelo de iluminación de Stockham para descomponer partes iluminadas de sombreadas, adoptando el concepto de frecuencia espacial, se implementó un procedimiento que incluía una etapa de filtrado homomórfico seguida de una etapa de aplicación de lógica difusa para discriminar sombras en imágenes aéreas de porciones de selva. El diagrama de flujo del procesamiento se describe en la figura \ref{flowchart_homomorfico}.
 La imagen se modela como el producto de una componente de iluminación y otra de reflexión, que depende de las características del objeto iluminado. 
-La ecuación que representa al filtro es
+La ecuación que representa al filtro es \ref{filtro homomorfico}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ECUACIÓN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \\
 \begin{equation}
@@ -157,16 +157,32 @@ La ecuación que representa al filtro es
 \end{equation}
 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
-%agregar flowchart
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Imagenes/Homomorfico/flowchart.png}
+     \hfill
+     \caption{Diagrama de flujo del procesamiento homomórfico}
+    \label{flowchart_homomorfico}
+\end{figure}
 
-donde $D_0$ es la frecuencia de corte, $c$ controla la forma y pendiente del filtro en la región de trancisión entre $\gamma_L$ y $\gamma_H$. $D(u,v)$ es la distancia al origen del plano de frecuencias.
+donde $D_0$ es la frecuencia de corte, $c$ controla la forma y pendiente del filtro en la región de transición entre $\gamma_L$ y $\gamma_H$. $D(u,v)$ es la distancia al origen del plano de frecuencias.
 
-Las imágenes a ser analizadas fueron obtenidas desde el sitio web Bing (poner en referencia de la dirección web del maps). Se seleccionaron imágenes de diferentes sitios de la Provincia de Misiones, correspondientes a selvas en parques y reservas, en los que se supone mayor presencia de especies de árboles de interés para el presente trabajo. 
-En un primer paso se realizó la conversión de la imagen de color rojo, verde y azul (RGB) a la representación matiz, saturación e intensidad (HSI), trabajando sobre la componente de intensidad. En un paso siguiente se aplicó el logaritmo a la componente de intensidad de la imagen y seguidamente se obtuvo la transformada de Fourier de la misma, para poder procesar con el filtro de sombras. Se multiplicó la matriz de la imagen por la matriz que representa al filtro y, luego, al resultado se aplicó la transformada inversa de Fourier, la función inversa de logaritmo y la remoción de fase, tomando el módulo del número complejo, todo en orden sucesivo. Posteriormente se binarizó la imagen filtrada mediante un criterio de umbral de 0,75 en una escala en la que el valor 1 es blanco y 0 es negro. La imagen de salida del filtro de sombras presenta a las sombras resaltadas con píxeles de intensidad blancos. 
-Luego se efectuó la selección de las sombras binarizadas, con lo que se descartaron las sombras que no revisten interés para el posterior conteo, estableciendo una ventana de enmascaramiento, que a los efectos prácticos es cuadrada y el criterio de clasificación es de 45\% de píxeles blancos. Una vez completas la binarización y la selección de sombras de interés, se realizó el conteo de las mismas. El diagrama de flujo de la fig. 3 describe las etapas del proceso completo. 
+Las imágenes a ser analizadas son imágenes satelitales obtenidas desde el sitio web Bing \color{red}\textbf{(poner en referencia de la dirección web del maps)}\color{black}. Se seleccionaron imágenes de diferentes sitios de la Provincia de Misiones, correspondientes a selvas en parques y reservas, en los que se supone mayor presencia de especies de árboles de interés para el presente trabajo. 
+En un primer paso se realizó la conversión de la imagen de color rojo, verde y azul (RGB) a la representación matiz, saturación e intensidad (HSI), trabajando sobre la componente de intensidad. La componente de intensidad se obtiene sumando los tres canales rojo, verde y azul y dividiendo por tres (ecuación \ref{RGB-HSI}). 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ECUACIÓN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
+\begin{equation}
+	I=\frac{R+G+B}{3},\label{RGB-HSI}
+\end{equation}
+\\
+donde $I$ es el valor de intensidad, $R$, $G$ y $B$ son los valores respectivos de las bandas roja, verde y azul.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+En un paso siguiente se aplicó el logaritmo a la componente de intensidad de la imagen y seguidamente se obtuvo la transformada de Fourier de la misma, para poder procesar con el filtro de sombras, expresado en la ecuación \ref{filtro homomorfico}. Se multiplicó la matriz de la imagen por la matriz que representa al filtro y luego, al resultado se le aplicó la transformada inversa de Fourier, la función inversa de logaritmo y la remoción de fase, tomando el módulo del número complejo, todo en orden sucesivo. 
+%Posteriormente se binarizó la imagen filtrada fijando el valor de umbral en 0,75 en una escala en la que el valor 1 es blanco y 0 es negro, de modo que a los píxeles con valor de intensidad menor al umbral se les asignó el valor cero, y a los que superaban el valor umbral se les asignaba el valor 1. La imagen de salida del filtro de sombras constituye así una máscara que presenta a las sombras resaltadas con píxeles de intensidad blancos. 
+Luego se efectuó la selección de las sombras binarizadas mediante técnicas de lógica difusa, en dos etapas. En la primera implementando un inferenciador Sugeno, mediante el cual se discriminaban los píxeles de determinada intensidad , con lo que se descartaron las sombras que no revisten interés para el posterior conteo, es decir aquellas muy pequeñas o muy grandes, estableciendo una ventana de enmascaramiento, que a los efectos prácticos es cuadrada y el criterio de clasificación es de 45\% de píxeles blancos. Una vez completas la binarización y la selección de sombras de interés, se realizó el conteo de las mismas. El diagrama de flujo de la figura \ref{flowchart_homomorfico}  describe las etapas del proceso completo. 
 
 
-\color{cyan} %color de texto con 70-80 % o más de avance
+%\color{cyan} %color de texto con 70-80 % o más de avance
 \subsection{Procesamiento morfológico (Pasantía)} \label{Morfo}
 %revisar definiciones que pueden ir en el marco teórico y aquellas que se definen aquí
 Secuencia de actividades para el tratamiento de las imágenes\\

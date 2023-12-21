@@ -1,19 +1,4 @@
-% Please add the following required packages to your document preamble:
-% \usepackage{multirow}
-% \usepackage[table,xcdraw]{xcolor}
-% Beamer presentation requires \usepackage{colortbl} instead of \usepackage[table,xcdraw]{xcolor}
-% \usepackage[normalem]{ulem}
-% \useunder{\uline}{\ul}{}
-% Please add the following required packages to your document preamble:
-% \usepackage{multirow}
-% Please add the following required packages to your document preamble:
-% \usepackage{multirow}
-% \usepackage[table,xcdraw]{xcolor}
-% Beamer presentation requires \usepackage{colortbl} instead of \usepackage[table,xcdraw]{xcolor}
-% Please add the following required packages to your document preamble:
-% \usepackage{multirow}
-% \usepackage[table,xcdraw]{xcolor}
-% Beamer presentation requires \usepackage{colortbl} instead of \usepackage[table,xcdraw]{xcolor}
+
 \begin{table}[]
     \begin{threeparttable}[b]
         \centering
@@ -109,7 +94,8 @@
             \cellcolor[HTML]{FFFFFF}                           & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} Pleiades}   &          & 375,00 USD   & \multicolumn{1}{l}{}   \\
             \cellcolor[HTML]{FFFFFF}                           & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} Satellogic} &  {\tnote{**}}  & 375,00 USD   & 4                   \\
             \multirow{-3}{*}{\cellcolor[HTML]{FFFFFF}Satélite} & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} IKONOS}     &         & 375,00 USD   & \multicolumn{1}{l}{}   \\ \hline
-            \cellcolor[HTML]{FFFFFF}                           & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} avion}      & 42,24    & 3,74 USD     & \textgreater{}90    \\
+            \cellcolor[HTML]{FFFFFF}                           & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} avion}      & 42,24    &  53,74 USD 
+ USD     & \textgreater{}90    \\
             \multirow{-2}{*}{\cellcolor[HTML]{FFFFFF}Aeronave} & {\color[HTML]{000000} helicoptero}                        & \multicolumn{2}{c}{s/d \tnote{***}} & \textgreater{}90    \\ \hline
                                                                & {\color[HTML]{000000} mavic   3m}                         & 5,12     & 16,63 USD    & \textgreater{}90    \\
                                                                & {\color[HTML]{000000} asesor/9}                           & 10,38    & 33,73 USD    & \textgreater{}90    \\
@@ -149,11 +135,12 @@
             \cellcolor[HTML]{FFFFFF}                           & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} Pleiades}   &          & 375,00 USD   & \multicolumn{1}{l}{}   \\
             \cellcolor[HTML]{FFFFFF}                           & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} Satellogic} &  {\tnote{**}}  & 375,00 USD   & 0,8                   \\
             \multirow{-3}{*}{\cellcolor[HTML]{FFFFFF}Satélite} & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} IKONOS}     &         & 375,00 USD   & \multicolumn{1}{l}{}   \\ \hline
-            \cellcolor[HTML]{FFFFFF}                           & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} avion}      & 40,42  & 3,74 USD     & \textgreater{}90    \\
+            \cellcolor[HTML]{FFFFFF}                           & \cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} avion}      & 40,42  &  50,70 USD 
+ USD     & \textgreater{}90    \\
             \multirow{-2}{*}{\cellcolor[HTML]{FFFFFF}Aeronave} & {\color[HTML]{000000} helicoptero}                        & \multicolumn{2}{c}{s/d \tnote{***}} & \textgreater{}90    \\ \hline
-                                                               & {\color[HTML]{000000} mavic   3m}                         & 1,22     & 16,63 USD    & \textgreater{}90    \\
-                                                               & {\color[HTML]{000000} asesor/9}                           & 2,19    & 33,73 USD    & \textgreater{}90    \\
-            \multirow{-3}{*}{VANT}                             & {\color[HTML]{000000} mini 2}                             & 2,25     & 30,37 USD    & \textgreater{}90    \\ \hline
+                                                               & {\color[HTML]{000000} mavic   3m}                         & 1,22     & 3,98 USD    & \textgreater{}90    \\
+                                                               & {\color[HTML]{000000} asesor/9}                           & 2,19    & 7,13 USD    & \textgreater{}90    \\
+            \multirow{-3}{*}{VANT}                             & {\color[HTML]{000000} mini 2}                             & 2,25     & 7,31 USD    & \textgreater{}90    \\ \hline
             \hline
         \end{tabular}
         \begin{tablenotes}
@@ -163,6 +150,37 @@
            \item [**]El tiempo de captura de imágenes satelitales no se tiene en cuenta para el análisis de costo.
            \item [***] sin datos
            }
+         \end{tablenotes}
+     \end{threeparttable}
+\end{table}
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% Beamer presentation requires \usepackage{colortbl} instead of \usepackage[table,xcdraw]{xcolor}
+\begin{table}[]
+    \begin{threeparttable}[b]
+        \centering
+        \caption{Tabla comparativa de tiempos de cada fase de operación de aeronave tripulada, estimados a partir de relevamientos y consultas hechas a personal del sector aeronáutico}
+        \label{tab:avion}
+        \begin{tabular}{lc}
+            \hline
+            \multicolumn{1}{c}{\textbf{Item}}   & \multicolumn{1}{l}{\textbf{Tiempo {[}min{]}}} \\ \hline
+            \rowcolor[HTML]{FFFFFF} 
+            Puesta en marcha, rodaje y despegue & 5                                             \\
+            \rowcolor[HTML]{FFFFFF} 
+            Traslado al área                    & 15                                            \\
+            \rowcolor[HTML]{FFFFFF} 
+            Relevamiento                        & {\color[HTML]{000000} \tnote{*}}                      \\
+            \rowcolor[HTML]{FFFFFF} 
+            Retorno al aeródromo de base        & {\color[HTML]{000000} 15}                     \\
+            \rowcolor[HTML]{FFFFFF} 
+            Aterrizaje, rodaje y apagado        & {\color[HTML]{000000} 5}                      \\ \hline
+        \end{tabular}
+         \begin{tablenotes}
+            %\footnotesize{
+            \tiny{
+           \item [*]según requerimiento; en el caso de la reserva Yaboty son más de 69 horas.
+                    }
          \end{tablenotes}
      \end{threeparttable}
 \end{table}

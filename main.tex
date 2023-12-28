@@ -19,7 +19,7 @@
 %%Estilo de numeración de páginas
 \usepackage{lastpage}
 \usepackage{fancyhdr}
-
+\usepackage{emptypage}
 \usepackage{hyperref}
 
 \usepackage{lscape} %página apaisada
@@ -196,6 +196,8 @@ Universidade de Caxias Do Sul\\
   %\today
 \end{titlepage}
 %---------------------------------------------------------------------------------------------------------------------
+%\frontmatter
+\pagenumbering{roman}
 \pagestyle{fancy}
 \fancyhf{} % clear existing header/footer entries
 % Place Page X of Y on the right-hand
@@ -214,8 +216,12 @@ Gracias... totales
 \input{Capitulos/resumen.tex}
 \chapter*{Abstract} %Abstract
 \input{Capitulos/abstract.tex}
+%\mainmatter
+
 %---------------------------------------------------------------------------------------------------------------------
+
 \chapter{Introducción}  
+\pagenumbering{arabic}
     \input{Capitulos/intro.tex}
 \chapter{Marco Teórico}
     \input{Capitulos/marco.tex}
@@ -227,6 +233,8 @@ Gracias... totales
     \input{Capitulos/conclusiones.tex}
 \appendix
 \chapter{Algoritmo R}
+\chapter{Imágenes procesadas por filtro homomórfico} \label{anexo_homo}
+ \input{Capitulos/img_hom}
    % \input{steps(10).tex}
 \chapter{Algoritmo Matlab} 
 \chapter{Machine learning} 

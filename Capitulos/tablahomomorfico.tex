@@ -3,32 +3,36 @@
 \begin{table}[]
     \centering
     \begin{threeparttable}[b]
-        \label{tab:homomorfico}
-        \caption{Evaluación de la superposición de ambas máscaras, manual y automática.}
-        % Please add the following required packages to your document preamble:
         
+        \caption{Número de regiones sombreadas obtenidas por conteo manual y por el algoritmo automático de procesamiento homomórfico, como función del tamaño de ventana de exploración}
+        % Please add the following required packages to your document preamble:
+        \label{tab:resultados_homomorfico}
         \begin{tabular}{ccccccc}
         \hline
         \hline
-                  & CM \tnote{*}  & \multicolumn{5}{l}{Tamaño de ventana}   \\
-            Imagen&   & 10     & 15     & 20    & 25    & 30    \\ \hline
-            Par1d & 5  & 7      & 4      & 1     & 0     & 0     \\
-            Par2d & 2  & 7      & 4      & 1     & 0     & 0     \\
-            PNI1  & 14 & 84     & 49     & 31    & 16    & 10    \\
-            PNI2  & 14 & 48     & 35     & 20    & 14    & 7     \\
-            PNI3  & 32 & 110    & 73     & 48    & 29    & 9     \\
-            PNI3d & 22 & 56     & 42     & 21    & 7     & 0     \\
-            PS1   & 6  & 35     & 16     & 4     & 1     & 1     \\
-            YB1   & 10 & 10     & 5      & 3     & 1     & 1     \\
-            YB2   & 9  & 14     & 8      & 4     & 0     & 0     \\
-            ST1   & 18 & 40     & 25     & 16    & 7     & 6     \\
-            ST2   & 9  & 42     & 30     & 18    & 9     & 7     \\ \hline
-            $e_{m}$    & -  & -28,36 & -13,64 & -2,36 & 5,18  & 9,09  \\
-            $\sigma^2_{e}$   & -  & 628,6  & 211,14 & 63,69 & 25,42 & 48,45 \\
-            $\sigma_{e}$    & -  & 25,07  & 14,53  & 7,98  & 5,04  & 6,96  \\ \hline \hline
+                  & \textbf{Conteo}  & \multicolumn{5}{c}{\textbf{Tamaño de ventana [píxeles]}}   \\
+            \textbf{Imagen}& \textbf{manual}  & \textbf{10 x 10}     & \textbf{15 x 15}     & \textbf{20 x 20 }   & \textbf{25 x 25}    & \textbf{30 x 30 }   \\ \hline
+            \textbf{Par1d}  & 5  & 7      & 4      & 1     & 0     & 0     \\
+            \textbf{Par2d}  & 2  & 7      & 4      & 1     & 0     & 0     \\
+            \textbf{PNI1}   & 14 & 84     & 49     & 31    & 16    & 10    \\
+            \textbf{PNI2}   & 14 & 48     & 35     & 20    & 14    & 7     \\
+            \textbf{PNI3}   & 32 & 110    & 73     & 48    & 29    & 9     \\
+            \textbf{PNI3d}  & 22 & 56     & 42     & 21    & 7     & 0     \\
+            \textbf{PS1}    & 6  & 35     & 16     & 4     & 1     & 1     \\
+            \textbf{YB1}    & 10 & 10     & 5      & 3     & 1     & 1     \\
+            \textbf{YB2}    & 9  & 14     & 8      & 4     & 0     & 0     \\
+            \textbf{ST1}    & 18 & 40     & 25     & 16    & 7     & 6     \\
+            \textbf{ST2}    & 9  & 42     & 30     & 18    & 9     & 7     \\ \hline
+            $e_{m}$\tnote{*}    & -  & -28,36 & -13,64 & -2,36 & 5,18  & 9,09  \\
+            $\sigma^2_{e}$ \tnote{**}   & -  & 628,6  & 211,14 & 63,69 & 25,42 & 48,45 \\
+           $\sigma_{e}$ \tnote{***}   & -  & 25,07  & 14,53  & 7,98  & 5,04  & 6,96  \\ \hline \hline
         \end{tabular}
         \begin{tablenotes}
-                \item [*]Conteo manual.
+        \tiny{
+                \item [*]Error medio.
+                \item [**]Variancia.
+                \item [***] Desvío estándar.
+                }
         \end{tablenotes}
   \end{threeparttable}
 \end{table}

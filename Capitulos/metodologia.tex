@@ -146,7 +146,7 @@ Los que se pueden seleccionar con mayor grado de libertad son los que están rel
 Dependiendo de la resolución espacial y espectral de las imágenes, los requerimientos de almacenamiento aumentarán en proporción a las mismas. Siguiendo con el ejemplo antes expuesto, las casi seis millones y medio de fotografías en RGB, con 5 Megapíxeles por cada una, con una profundidad de color de 8 bit por canal necesitarían un espacio de almacenamiento de alrededor de 7,5 Terabytes.
 
 \section{Procesamiento de imágenes (Bloque 2)}
-\subsection{Filtrado homomórfico (CRICTE 2017)} \label{homomorfico}
+\subsection{Procesamiento con filtro homomórfico} \label{homomorfico}
 Tomando como base el modelo de iluminación de Stockham para descomponer partes iluminadas de sombreadas, adoptando el concepto de frecuencia espacial, se implementó un procedimiento que incluía una etapa de filtrado homomórfico seguida de una etapa de aplicación de lógica difusa para discriminar sombras en imágenes aéreas de porciones de selva. El diagrama de flujo del procesamiento se describe en la figura \ref{flowchart_homomorfico}.
 La imagen se modela como el producto de una componente de iluminación y otra de reflexión, que depende de las características del objeto iluminado. 
 La ecuación que representa al filtro es \ref{filtro homomorfico}
@@ -167,8 +167,9 @@ La ecuación que representa al filtro es \ref{filtro homomorfico}
 
 donde $D_0$ es la frecuencia de corte, $c$ controla la forma y pendiente del filtro en la región de transición entre $\gamma_L$ y $\gamma_H$. $D(u,v)$ es la distancia al origen del plano de frecuencias.
 
-Las imágenes a ser analizadas son imágenes satelitales obtenidas desde el sitio web Bing \color{red}\textbf{(poner en referencia de la dirección web del maps)}\color{black}. \\ % Paranay -26.701277, -54.759434
-Se seleccionaron imágenes de diferentes sitios de la Provincia de Misiones, correspondientes a selvas en parques y reservas, en los que se supone mayor presencia de especies de árboles de interés para el presente trabajo. 
+Las imágenes a ser analizadas son imágenes satelitales obtenidas desde el sitio web Bing, de distintas reservas de bosque nativo, tanto públicas como privadas, %\color{red}\textbf{(poner en referencia de la dirección web del maps)}\color{black}. \\ % Paranay -26.701277, -54.759434
+en los que se supone mayor presencia de especies de árboles de interés para el presente trabajo. 
+\subsubsection{Selección automática de regiones sombreadas usando método de recorrido de ventana} \label{metod_homo_ventana}
 En un primer paso se realizó la conversión de la imagen de color rojo, verde y azul (RGB) a la representación matiz, saturación e intensidad (HSI), trabajando sobre la componente de intensidad. La componente de intensidad se obtiene sumando los tres canales rojo, verde y azul y dividiendo por tres (ecuación \ref{RGB-HSI}). 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ECUACIÓN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \\
@@ -179,10 +180,20 @@ En un primer paso se realizó la conversión de la imagen de color rojo, verde y
 donde $I$ es el valor de intensidad, $R$, $G$ y $B$ son los valores respectivos de las bandas roja, verde y azul.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 En un paso siguiente se aplicó el logaritmo a la componente de intensidad de la imagen y seguidamente se obtuvo la transformada de Fourier de la misma, para poder procesar con el filtro de sombras, expresado en la ecuación \ref{filtro homomorfico}. Se multiplicó la matriz de la imagen por la matriz que representa al filtro y luego, al resultado se le aplicó la transformada inversa de Fourier, la función inversa de logaritmo y la remoción de fase, tomando el módulo del número complejo, todo en orden sucesivo. 
-Posteriormente se binarizó la imagen filtrada fijando un valor de umbral dentro de una escala en la que el valor 1 es blanco y 0 es negro, de modo que a los píxeles con valor de intensidad menor al umbral se les asignó el valor cero, y a los que superaban el valor umbral se les asignaba el valor 1. La imagen de salida del filtro de sombras constituye así una máscara que presenta a las sombras resaltadas con píxeles de intensidad blancos. En la siguiente etapa del algoritmo se implementa una selección de las regiones que corresponden a sombras en la imagen, donde por medio de una ventana cuadrada que recorre todo el ancho y largo de la imagen se evalúan las distintas sombras por su tamaño, descartándose las que son muy pequeñas de acuerdo a un parámetro establecido. Finalmente se obtiene una máscara binaria que contiene las demarcaciones de sombras en la imagen.
+Posteriormente se binarizó la imagen filtrada fijando un valor de umbral dentro de una escala de 0 a 1 en la que el valor 1 es blanco y 0 es negro, de modo que a los píxeles con valor de intensidad menor al umbral se les asignó el valor cero, y a los que superaban el valor umbral se les asignaba el valor 1. La imagen de salida del filtro de sombras constituye así una máscara que presenta a las sombras resaltadas con píxeles de intensidad blancos. En la siguiente etapa del algoritmo se implementa una selección de las regiones que corresponden a sombras en la imagen, donde por medio de una ventana cuadrada que recorre todo el ancho y largo de la imagen se evalúan las distintas sombras por su tamaño, descartándose las que son muy pequeñas de acuerdo a un parámetro establecido. Finalmente se obtiene una máscara binaria que contiene las demarcaciones de sombras en la imagen.
 
-\subsubsection{Selección automática de regiones sombreadas usando método de inferencia difusa a partir del filtrado homomórfico}
-Partiendo de la imagen procesada con filtro homomórfico, se efectuó la selección de las sombras binarizadas mediante técnicas de lógica difusa, en dos etapas. En la primera implementando un sistema de inferencia difusa por el método Sugeno, mediante el cual se discriminaban los píxeles de determinada intensidad, que constituía la variable de entrada, estableciendo una salida según dos funciones de membresía trapezoidales, una correspondiente a píxeles "claros" y otra a "oscuros" (ver figura \ref{sug1}). La segunda etapa de inferencia difusa, también con el método Sugeno, implicaba dos variables de entrada, área e intensidad promedio. A cada variable se le asignaron funciones de membresía, tres en el caso de área, de forma trapezoidal, y dos en el caso de la variable intensidad promedio, de forma triangular (ver figura \ref{sug2}). La salida del sistema es una máscara binaria con las regiones de sombra designadas con píxeles blancos. 
+\subsubsection{Selección automática de regiones sombreadas usando método de inferencia difusa a partir del filtrado homomórfico} \label{metod_homo_fuzzy}
+Partiendo de la imagen procesada con filtro homomórfico, se efectuó la selección de las sombras binarizadas mediante técnicas de lógica difusa, en dos etapas (ver figura \ref{flowchart_homofuzzy}. \\
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Imagenes/Homomorfico/flowchart_fuzzy.png}
+     \hfill
+     \caption{Diagrama de flujo del procesamiento homomórfico con sistema de inferencia difuso}
+    \label{flowchart_homofuzzy}
+\end{figure}
+
+En la primera implementando un sistema de inferencia difusa por el método Sugeno, mediante el cual se discriminaban los píxeles de determinada intensidad, que constituía la variable de entrada, estableciendo una salida según dos funciones de membresía trapezoidales, una correspondiente a píxeles "claros" y otra a "oscuros" (ver figura \ref{sug1}). La segunda etapa de inferencia difusa, también con el método Sugeno, implicaba dos variables de entrada, área e intensidad promedio. A cada variable se le asignaron funciones de membresía, tres en el caso de área, de forma trapezoidal, y dos en el caso de la variable intensidad promedio, de forma triangular (ver figura \ref{sug2}). La salida del sistema es una máscara binaria con las regiones de sombra designadas con píxeles blancos. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 \begin{figure}[h!]

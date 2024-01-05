@@ -50,10 +50,9 @@ La reserva San Sebastián de la Selva es una reserva privada de cien hectáreas,
 
 \label{Profundidad}
 \end{table}
-\subsection{Requerimientos y restricciones}
-\label{calculo relevamiento}
+\subsection{Requerimientos y restricciones} \label{Metodo calculo relevamiento}
 Para llevar adelante el relevamiento de las áreas forestales hay que tener en cuenta los requerimientos en el tiempo y en el equipamiento, así como las restricciones que imponen las regulaciones legales y condiciones geográficas y meteorológicas. Dependiendo de cuán grande sea el área a relevar, puede resultar más conveniente alguna de las plataformas de sensado remoto que otra. El criterio que debe ponderarse está basado en cálculos de tiempo, de costos operacionales y de disponibilidad. Para distintos escenarios, reservas grandes de miles de hectáreas de extensión o pequeñas reservas privadas de pocas decenas o centenas de hectáreas, los cálculos arrojarán resultados diferentes.
-\subsubsection{Cálculo de factor de escala}
+\subsubsection{Cálculo de tiempo}
 Para poder comparar entre las diferentes opciones de plataformas para captura de imágenes aeroespaciales, es necesario conocer determinados parámetros de cada una. Un parámetro es el tiempo necesario para captura de imágenes de un determinado área. El costo asociado a la operación de captura de imágenes es otro parámetro a ser tenido en cuenta. Finalmente hay otros parámetros sobre los que las opciones pueden soportarse. Uno es el porcentaje de área útil sobre área total relevada. Otro parámetro es el espacio de almacenamiento requerido.
 Si se comparan imágenes obtenidas por satélites contra aquellas obtenidas por aeronaves tripuladas o VANT, resulta evidente que aquellas cubren una extensión mayor, por lo que una sola captura puede exceder en mucho la zona de interés. 
 Para hallar el factor de escala $m_b$, relacionamos la altura de vuelo $H_g$ con la distancia focal
@@ -133,20 +132,18 @@ En el caso de que el área relevada sea un rectángulo, $L_v$ podría fácilment
 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Dividiendo el resultado de \ref{longitud_total} por la velocidad de desplazamiento $V_p$ se obtiene el tiempo que tardará en completar el recorrido. Para ser rigurosos, debería añadirse el tiempo que lleva trasladarse a la plataforma desde la base de operaciones (el aeródromo en el caso de aeronaves tripuladas) hasta el inicio del recorrido, y desde el punto final en retorno a la base.
-Conociendo el tiempo total que le lleva a la plataforma aérea completar el recorrido, se puede tomar como base para el cálculo de costo de obtención de las imágenes para el caso de aeronaves tripuladas y VANT, el cual suele ir expresado en montos de dinero por unidad de tiempo, generalmente por hora. Según algunas consultas, el costo de hora de vuelo de aviones tripulados es de alrededor de cien dólares estadounidenses \cite{}.
-
-
+Conociendo el tiempo total que le lleva a la plataforma aérea completar el recorrido, se puede tomar como base para el cálculo de costo de obtención de las imágenes para el caso de aeronaves tripuladas y VANT, el cual suele ir expresado en montos de dinero por unidad de tiempo, generalmente por hora. \\
 Obtener los datos y características técnicas de los sensores no es tarea sencilla. La información que suele figurar en los sitios web de los fabricantes o en los manuales, no suele ser la que se necesita para calcular. Por ejemplo la distancia focal no suele ser un dato que aparezca en la lista de especificaciones. Puede obtenerse de los metadatos asociados a una imagen que ha sido capturada con ese sensor.
-Del mismo modo tampoco resulta sencillo obtener información sobre las tarifas de vuelos de relevamiento aéreo, ya sea tripulado o no. La información disponible es vaga y escueta, por ejemplo la hora de vuelo tripulado es de 240 dólares estadounidenses si se toma como base el dólar oficial (cotizado en 55 mil pesos argentinos, mayo 2023), y la de VANT es de 195 dólares estadounidenses (cotizado en 45 mil pesos argentinos, mayo 2023).
-\subsubsection{Hardware}
+Del mismo modo tampoco resulta sencillo obtener información sobre las tarifas de vuelos de relevamiento aéreo, ya sea tripulado o no. La información disponible es vaga y escueta, por ejemplo en respuesta a una consulta han informado que la hora de vuelo tripulado es de 240 dólares estadounidenses si se toma como base el dólar oficial (cotizado en 55 mil pesos argentinos, mayo 2023), y la de VANT es de 195 dólares estadounidenses (cotizado en 45 mil pesos argentinos, mayo 2023). Según otras consultas, el costo de hora de vuelo de aviones tripulados es de alrededor de cien dólares estadounidenses \footnote{Las consultas fueron realizadas a distintos referentes de la actividad aeronáutica}.
+\subsubsection{Carga útil - cámaras fotográficas}
 Los que se pueden seleccionar con mayor grado de libertad son los que están relacionados con el hardware asociado a la tarea, como es el sensor de la cámara, o las características de funcionamiento de la aeronave no tripulada. Una cámara con mayor resolución demandará mayor espacio de almacenamiento. Asimismo si se trata de sensores ópticos en el rango del espectro visible, la posibilidad de operar se limitará a las horas diurnas. No así si se trata de sensores que trabajan en otro rango de longitudes de onda, como los infrarrojos, o sensores activos, como LiDAR.
 \subsubsection{Marco regulatorio} %Marco teórico
 
 \subsubsection{Almacenamiento necesario} %fusionar con Hardware
 Dependiendo de la resolución espacial y espectral de las imágenes, los requerimientos de almacenamiento aumentarán en proporción a las mismas. Siguiendo con el ejemplo antes expuesto, las casi seis millones y medio de fotografías en RGB, con 5 Megapíxeles por cada una, con una profundidad de color de 8 bit por canal necesitarían un espacio de almacenamiento de alrededor de 7,5 Terabytes.
 
-\section{Procesamiento de imágenes (Bloque 2)}
-\subsection{Procesamiento con filtro homomórfico} \label{homomorfico}
+\section{Procesamiento de imágenes (Bloque 2)} \label{Metodo bloque 2}
+\subsection{Procesamiento con filtro homomórfico} \label{Metodo homomorfico}
 Tomando como base el modelo de iluminación de Stockham para descomponer partes iluminadas de sombreadas, adoptando el concepto de frecuencia espacial, se implementó un procedimiento que incluía una etapa de filtrado homomórfico seguida de una etapa de aplicación de lógica difusa para discriminar sombras en imágenes aéreas de porciones de selva. El diagrama de flujo del procesamiento se describe en la figura \ref{flowchart_homomorfico}.
 La imagen se modela como el producto de una componente de iluminación y otra de reflexión, que depende de las características del objeto iluminado. 
 La ecuación que representa al filtro es \ref{filtro homomorfico}
@@ -233,7 +230,7 @@ El desvío estándar se obtiene de la raíz cuadrada de la varianza (ecuación \
 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %\color{cyan} %color de texto con 70-80 % o más de avance
-\subsection{Procesamiento morfológico (Pasantía)} \label{Morfo}
+\subsection{Procesamiento morfológico (Pasantía)} \label{Metodo Morfo}
 %revisar definiciones que pueden ir en el marco teórico y aquellas que se definen aquí
 Secuencia de actividades para el tratamiento de las imágenes\\
 1. Preprocesamiento\\
@@ -272,8 +269,8 @@ En esta etapa se calcula la distancia entre valores cero y distinto de cero, es 
 
 
 %\color{cyan} %color de texto con 70-80 % o más de avance
-\subsection{Invariante de color (paper RSASE)} \label{Metodología}
-\subsubsection{Metodología propuesta IIC}
+\subsection{Invariante de color (paper RSASE)} \label{Metodología IIC}
+%\subsubsection{Metodología propuesta IIC}
 En esta sección se describen los pasos del método de procesamiento necesarios para obtener la máscara automática de sombras de la imagen aérea. La figura \ref{diagrama_procesamiento} representa la secuencia de procesamiento.
 
 \begin{figure}

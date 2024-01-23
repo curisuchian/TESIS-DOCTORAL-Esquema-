@@ -75,6 +75,8 @@ Se evaluó el desempeño de los algoritmos modificando en un determinado rango e
 que se definió para separar (y por lo tanto binarizar la imagen) las copas segmentadas, en el artículo de referencia sugiere utilizar el umbral del 0,1º percentil, pero al hacer la prueba de Gridsearch con diferentes valores hasta el 90º percentil, resultaba notable que excepto el correspondiente al percentil 90º los demás resultados no eran visiblemente
 diferentes.
 
+\subsubsection{Discusión}
+El uso de la herramienta R para el procesamiento morfológico de imágenes ha mostrado características que merecen ser tenidas en cuenta en el análisis. Por lo general esta herramienta poderosa para el análisis estadístico de datos, muy útil en datos georreferenciados, es también muy demandante en términos de recursos computacionales, ya que al procesar los datos en archivos raster, la exigencia de memoria RAM es elevada. Asimismo hay rutinas del proceso analizado que demandan una considerable cantidad de tiempo, de varios minutos, como es el caso del comando  normalmixEM() del paquete mixtools (ver \ref{}).
 
 
 %\color{cyan} %color de texto con 70-80 % o más de avance

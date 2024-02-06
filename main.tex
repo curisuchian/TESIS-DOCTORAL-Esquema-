@@ -90,7 +90,7 @@
 \usepackage{multicol}   %Para texto en varias columnas
 \setlength{\columnsep}{1cm}
 \usepackage{multirow}   %fusionar celdas en una columna
-
+\usepackage{ragged2e} %Para justificar
 \usepackage{jupynotex}  %Para meter notebooks de jupyter en el apéndice
 
 % Para que el t�tulo referencias aparezca en espa�ol puede usar la siguiente sentencia
@@ -103,7 +103,11 @@
 % correct bad hyphenation here
 \usepackage[spanish]{babel}
 \usepackage{csquotes}
-\hyphenation{ge-ne-ral-men-te ae-ro-na-ve op-tical te-rres-tre}
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+%\hyphenation{ge-ne-ral-men-te ae-ro-na-ve op-tical te-rres-tre}
 %\usepackage[none]{hyphenat}     %sin separación de sílabas
 
 
@@ -222,7 +226,7 @@ Gracias... totales
 %\mainmatter
 
 %---------------------------------------------------------------------------------------------------------------------
-
+\justifying
 \chapter{Introducción}  
 \pagenumbering{arabic}
     \input{Capitulos/intro.tex}

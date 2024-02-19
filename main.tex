@@ -92,6 +92,7 @@
 \usepackage{multirow}   %fusionar celdas en una columna
 \usepackage{ragged2e} %Para justificar
 \usepackage{jupynotex}  %Para meter notebooks de jupyter en el apéndice
+\usepackage{matlab-prettifier} %Inclusión de código de MATLAB
 
 % Para que el t�tulo referencias aparezca en espa�ol puede usar la siguiente sentencia
 \renewcommand{\bibname}{Referencias}
@@ -100,6 +101,7 @@
 \renewcommand*\appendixname{Apéndice}
 \renewcommand\tablename{Tabla}
 \renewcommand\figurename{Figura}
+\usepackage{siunitx}
 % correct bad hyphenation here
 \usepackage[spanish]{babel}
 \usepackage{csquotes}
@@ -228,6 +230,7 @@ Gracias... totales
 
 %---------------------------------------------------------------------------------------------------------------------
 \justifying
+\setlength{\parindent}{20pt}
 \chapter{Introducción}  
 \pagenumbering{arabic}
     \input{Capitulos/intro.tex}
@@ -241,16 +244,31 @@ Gracias... totales
     \input{Capitulos/conclusiones.tex}
 \appendix
 \chapter{Algoritmo de procesamiento homomórfico}
-%\input{Capitulos/apendice}
+%\input{script_homo}
+\lstinputlisting[
+frame=single,
+numbers=left,
+style=Matlab-editor
+]{Scripts/script_rgb_gris.m}
 \color{red} VER CÓMO INSERTAR SCRIPTS (CÓDIGO O PSEUDOCÓDIGO)
 \color{black}
 \chapter{Algoritmo de procesamiento morfológico}
    % \input{steps(10).tex}
 \color{red} VER CÓMO INSERTAR SCRIPTS (CÓDIGO O PSEUDOCÓDIGO)
 \color{black}
+\lstinputlisting[
+frame=single,
+numbers=left,
+language=R
+]{Scripts/steps-Copy1.r}
 \chapter{Algoritmo de procesamiento con índice invariante de color} 
 \color{red} VER CÓMO INSERTAR SCRIPTS (CÓDIGO O PSEUDOCÓDIGO)
 \color{black}
+\lstinputlisting[
+frame=single,
+numbers=left,
+style=Matlab-editor
+]{Scripts/AZULROJO.m}
 \chapter{Imágenes procesadas por filtro homomórfico} \label{anexo_homo}
  \input{Capitulos/img_hom_completo}
 \chapter{Imágenes procesadas por método morfológico} \label{anexo_morfo}

@@ -92,6 +92,15 @@
 \usepackage{multirow}   %fusionar celdas en una columna
 \usepackage{ragged2e} %Para justificar
 \usepackage{jupynotex}  %Para meter notebooks de jupyter en el apéndice
+\usepackage{listings}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+
+
+
 \usepackage{matlab-prettifier} %Inclusión de código de MATLAB
 
 % Para que el t�tulo referencias aparezca en espa�ol puede usar la siguiente sentencia
@@ -250,25 +259,23 @@ frame=single,
 numbers=left,
 style=Matlab-editor
 ]{Scripts/script_rgb_gris.m}
-\color{red} VER CÓMO INSERTAR SCRIPTS (CÓDIGO O PSEUDOCÓDIGO)
-\color{black}
+
 \chapter{Algoritmo de procesamiento morfológico}
-   % \input{steps(10).tex}
-\color{red} VER CÓMO INSERTAR SCRIPTS (CÓDIGO O PSEUDOCÓDIGO)
-\color{black}
+   
 \lstinputlisting[
 frame=single,
 numbers=left,
 language=R
 ]{Scripts/steps-Copy1.r}
+
 \chapter{Algoritmo de procesamiento con índice invariante de color} 
-\color{red} VER CÓMO INSERTAR SCRIPTS (CÓDIGO O PSEUDOCÓDIGO)
-\color{black}
+
 \lstinputlisting[
 frame=single,
 numbers=left,
 style=Matlab-editor
 ]{Scripts/AZULROJO.m}
+
 \chapter{Imágenes procesadas por filtro homomórfico} \label{anexo_homo}
  \input{Capitulos/img_hom_completo}
 \chapter{Imágenes procesadas por método morfológico} \label{anexo_morfo}

@@ -43,9 +43,16 @@
 \end{figure}
 
 \begin{figure}[h!]
+    \includegraphics[width=\textwidth]{Imagenes/Homomorfico/PS1_filtered.png}
+     \hfill
+     \caption{Imagen filtrada con procesamiento homomórfico a partir de la imagen de la figura \ref{PS1}}
+    \label{PS1 filtrada}
+\end{figure}
+
+\begin{figure}[h!]
     \includegraphics[width=\textwidth]{Imagenes/Homomorfico/PS1_bin.png}
      \hfill
-     \caption{Máscara binaria obtenida a partir de la imagen de la figura \ref{PS1} con umbral de 0,45.}
+     \caption{Máscara binaria obtenida a partir de la imagen de la figura \ref{PS1 filtrada} con umbral de 0,75.}
     \label{mascaraPS1}
 \end{figure}
 
@@ -54,4 +61,11 @@
      \hfill
      \caption{Sombras seleccionadas por el algoritmo a partir de la imagen de la figura \ref{mascaraPS1}.}
     \label{seleccionadaPS1}
+\end{figure}
+
+\begin{figure}[h!]
+    \includegraphics[width=\textwidth]{Imagenes/Homomorfico/PS1_superpuestas.png}
+     \hfill
+     \caption{Sombras seleccionadas mediante ventana deslizante de tamaño 25 x 25 píxeles a partir de máscara binaria obtenida con umbral de intensidad de 0,75 de la imagen filtrada con procesamiento homomórfico de la figura \ref{PS1}.}
+    \label{PS1 superpuesto}
 \end{figure}

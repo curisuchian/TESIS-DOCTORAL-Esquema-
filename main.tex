@@ -98,7 +98,8 @@
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
-
+%\usepackage{unitsdef}
+%\newunit{\hectare}{ha}
 
 
 \usepackage{matlab-prettifier} %Inclusión de código de MATLAB
@@ -245,9 +246,9 @@ Gracias... totales
     \input{Capitulos/intro.tex}
 \chapter{Marco Teórico}
     \input{Capitulos/marco.tex}
-\chapter{Metodología}
+\chapter{Metodología}               \label{Metodología}
     \input{Capitulos/metodologia.tex}
-\chapter{Resultados y Discusión}    
+\chapter{Resultados y Discusión}    \label{Resultados}
     \input{Capitulos/resultados.tex}
 \chapter{Conclusiones}      
     \input{Capitulos/conclusiones.tex}
@@ -277,12 +278,16 @@ style=Matlab-editor
 ]{Scripts/AZULROJO.m}
 
 \chapter{Imágenes procesadas por filtro homomórfico} \label{anexo_homo}
- \input{Capitulos/img_hom_completo}
+ \input{Figuras/img_hom_completo}
 \chapter{Imágenes procesadas por método morfológico} \label{anexo_morfo}
   %\input{Capitulos/img_hom_completo}
  \chapter{Imágenes procesadas por índice invariante de color} \label{anexo_IIC}
- \input{Capitulos/img_IIC_completo}
+ \input{Figuras/img_IIC_completo}
 \chapter{Machine learning} 
+\subsection{C3-Filtros de texturas (probados con fantomas)} %va en apéndice
+Mediante el filtrado por textura puede implementarse una segmentación o clasificación en imágenes. Se hicieron varias pruebas con imágenes simuladas (cuadrados y rombos)
+
+
 \chapter{Fuzzy logic} 
     \input{apen1}
 

@@ -3,18 +3,21 @@
 %HIPÓTESIS: la linealidad se mantiene o no con la escala
 
 \color{black} 
+Con la intención de abarcar los dos bloques temáticos abordados en esta tesis, este capítulo se divide en dos partes. Inicialmente, se muestran los resultados obtenidos en cuanto al relevamiento de imágenes aéreas. A continuación, son presentados los resultados de los algoritmos de procesamiento.
 \section {Propuesta de relevamiento por imágenes RGB de las reservas de la provincia de Misiones} \label{resultados bloque 1}
 
 
 %% No olvidar mencionar que, por simplicidad en los cálculos se considera cada área como si fuera un cuadrado 
 %%
-En las tablas \ref{tab:yaboty}, \ref{tab:sanse} y \ref{tab:profundidad} se sumarizan los resultados del cálculo de tiempo de captura, costo y porcentaje de la imagen útil para cada tipo de plataforma analizada, habiéndose considerado 3 tipos de satélite, 2 tipos de aeronaves tripuladas y 3 modelos de VANT, cada tabla para un tamaño de área relevada distinto. Como primer resultado destacable se puede observar de forma clara que para el caso de superficies relevadas de hasta 20 hectáreas, el costo de obtención de las imágenes mediante VANT y aeronaves tripuladas es significativamente inferior al de las imágenes satelitales. Esto se debe fundamentalmente a que la adquisición de imágenes satelitales requiere de una superficie mínima, \SI{25}{\kilo\metre\squared} si las imágenes son de archivo (> 90 días) o de \SI{100}{\kilo\metre\squared} si son nuevas \cite{noauthor_satellite_2020}.
+En las tablas \ref{tab:yaboty}, \ref{tab:sanse} y \ref{tab:profundidad} se sumarizan los resultados del cálculo de tiempo de captura, costo y porcentaje de la imagen útil para cada tipo de plataforma analizada, habiéndose considerado 3 tipos de satélites, 2 tipos de aeronaves tripuladas y 3 modelos de VANT. Cada tabla para un tamaño de área relevada distinto. Como primer resultado destacable se puede observar de forma clara que para el caso de 20 hectáreas, el costo de obtención de las imágenes mediante VANT y aeronaves tripuladas es significativamente inferior al de las imágenes satelitales. Esto se debe fundamentalmente a que la adquisición de imágenes satelitales requiere de una superficie mínima, \SI{25}{\kilo\metre\squared} si las imágenes son de archivo (captura de más de 90 días) o de \SI{100}{\kilo\metre\squared} si son nuevas \cite{noauthor_satellite_2020}.
 
-Por otro lado, el tiempo que lleva realizar la captura de imágenes que cubran toda el área a relevar depende de la plataforma que se use, y ese tiempo, además, se utilizó para la estimación del costo indicado en la tabla siguiendo lo detallado en la sección \ref{Metodo calculo relevamiento}. \\
-En el caso de los satélites el tiempo no es tenido en cuenta para el cálculo del costo, ni tampoco para la demora en su obtención, ya que se adquieren datos de archivo. En el caso de las aeronaves tripuladas y no tripuladas, tal como se mostró en la subsección \ref{Metodo calculo relevamiento}, el tiempo y el costo total dependerá de las características de los sensores (tamaño, distancia focal) y de las condiciones de sobrevuelo (altura sobre terreno, velocidad de desplazamiento). El costo total está estrechamente ligado al tiempo de relevamiento en el caso de aeronaves tripuladas o no, y para el caso de los satélites el costo proviene del prorrateo de costo de la misión y control del satélite, tomándose las tarifas comerciales.\\
-El porcentaje de utilidad de la imagen capturada se obtuvo dividiendo el tamaño de la reserva relevada por la superficie total relevada. En el caso de las imágenes satelitales, si el área relevada es menor a 2.500 hectáreas, como el área total de las imágenes es fija de 2.500 ha o \SI{25}{\kilo\metre\squared} porque es la mínima superficie que se puede adquirir, a medida que el área de la reserva disminuya, también lo hará el porcentaje útil. Para áreas mucho más grandes como el de la reserva Yaboty, el porcentaje útil será mayor, pero no puede precisarse \textit{a priori} sin conocer exactamente cuántas imágenes se necesitarán, ya que depende de la disponibilidad de las mismas según la trayectoria que tengan para el momento requerido. Ya para el caso de superficies mayores como la reserva Yaboty, el costo total de captura de imágenes mediante vehículos aéreos tripulados o no, equipara e incluso supera al de imágenes satelitales. 
+Por otro lado, el tiempo que lleva realizar la captura de imágenes que cubran toda el área a relevar depende de la plataforma que se use, y ese tiempo, además, se utilizó para la estimación del costo indicado en la tabla siguiendo lo detallado en la sección \ref{Metodo calculo relevamiento}. 
 
-No solo termina siendo más oneroso el relevamiento fotográfico aéreo con VANT en grandes áreas, ya que adicionalmente se debe tener en cuenta la limitación de autonomía de esos vehículos, que generalmente no superan la media hora \cite{noauthor_dji_nodate}, o la hora de autonomía en algunos casos \cite{noauthor_specs_nodate}, aunque hay algunos que llegan a dos horas de autonomía \cite{noauthor_us-1_nodate}. Esto indudablemente afecta al flujo de trabajo por la necesaria reposición de baterías, a la vez que deben establecerse numerosas bases operativas \footnote{Se entiende por base operativa el sitio desde el cual el VANT despega y aterriza por cada misión de relevamiento que realiza} en la medida en que se va avanzando con el relevamiento del terreno.
+En el caso de los satélites el tiempo no es tenido en cuenta para el cálculo del costo, ni tampoco para la demora en su obtención, ya que se adquieren datos de archivo. En el caso de las aeronaves tripuladas y no tripuladas, tal como se mostró en la subsección \ref{Metodo calculo relevamiento}, el tiempo y el costo total dependerá de las características de los sensores (tamaño, distancia focal) y de las condiciones de sobrevuelo (altura sobre terreno, velocidad de desplazamiento). El costo total está estrechamente ligado al tiempo de relevamiento en el caso de aeronaves tripuladas o no, y para el caso de los satélites el costo proviene del prorrateo de costo de la misión y control del satélite, tomándose las tarifas comerciales.
+
+Aún así, el porcentaje de utilidad de la imagen capturada se obtuvo dividiendo el tamaño de la reserva relevada por la superficie total relevada. En el caso de las imágenes satelitales, si el área relevada es menor a 2.500 hectáreas, a medida que el área de la reserva disminuya, también lo hará el porcentaje útil, como el área total de las imágenes es fija de 2.500 ha o \SI{25}{\kilo\metre\squared} porque es la mínima superficie que se puede adquirir. Para áreas más grandes, como el de la reserva Yaboty, el porcentaje útil será mayor, pero no puede precisarse \textit{a priori} sin conocer exactamente cuántas imágenes se necesitarán, ya que depende de la disponibilidad de las mismas según la trayectoria que tengan para el momento requerido. El costo total de captura de imágenes mediante vehículos aéreos tripulados o no, equipara e incluso supera al de imágenes satelitales. 
+
+Adicionalmente se debe tener en cuenta la limitación de autonomía de VANT, que generalmente no superan la media hora \cite{noauthor_dji_nodate}, o la hora de autonomía en algunos casos \cite{noauthor_specs_nodate}, aunque hay algunos que llegan a dos horas de autonomía \cite{noauthor_us-1_nodate}. Esto indudablemente afecta al flujo de trabajo por la necesaria reposición de baterías, a la vez que deben establecerse numerosas bases operativas \footnote{Se entiende por base operativa el sitio desde el cual el VANT despega y aterriza por cada misión de relevamiento que realiza} en la medida en que se va avanzando con el relevamiento del terreno.
 
 Otra limitación que se suma a los VANT es el alcance que tiene el mando de control. Los VANT comerciales más difundidos suelen tener alcances de hasta \SI{10}{\kilo\metre} \cite{noauthor_dji_nodate} por lo que esto debe ser tenido en cuenta en la extensión del área a relevar.
 
@@ -22,7 +25,7 @@ Por otro lado, en el caso de las aeronaves tripuladas pueden resultar muy inconv
 
 
 %\subsubsection{Cálculo presupuestario} %revisar si corresponde que quede aquí, en relación al párrafo precedente
-Partiendo de las características del terreno a relevar (su extensión) y de la plataforma usada para la captura (dron con cámara/sensor) es posible acotar un marco presupuestario para llevar a cabo la tarea. Con los datos recabados, las estimaciones realizadas indican que para un relevamiento aéreo de un área pequeña de veinte hectáreas, es conveniente un VANT, ya que el costo total no excedería los 10 dólares, mientras que en un avión tripulado el costo total sería significativamente más alto, de alrededor de cinco o más veces, y una imagen satelital tendría un costo de 375 dólares (ver tabla \ref{tab:profundidad}. En el caso de un área un poco más grande, de cien hectáreas, el costo total con VANT sigue siendo más bajo que con las otras plataformas, con menos de 50 dólares, mientras que en un avión tripulado el costo total sería de por lo menos 53 dólares (ver tabla \ref{tab:sanse}), teniendo en cuenta que el aeródromo de base está situado a no más de quince minutos de vuelo. Finalmente para el caso de un área mucho más grande, de varios miles de hectáreas como la reserva Yaboty, se torna más conveniente el avión tripulado con alrededor de 20 mil dólares, un poco más que la mitad de lo que cuesta la imagen satelital, y muy por debajo del costo del VANT, que se aproxima o incluso supera el costo de las imágenes satelitales (ver tabla \ref{tab:yaboty}.
+Partiendo de las características del terreno a relevar (su extensión) y de la plataforma usada para la captura (dron con cámara/sensor) es posible acotar un marco presupuestario para llevar a cabo la tarea. Con los datos recabados, las estimaciones realizadas indican que para un relevamiento aéreo de un área de veinte hectáreas, es conveniente un VANT, ya que el costo total no excedería los 10 dólares, mientras que en un avión tripulado el costo total sería significativamente más alto, de alrededor de cinco o más veces, y una imagen satelital tendría un costo de 375 dólares (ver tabla \ref{tab:profundidad}. En el caso de un área un poco más grande, de cien hectáreas, el costo total con VANT sigue siendo más bajo que con las otras plataformas, con menos de 50 dólares, mientras que en un avión tripulado el costo total sería de por lo menos 53 dólares (ver tabla \ref{tab:sanse}), teniendo en cuenta que el aeródromo de base está situado a no más de quince minutos de vuelo. Finalmente para el caso de un área mucho más grande, de varios miles de hectáreas como la reserva Yaboty, se torna más conveniente el avión tripulado con alrededor de 20 mil dólares, un poco más que la mitad de lo que cuesta la imagen satelital, y muy por debajo del costo del VANT, que se aproxima o incluso supera el costo de las imágenes satelitales (ver tabla \ref{tab:yaboty}.
 \input{Tablas/tabla_comparativa}
 
 %agregar gráfico final
@@ -42,7 +45,7 @@ Partiendo de las características del terreno a relevar (su extensión) y de la 
 
 En la figura \ref{grafico_comparativo} se muestra un gráfico en el que se expone cómo varía el costo de relevamiento expresado en dólares estadounidenses en relación a la área relevada, expresada en hectáreas, según la plataforma usada, VANT, aeronaves tripuladas o satélites. Como se observa, en el caso de los VANT es claramente inferior el costo cuando se trata de superficies menores a mil hectáreas. A partir de ese valor el costo de relevamiento se asemeja al de la obtención de imágenes satelitales. Es marcada la incidencia que tiene en el caso de áreas relativamente pequeñas, de 100 hectáreas o menos, lo que puede definirse como costo fijo tanto para imágenes satelitales cuya adquisición está supeditada a un área no menor a \SI{25}{\kilo\metre\squared} (2.500 ha). De acuerdo con la figura \ref{grafico_comparativo} resulta evidente la conveniencia del uso de VANT en términos económicos para relevar las pequeñas reservas públicas y privadas en la provincia de Misiones.
 
-De manera similar, en la figura \ref{grafico_comparativo-II} se muestra cómo varía el tiempo necesario para el relevamiento según la superficie y la plataforma usada. Según se aprecia, para áreas de pequeña extensión, de cien hectáreas o menos, el tiempo que demanda hacer el relevamiento con aeronave tripulada es de dos minutos o menos, con lo que el tiempo de relevamiento es insignificante en comparación al tiempo que podría definirse como logístico, desde la puesta en marcha, despegue y traslado y posterior retorno, que según muestra la tabla \ref{tab:avión}, se aproxima a la media hora. Ese tiempo es independiente de la superficie relevada, pero incide en el costo total, ya que es facturado en un servicio aéreo. Por otro lado, con el relevamiento con VANT se observa que para extensiones menores a 800 ha, es conveniente en términos de tiempo demandado en el relevamiento, incluso considerando el tiempo de reabastecimiento de la batería.
+De manera similar, en la figura \ref{grafico_comparativo-II} se muestra cómo varía el tiempo necesario para el relevamiento según la superficie y la plataforma usada. Según se aprecia, para áreas de pequeña extensión, de cien hectáreas o menos, el tiempo que demanda hacer el relevamiento con aeronave tripulada es de dos minutos o menos, con lo que el tiempo de relevamiento es insignificante en comparación al tiempo que podría definirse como logístico, desde la puesta en marcha, despegue, traslado y posterior retorno, que según muestra la tabla \ref{tab:avión}, se aproxima a la media hora. Ese tiempo es independiente de la superficie relevada, pero incide en el costo total, ya que es facturado en un servicio aéreo. Por otro lado, con el relevamiento con VANT se observa que para extensiones menores a 800 ha, es conveniente en términos de tiempo demandado en el relevamiento, incluso considerando el tiempo de reabastecimiento de la batería.
 
 \subsection{Discusión}
 De los resultados del análisis comparativo de las diferentes plataformas para obtención de las imágenes, se puede concluir que no hay una opción que de manera contundente sea superior y ventajosa respecto de las demás, sino que su elección dependerá del contexto, esencialmente la extensión del área a ser relevada, temporalidad. Como se ha visto, las imágenes satelitales presentan su ventaja en grandes extensiones (de más de 1000 ha), cuando los requerimientos de resolución espacial no son elevados, y si la disponibilidad temporal no presenta un condicionante. Para las extensiones relativamente pequeñas o medianas (menores a 1000 ha) las imágenes capturadas con VANT resultan ventajosas en cuanto a costos. La resolución espacial es también otro punto a favor.
@@ -51,30 +54,38 @@ De los resultados del análisis comparativo de las diferentes plataformas para o
 %Con el objeto de evaluar la correspondiente afectación en el histograma de las imágenes capturadas respecto a las condiciones de iluminación natural, se hicieron varias capturas en distintos horarios durante varios días desde una posición fija a un determinado objeto (un árbol de palta) y se midió la iluminancia usando un luxómetro.
 %\color{cyan} %color de texto con 70-80 % o más de avance
 \subsection{Análisis de regiones sombreadas mediante procesamiento homomórfico} \label{resultados homo}
-Con el objetivo de lograr un algoritmo que analice las imágenes RGB y pueda detectar estructura en la selva, tales como ejemplares altos y depresiones en el dosel de selva, se propuso el análisis de las imágenes para detectar sombras que se proyectan en el dosel. En esta sección se presentan los resultados del algoritmo basado en el análisis homomórfico cuyo detalle se desarrolló en la sección \ref{metod_homo_ventana} aplicados a una variedad de imágenes de la selva seleccionados. Las imágenes pueden verse en el anexo \ref{anexo_homo}.\\
+Con el objetivo de lograr el análisis de forma automática de las imágenes RGB y pueda detectar estructura en la selva, tales como ejemplares altos y depresiones en el dosel de selva, se propone un algoritmo basado en la detección de sombras que se proyectan en el dosel. En esta sección se presentan los resultados del algoritmo basado en el análisis homomórfico cuyo detalle se desarrolló en la sección \ref{metod_homo_ventana} aplicados a una variedad de imágenes de la selva seleccionados. Las imágenes pueden verse en el anexo \ref{anexo_homo}.\\
 
 Las primeras etapas del procesamiento según lo indicado en la figura \ref{flowchart_homomorfico} corresponden a cálculos matemáticos.
-\subsubsection{Detección automática de regiones sombreadas mediante recorrido de ventana} \label{resultados homo ventana}
+\subsubsection{Detección automática de regiones sombreadas mediante ventana deslizante} \label{resultados homo ventana}
 El primer parámetro que se analiza es el tamaño de la ventana de exploración. Esta ventana es una región rectangular de la imagen definida en píxeles, la cual se va posicionando sobre la imagen analizada desplazándose gradualmente de izquierda a derecha y de arriba hacia abajo.
 \input{Tablas/tablahomomorfico}
  Los resultados, que se exponen en la tabla \ref{tab:resultados_homomorfico} se analizan como función del tamaño de ventana de exploración.
 Allí se visualiza para un total de once diferentes imágenes analizadas la cantidad de sombras detectadas, y se comparan los resultados de conteo automático con distintos tamaños de ventana, con el método de búsqueda de forma manual.
 
-A los efectos de demostrar el grado de certeza del algoritmo, se comparó con la detección manual, variando el tamaño de la ventana de exploración. Se comprobó que eligiendo un tamaño de ventana de exploración igual a 20 por 20 píxeles se obtenía un acercamiento al criterio de selección manual.
+Se comprobó que eligiendo un tamaño de ventana de exploración igual a 20 por 20 píxeles se obtenía un acercamiento al criterio de selección manual.
 
-Nótese el cambio de signo para el error medio entre los tamaños de ventana de 25 y de 20 píxeles, indicando que la selección de un tamaño de ventana menor resultará en una mayor cantidad de sombras detectadas que la que se obtiene por conteo manual. En cambio un tamaño de ventana mayor podría obviar varias sombras que serían tenidas en cuenta para el conteo manual. De acuerdo con la resolución de las imágenes de prueba, el tamaño de ventana cuadrada de 20 píxeles por lado se correspondería con un área aproximada de \SI{100}{\metre\squared} , que bien podría corresponder a una copa de árbol de un diámetro aproximado de 10 m.
+Nótese el cambio de signo para el error medio entre los tamaños de ventana de 25 y de 20 píxeles por lado, indicando que la selección de un tamaño de ventana menor resultará en una mayor cantidad de sombras detectadas que la que se obtiene por conteo manual. En cambio un tamaño de ventana mayor podría obviar varias sombras que serían tenidas en cuenta para el conteo manual. De acuerdo con la resolución de las imágenes de prueba, el tamaño de ventana cuadrada de 20 píxeles por lado se correspondería con un área aproximada de \SI{100}{\metre\squared} , que bien podría corresponder a una copa de árbol de un diámetro aproximado de \SI{10}{\metre}.
+
 %100 \SI{100}{\metre\squared}
 El siguiente parámetro que se analizó es el umbral para la binarización (ver figura \ref{flowchart_homomorfico}), definiendo un valor que correspondía a una intensidad de cada píxel por encima del cual se consideraba como sombra. En este caso el valor de intensidad fue de 0,75 en valores de intensidad de píxeles normalizados, de acuerdo con varias pruebas realizadas en las imágenes analizadas.
 
-Para la selección de sombras binarizadas se recorrió la matriz de la imagen con una ventana de inspección que abarcaba 25 píxeles por lado, de modo que se evalúa un conjunto de 625 píxeles. Luego de varias pruebas con diferentes imágenes, se estableció un umbral de 0,45 (45\%) para clasificar las sombras, de modo que los recintos de píxeles blancos que superaban ese umbral eran catalogados como sombras de árboles grandes.
+Para la selección de sombras binarizadas se recorrió la matriz de la imagen con una ventana de inspección que abarcaba 25 píxeles por lado, de modo que se evaluó un conjunto de 625 píxeles. Luego de varias pruebas con diferentes imágenes, se estableció un umbral de 0,45 (45\%) para clasificar las sombras, de modo que los recintos de píxeles blancos que superaban ese umbral eran catalogados como sombras de árboles grandes.
 
 A los efectos de mostrar el funcionamiento del algoritmo de búsqueda y conteo de sombras, se expone la figura \ref{sombratorogris}, en la que se visualiza la imagen satelital en escala de grises de una porción de la reserva privada Sombra de Toro, luego la imagen de salida del filtro homomórfico (figura \ref{ST filtro}), la imagen binarizada luego del filtrado homomórfico en la figura \ref{mascaraST} y las sombras seleccionadas con el algoritmo en la figura \ref{seleccionadaST}. En la figura \ref{ST25} se muestra
 
 \input{Figuras/img_resultados_homomorfico}
+
 \subsubsection{Resultados de procesamiento homomórfico y selección automática mediante sistema de inferencia de lógica difusa} \label{resultados homo difusa}
-En las figuras \ref{} se presentan los resultados de la selección automática de sombras obtenida por el algoritmo propuesto en \ref{metod_homo_fuzzy}.
+En las figuras \ref{ST2_gris} y \ref{ST2_difuso} se presentan los resultados de la selección automática de sombras obtenida por el algoritmo propuesto en \ref{metod_homo_fuzzy}.
+Se muestra la secuencia del procesamiento de la imagen a partir de la imagen original, luego la imagen filtrada, la binarización según el umbral y finalmente la máscara obtenida de acuerdo con los parámetros de selección definidos en el sistema de inferencia difusa.
+\input{Figuras/img_resultados_homo_fuzzy}
 \input{Figuras/img_resultados_homo_VANT}
+
 \subsubsection{Discusión de resultados del procesamiento homomórfico}
+%Particular hacia general... cambiar orden, destacar figuras 4.11 a 4.14
+%Presentar imagen en el texto. (no dejar imagenes huerfanas)
+
 Según lo observado en los resultados, especialmente en las figuras \ref{Cañadon_homo} y \ref{Cañadon_homo2}, es evidente que el algoritmo requiere de optimización y de concederle mayor robustez ante variaciones en, por ejemplo, la resolución espacial. Los parámetros del algoritmo han sido ajustados para las características de las imágenes satelitales utilizadas. En cuanto se aplicaba el algoritmo con imágenes obtenidas por VANT, los resultados obtenidos diferían de manera considerable, por lo que el algoritmo requería de un ajuste mayor de los parámetros para esas condiciones. De este modo, la automatización de la selección de sombras se ve limitada por las condiciones de las imágenes a ser analizadas.\\
 Por otro lado el algoritmo de selección por ventana presenta el inconveniente de que puede tomar un grupo de píxeles discontinuos y considerarlos como una sombra cuando podrían ser dos. Esto obviamente impacta en el resultado del conteo, aparentando menos cantidad de sombras de lo que el ojo humano percibe como tal.                                                                                                                              
 
@@ -85,7 +96,7 @@ Con base en el trabajo realizado por Wagner et al. \cite{hubert_wagner_individua
 
 \input{Figuras/img_resultados_morfologico}
 
-\subsubsection{Evaluación de la influencia de diferentes parámetros en los algoritmos (¿discusión?)}
+\subsubsection{Evaluación de la influencia de diferentes parámetros en los algoritmos}
 Se evaluó el desempeño de los algoritmos modificando en un determinado rango el valor de distintos parámetros en cada etapa del procesamiento, para observar en qué modo se ven afectados los resultados y la vinculación que tienen los parámetros en las diferentes etapas con la resolución espacial de la imagen con la que se trabaja. En tanto en la última etapa se observó que el umbral
 que se definió para separar (y por lo tanto binarizar la imagen) las copas segmentadas, en el artículo de referencia sugiere utilizar el umbral del 0,1º percentil, pero al hacer la prueba de Gridsearch con diferentes valores hasta el 90º percentil, resultaba notable que excepto el correspondiente al percentil 90º los demás resultados no eran visiblemente
 diferentes.
@@ -95,9 +106,9 @@ El uso de la herramienta R para el procesamiento morfológico de imágenes ha mo
 
 
 %\color{cyan} %color de texto con 70-80 % o más de avance
-\subsection{RESULTADOS IIC} \label{Resultados IIC}
+\subsection{Resultados del procesamiento por el método de índice invariante de color (IIC)} \label{Resultados IIC}
 Un total de diecinueve imágenes aéreas de selva fueron consideradas para realizar el análisis. Dos de ellas representativas de los diferentes escenarios que fueron cubiertos, se muestran en las figuras \ref{calle} y \ref{tupido}. La figura \ref{calle} muestra una imagen en la que unas pocas copas de árboles se distribuyen por el área capturada, mientras que en la \ref{tupido} el dosel cubre prácticamente toda el área. La delineación manual de las sombras fue realizada como se describe en el apartado de \ref{Metodología IIC}
-Dos ejemplos de máscaras manuales se muestran en figuras \ref{contorno1} y \ref{contorno2}, con trazo rojo bordeando las regiones sombreadas. La figura \ref{superposicion} muestra el solapamiento de la máscara manual (en rojo) con la automática (en azul). En la figura \ref{p60} el valor de umbral para la máscara binaria se toma del 60º percentil de la distribución de frecuencias, mientras que en la figura \ref{p85} el valor de umbral es tomado del 85º percentil.
+Dos ejemplos de máscaras manuales se muestran en figuras \ref{contorno1} y \ref{contorno2}, con trazo rojo bordeando las regiones sombreadas. Las figuras \ref{p60} y \ref{p85} muestran el solapamiento de la máscara manual (en rojo) con la automática (en azul). En la figura \ref{p60} el valor de umbral para la máscara binaria se toma del 60º percentil de la distribución de frecuencias, mientras que en la figura \ref{p85} el valor de umbral es tomado del 85º percentil.
 
 \input{Figuras/img_resultados_invariante}
 
@@ -119,19 +130,19 @@ La figura \ref{filter3x3}, \ref{filter6x6} y \ref{filter12x12} muestra cómo los
 
 En este trabajo los resultados del algoritmo se comparan con la selección manual llevada a cabo por expertos. Partiendo de que no hay una base de certeza absoluta (los expertos son personas humanas y por lo tanto proclives a errores de omisión o comisión), existe una limitación en el índice de calidad que se basa en este aspecto. El criterio para la selección manual de parte de los expertos depende de su particular percepción de la imagen, variando según el contexto. Por otro lado el algoritmo se basa en el cálculo de un índice y la definición de un valor umbral, obtenido de una serie de experimentos con imágenes de un determinado tipo. En otros contextos con otro tipo de imágenes el valor de umbral no sería el mismo, incluso la combinación de bandas usadas en la ecuación \ref{invariante de color} para obtener el índice sería diferente.
 
-Luego de generar un conjunto de máscaras correspondientes a cada uno de los seis percentiles usando los tres índices invariantes de color de las ecuaciones \ref{psibr} a \ref{psigr} para las 19 imágenes seleccionadas, las 342 máscaras resultantes fueron comparadas con las obtenidas manualmente. Superponiendo ambas, la máscara automática y la manual sobre la imagen original, se evaluó la calidad de las similitudes mutuas, asignando un calificativo en tres niveles, "bueno", "regular" y "malo". Los resultados se muestran en la tabla \ref{tablaiic} y en la figura \ref{compara_mascara}. Tal como se puede apreciar, para los tres índices invariantes de color se puede observar un mínimo en el nivel "malo" alrededor del percentil 90º. Para los niveles "regular" y "bueno", sin embargo, el mínimo no es tan claro, lo cual puede ser atribuido a cierta subjetividad de los observadores expertos.
+Luego de generar un conjunto de máscaras correspondientes a cada uno de los seis percentiles usando los tres índices invariantes de color de las ecuaciones \ref{psibr} a \ref{psigr} para las 19 imágenes seleccionadas, las 342 máscaras resultantes fueron comparadas con las obtenidas manualmente. Superponiendo ambas, la máscara automática y la manual sobre la imagen original, se evaluó la calidad de las similitudes mutuas, asignando un calificativo en tres niveles, <<bueno>>, <<regular>> y <<malo>>. Los resultados se muestran en la tabla \ref{tablaiic} y en la figura \ref{compara_mascara}. Tal como se puede apreciar, para los tres índices invariantes de color se puede observar un mínimo en el nivel <<malo>> alrededor del percentil 90º. Para los niveles <<regular>> y <<bueno>>, sin embargo, el mínimo no es tan claro, lo cual puede ser atribuido a cierta subjetividad de los observadores expertos.
 
 \input{Tablas/tabla_iic} 
 
 \input{Figuras/graficos_iic} 
 
 
-\subsubsection{Validación IIC} \label{Validacion}
-Superponiendo a una imagen las dos máscaras, una obtenida en forma manual y otra en forma automática, tres expertos realizaron un análisis, calificando el grado de ajuste entre ambas máscaras como "bueno", "regular" o "malo". Este procedimiento fue aplicado a cada una de las 19 imágenes analizadas, de modo que se obtuvieron 19 máscaras automáticas por medio del algoritmo para ser comparadas con las respectivas máscaras obtenidas en forma manual. Las superposiciones calificadas como "buenas" o "regulares" son usadas para seleccionar la mejor máscara automática. Un procedimiento similar se siguió para evaluar el filtrado de la imagen.
+\subsubsection{Validación del método IIC} \label{Validacion}
+Superponiendo a una imagen las dos máscaras, una obtenida en forma manual y otra en forma automática, tres expertos realizaron un análisis, calificando el grado de ajuste entre ambas máscaras como <<bueno>>, <<regular>> o <<malo>>. Este procedimiento fue aplicado a cada una de las 19 imágenes analizadas, de modo que se obtuvieron 19 máscaras automáticas por medio del algoritmo para ser comparadas con las respectivas máscaras obtenidas en forma manual. Las superposiciones calificadas como <<buenas>> o <<regulares>> son usadas para seleccionar la mejor máscara automática. Un procedimiento similar se siguió para evaluar el filtrado de la imagen.
 
-\subsection{C5-IIC: Análisis de efecto de bandas utilizadas (sombras)} %esto va en capítulo IIC
-Informe 1
-Se realizaron pruebas del algoritmo sobre distintas imágenes que contienen sombra para ver su desempeño en la selección automática de sombras. Para todos los casos se aplicó para definir el umbral de binarización el correspondiente al percentil 85 de la distribución de frecuencias del índice invariante de color calculado por la ecuación \ref{invariante de color 1}:
+\subsubsection{C5-IIC: Análisis de efecto de bandas utilizadas (sombras)} %esto va en capítulo IIC
+\paragraph{Informe 1}
+A partir de los resultados obtenidos y que se muestran en \ref{Resultados IIC}, se realizaron pruebas del algoritmo sobre distintas imágenes que contienen sombra para ver su desempeño en la selección automática de sombras. En todos los casos el umbral de binarización fue definido considerando el percentil 85 de la distribución de frecuencias del índice invariante de color calculado por la ecuación \ref{invariante de color 1}:
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ECUACIÓN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \\
 \begin{equation}
@@ -139,25 +150,80 @@ Se realizaron pruebas del algoritmo sobre distintas imágenes que contienen somb
 \end{equation}
 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-La imagen de la izquierda se procesó con la combinación de las bandas azul y verde, la de la derecha con la combinación azul y rojo.
+La imagen de la izquierda se procesó con la combinación de las bandas azul y verde ($\Psi_{BG}$), la de la derecha con la combinación azul y rojo ($\Psi_{BR}$).
 Se observa que hay mucha similitud en las áreas marcadas, no obstante los diferentes valores de binarización, obtenidos por criterio del 85to percentil de la distribución de frecuencias de los valores de índice invariante de color hallados para cada combinación de bandas.
 \\
 \\
-Informe 2
-Aplicando el algoritmo sobre una imagen seleccionada que contiene sombras, usando la ecuación \ref{invariante de color2} en la combinación de bandas verde y roja y sin utilizar el criterio de percentil para definir el umbral de binarización:
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ECUACIÓN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\\
-\begin{equation}
-	\psi=\frac{4}{\pi} arctan\left(\frac{B\textsubscript{1}-B\textsubscript{2}}{B\textsubscript{1}+B\textsubscript{2}}\right),\label{invariante de color2}
-\end{equation}
-\\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Observando la imagen con la máscara superpuesta en color azul se nota una marcación altamente coincidente con la que corresponde al área sombreada. Además, mediante el gráfico de histograma de frecuencias del índice invariante de color es posible advertir el valle entre dos picos situado en torno al valor 0,2 el cual fue usado como umbral de binarización.
-\\
-\\
-Informe 3
+\paragraph{Informe 2 - }
+Aplicando el algoritmo sobre una imagen seleccionada que contiene sombras, usando la ecuación \ref{invariante de color 1} en la combinación de bandas verde y roja y sin utilizar el criterio de percentil para definir el umbral de binarización:
 
-Tal como surge de la ecuación 1, las posibilidades de combinar dos entre tres bandas de color resultan en seis diferentes índices invariantes de color para una imagen dada. Lo que resulta notorio es que a priori no se sabe cuál de esas seis resulta la más adecuada para constituir la máscara de selección automática de sombras. 
+Observando la imagen con la máscara superpuesta en color azul (ver Fig. \ref{Info2}) se nota una marcación altamente coincidente con la que corresponde al área sombreada. Además, mediante el gráfico de histograma de frecuencias del índice invariante de color (Fig. \ref{Info2_histoflor}) es posible advertir el valle entre dos picos situado en torno al valor 0,2 el cual fue usado como umbral de binarización.
+
+\input{Figuras/img_informes} 
+
+\paragraph{Informe 3 - COMBINACIÓN DE BANDAS}
+
+Tal como surge de la ecuación \ref{invariante de color 1}, las posibilidades de combinar dos entre tres bandas de color resultan en seis diferentes índices invariantes de color para una imagen dada. Lo que resulta notorio es que a priori no se sabe cuál de esas seis resulta la más adecuada para constituir la máscara de selección automática de sombras. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes//Comparativo Homo-IIC/hexagono.JPG}
+    \caption{Hexágono de posibles combinaciones de la ecuación \ref{invariante de color 1}}
+    \label{hexagono}
+\end{figure}
+
+Luego de observar las matrices resultantes de aplicar cada una de las seis variantes del índice invariante de color, se evidencia cuál es para el caso dado la combinación más adecuada:
+
+Las combinaciones que mejor evidencian las sombras son BE, RA y RV, y al menos parcialmente, AV, lo que sugeriría la necesidad de recurrir al uso de más de una de ellas para seleccionar las sombras.
+
+Para este caso hay varias posibles combinaciones que evidencian sombra (AV, VA, RA); la RV es mucho más sutil.
+
+En este caso parece preponderar la combinación VERDE menos ROJO (RV)
+
+La presencia de sombras está mejor evidenciada con la combinación VA; RA y RV en forma más sutil
+
+Figuras
+
+\paragraph{Informe 4 - INVARIANTE A RESOLUCIÓN ESPACIAL}
+ Según lo que se desprende de una serie de pruebas del algoritmo sobre distintas imágenes, puede observarse que la incidencia del tamaño de la imagen, vale decir, la resolución de la misma, es prácticamente insignificante. Para una misma imagen representada en mayor o menor resolución, las correspondientes máscaras binarias resultantes serán muy semejantes entre sí, como puede comprobarse a la vista:
+
+Figuras
+
+\paragraph{Informe 5 - IMPLEMENTACIÓN DE ALGORITMO EN DIFERENTES PLATAFORMAS}
+Se probó implementar el algoritmo en diferentes plataformas, tanto en Matlab y Octave que comparten las líneas de código en los scripts, y también se adaptó para ser ejecutado en R. Asimismo se hizo una prueba usando una planilla de cálculo y por último se usó un programa GIS que permite el cálculo de capas ráster. En todos ellos se pudo obtener a la salida una máscara binaria que corresponde con las áreas sombreadas de la imagen. En el caso de la prueba realizada con la planilla de cálculo se observa que resulta una tarea muy pesada para el programa, ya que este no está optimizado para procesar imágenes. Por tal motivo a los efectos de comparar, se usó un tamaño de imagen reducido, de 400 x 225 píxeles para todos los casos.
+
+
+Figuras
+
+ 
+Como puede apreciarse, en los cinco casos las máscaras obtenidas son muy similares. El tamaño de archivos que se generan con el procesamiento en hojas de cálculo hace que sea una opción menos atractiva para este tipo de tareas. Pero queda visto que igualmente puede implementarse.
+
+\paragraph{Informe 6 - TIEMPO DE EJECUCIÓN DEL ALGORITMO EN DIFERENTES PLATAFORMAS}
+Se hicieron algunas pruebas para evaluar el tiempo que lleva la ejecución del algoritmo, probando en diferentes plataformas, Matlab, Octave, R. Las pruebas se hicieron con imágenes en distintos tamaños (resoluciones), de 500 x 281 píxeles, 1000 x 562, 2000 x 1125, 4000 x 2250 y 8000 x 4500. Para esa última se simuló una resolución, ya que originalmente las imágenes del dron tienen una resolución de 4000 x 2250 píxeles. Las pruebas que se corrieron en las plataformas Matlab y Octave no difirieron demasiado en el tiempo, que prácticamente ha sido similar en todos los casos, con un tiempo de alrededor de 15 segundos para la imagen de 8000 x 4500 px en Matlab, y 22 segundos en Octave. En cambio fue notorio el incremento de tiempo de ejecución para el caso en R, para la imagen de 4000 x 2250 px llevó alrededor de 17 segundos, y la de 8000 x 4500 px fue imposible determinar el tiempo, ya que desbordó la memoria RAM utilizada. La proporción del incremento del tiempo de ejecución en relación al tamaño de la imagen es de alrededor de tres veces por cada cuadruplicación en tamaño de imagen.
+
+
+\paragraph{Informe 7 - MOMENTO DE LA CAPTURA}
+Para evaluar la incidencia del momento de captura de la imagen aérea en el valor de umbral seleccionado para obtener la máscara binaria de sombras, se comparan dos imágenes de la misma escena capturadas en momentos diferentes, uno alrededor de las ocho de la mañana y otro alrededor de las cuatro de la tarde en una jornada de fines del mes de julio. Procesando las imágenes con el algoritmo y probando diferentes valores de percentil (60, 70, 80, 85, 90 y 95 %)
+
+
+
+percentil 60	percentil 70
+
+
+
+percentil 80	percentil 85
+
+
+
+percentil 90	percentil 95
+
+
+
 \color{black}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+\subsection{COMPARACIÓN ENTRE ALGORITMOS}
+Tal como puede observarse en las figuras \ref{180_fzz}, \ref{180_eq_fzz}, \ref{180_iic} y \ref{180_eq_iic}, es destacable la robustez del algoritmo de procesamiento por IIC frente al homomórfico. 
+\input{Figuras/comparativo_iic_fzz}
+Correspondiendo las imágenes a la misma escena pero alterando las condiciones de la misma (en este caso una imagen está sin ecualizar y la otra está ecualizada), si se someten al algoritmo de procesamiento homomórfico las diferencias de los resultados son considerables, mientras que al ejecutarse el algoritmo de IIC sobre las mismas, en los resultados apenas se advierte alguna diferencia.

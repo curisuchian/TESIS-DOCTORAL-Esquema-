@@ -5,7 +5,7 @@ En esta sección se realiza un análisis de factibilidad y conveniencia de las p
 \subsection{Reservas de bosque nativo de la Selva Paranaense en la Provincia de Misiones}
 En primer lugar, se hace una descripción de las características de las reservas de bosque nativo en la provincia de Misiones. Esta parece ser una restricción geográfica importante, pero en la provincia de Misiones está presente casi la mitad del remanente en pie del bioma conocido como Bosque Atlántico o Selva Paranaense, que representa hoy en día solo un 5\% de la extensión histórica, que cubría el nordeste de Argentina, buena parte del Paraguay y el sur de Brasil. 
 
-A partir de información publicada por el Ministerio de Ecología y Recursos Naturales Renovables de la Provincia de Misiones \cite{noauthor_areas_nodate}, la Red Argentina de Reservas Privadas \cite{noauthor_red_nodate} y diversas noticias publicadas en medios digitales, se realizó una base de datos de las reservas de la provincia. Esta información se dejará disponible a través del repositorio de la UNaM \cite{noauthor_principal_nodate}.
+A partir de información publicada por el Ministerio de Ecología y Recursos Naturales Renovables de la Provincia de Misiones \cite{noauthor_areas_nodate}, la Red Argentina de Reservas Privadas \cite{noauthor_red_nodate} y diversas noticias publicadas en medios digitales, en el año 2024, se realizó una base de datos de las reservas de la provincia. Esta información se dejará disponible a través del repositorio de la UNaM \cite{noauthor_principal_nodate}.
 Se lista un total de 126 reservas, clasificadas según  su pertenencia, privada o pública, y dentro de esta última, según su jurisdicción: nacional, provincial y municipal. En el Apéndice es presentado un listado completo.
 A fines de relevamiento y monitoreo, una de las principales variables que influyen es el tamaño de la reserva, por lo tanto, se toma este parámetro para proponer una clasificación entre reservas de pequeña extensión (menor a 200 ha), mediana extensión (de 200 a 2.000 ha) o gran extensión (mayor a 2.000 ha). En la Figura \ref{hist_res} se muestra un histograma indicando la cantidad de reservas en cada grupo. Resulta evidente que la mayor cantidad de reservas son de pequeña extensión, representando el 56\%.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
@@ -23,7 +23,8 @@ A fines de relevamiento y monitoreo, una de las principales variables que influy
 Algunas de las reservas encontradas en la provincia de Misiones son descritas a modo ilustrativo a continuación.
 
 \subsubsection{Reserva Biósfera Yaboty}
-La Biosfera Yaboty, está integrada por un conjunto de reservas públicas y privadas cuya extensión es totaliza 253.773 ha [1]. Está enclavada en el centro-este de la provincia.
+La Biosfera Yaboty, está integrada por un conjunto de reservas públicas y privadas cuya extensión es totaliza 221155 ha
+ \cite{noauthor_sib_nodate-1}. Está enclavada en el centro-este de la provincia.
 \begin{table}[H]
     \centering
     \begin{tabular}{|c|c|c|}
@@ -54,7 +55,7 @@ La Biosfera Yaboty, está integrada por un conjunto de reservas públicas y priv
 \label{San Sebastian}
 \end{table}
 
-La reserva San Sebastián de la Selva es una reserva privada de cien hectáreas, que contiene áreas de selva virgen y de selva en restauración. Está ubicada en la localidad de Comandante Andresito, al norte de la provincia de Misiones, sobre la ruta nacional 101, entre los parques Urugua-í y Foerster, contribuyendo a formar un corredor verde.
+La reserva San Sebastián de la Selva \cite{noauthor_red_nodate} es una reserva privada de 92 hectáreas, que contiene áreas de selva virgen y de selva en restauración. Está ubicada en la localidad de Comandante Andresito, al norte de la provincia de Misiones, sobre la ruta nacional 101, entre los parques Urugua-í y Foerster, contribuyendo a formar un corredor verde.
 \subsubsection{Parque Provincial Cañadón de Profundidad}
 \begin{table}[H]
 \centering
@@ -72,7 +73,7 @@ La reserva San Sebastián de la Selva es una reserva privada de cien hectáreas,
 \label{Profundidad}
 \end{table}
 
-La reserva provincial Cañadón de Profundidad es una pequeña reserva de alrededor de 20 ha ubicado en el departamento Candelaria, en cercanías de la ciudad de Posadas.
+La reserva provincial Cañadón de Profundidad \cite{noauthor_sib_nodate} es una pequeña reserva de 19 ha ubicado en el departamento Candelaria, en cercanías de la ciudad de Posadas.
 
 \subsection{Requerimientos y restricciones} \label{Metodo calculo relevamiento}
 Para llevar adelante el relevamiento de las áreas forestales hay que tener en cuenta los requerimientos en el tiempo y en el equipamiento, así como las restricciones que imponen las regulaciones legales y condiciones geográficas y meteorológicas. Dependiendo de cuán grande sea el área a relevar, puede resultar más conveniente alguna de las plataformas de sensado remoto que otra. El criterio que debe ponderarse está basado en cálculos de tiempo, de costos operacionales y de disponibilidad. Para distintos escenarios, reservas grandes de miles de hectáreas de extensión o pequeñas reservas privadas de pocas decenas o centenas de hectáreas, los cálculos arrojarán resultados diferentes.
@@ -97,7 +98,7 @@ Para hallar cualquier distancia en la superficie real a partir de la fotografía
 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 donde $S$ es la distancia en la superficie real, $S'$ es la distancia en la imagen.
-En un relevamiento fotogramétrico de áreas urbanas o cultivos, el solapamiento longitudinal suele ser de un promedio de 60\%, sin embargo,  mientras que el solapamiento lateral suele ser de 25\% [4], sin embargo, en zonas de selva densa se recomienda que sea mayor al 80\% para ambos solapamientos. La distancia longitudinal $B$ entre dos fotografías consecutivas (línea de base) se halla en función al solapamiento longitudinal $p$, y se calcula según la ecuación (\ref{linea_de_base}).
+En un relevamiento fotogramétrico de áreas urbanas o cultivos, el solapamiento longitudinal suele ser de un promedio de 60\%, sin embargo,  mientras que el solapamiento lateral suele ser de 25\% \cite{lopez_introduccion_nodate}, sin embargo, en zonas de selva densa se recomienda que sea mayor al 80\% para ambos solapamientos. La distancia longitudinal $B$ entre dos fotografías consecutivas (línea de base) se halla en función al solapamiento longitudinal $p$, y se calcula según la ecuación (\ref{linea_de_base}).
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ECUACIÓN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \\
 \begin{equation}
@@ -160,9 +161,9 @@ Conociendo el tiempo total que le lleva a la plataforma aérea completar el reco
 Obtener los datos y características técnicas de los sensores no es tarea sencilla. La información que suele figurar en los sitios web de los fabricantes o en los manuales, no suele ser la que se necesita para calcular. Por ejemplo la distancia focal no suele ser un dato que aparezca en la lista de especificaciones. Puede obtenerse de los metadatos asociados a una imagen que ha sido capturada con ese sensor.
 Del mismo modo tampoco resulta sencillo obtener información sobre las tarifas de vuelos de relevamiento aéreo, ya sea tripulado o no. La información disponible es vaga y escueta, por ejemplo en respuesta a una consulta han informado que la hora de vuelo tripulado es de 240 dólares estadounidenses si se toma como base el dólar oficial (cotizado en 55 mil pesos argentinos, mayo 2023), y la de VANT es de 195 dólares estadounidenses (cotizado en 45 mil pesos argentinos, mayo 2023). Según otras consultas, el costo de hora de vuelo de aviones tripulados es de alrededor de cien dólares estadounidenses \footnote{Las consultas fueron realizadas a distintos referentes de la actividad aeronáutica}.
 \subsubsection{Carga útil - cámaras fotográficas}
-Los que se pueden seleccionar con mayor grado de libertad son los que están relacionados con el hardware asociado a la tarea, como es el sensor de la cámara, o las características de funcionamiento de la aeronave no tripulada. Una cámara con mayor resolución demandará mayor espacio de almacenamiento. Asimismo si se trata de sensores ópticos en el rango del espectro visible, la posibilidad de operar se limitará a las horas diurnas. No así si se trata de sensores que trabajan en otro rango de longitudes de onda, como los infrarrojos, o sensores activos, como LiDAR.
+Los que se pueden seleccionar con mayor grado de libertad son los que están relacionados con el hardware asociado a la tarea, como es el sensor de la cámara, o las características de funcionamiento de la aeronave no tripulada. Una cámara con mayor resolución demandará mayor espacio de almacenamiento. Asimismo si se trata de sensores ópticos en el rango del espectro visible, la posibilidad de operar se limitará a las horas diurnas. No así si se trata de sensores que trabajan en otro rango de longitudes de onda, como los infrarrojos, o sensores activos, como LiDAR, acrónimo del inglés \textit{Light Detection And Ranging}, que significa "detección y medición de luz" \cite{ferraz_lidar_2016}.
 \subsubsection{Marco regulatorio} %Marco teórico
-Las imágenes utilizadas en el presente trabajo son de libre disponibilidad (Google, Bing, banco de imágenes satelitales de la NASA, ESA...). Las que se obtuvieron por medios propios se han hecho en lugares públicos previniendo la fotografía de personas y dentro del marco que regula las actividades con VANT. 
+Las imágenes utilizadas en el presente trabajo son de libre disponibilidad desde sitios web como los servidores de imágenes satelitales de Google, Bing, NASA, ESA \cite{noauthor_google_nodate, noauthor_mapas_nodate, noauthor_nasa_nodate, noauthor_home_nodate}. Las que se obtuvieron por medios propios se han hecho en lugares públicos previniendo la fotografía de personas y dentro del marco que regula las actividades con VANT \cite{noauthor_regulacion_2020}. 
 \subsubsection{Almacenamiento necesario} %fusionar con Hardware
 Dependiendo de la resolución espacial y espectral de las imágenes, los requerimientos de almacenamiento aumentarán en proporción a las mismas. Por ejemplo, para relevar completamente un área de la extensión de la reserva Biósfera Yaboty, con una resolución espacial de 3 cm/pixel, las casi seis millones y medio de fotografías en RGB, con 5 Megapíxeles por cada una, con una profundidad de color de 8 bit por canal necesitarían un espacio de almacenamiento de alrededor de 7,5 Terabytes.
 
@@ -190,7 +191,7 @@ La ecuación que representa al filtro es \ref{filtro homomorfico}
 
 donde $D_0$ es la frecuencia de corte, $c$ controla la forma y pendiente del filtro en la región de transición entre $\gamma_L$ y $\gamma_H$. $D(u,v)$ es la distancia al origen del plano de frecuencias.
 
-Las imágenes a ser analizadas son imágenes satelitales obtenidas desde el sitio web Bing, de distintas reservas de bosque nativo, tanto públicas como privadas, %\color{red}\textbf{(poner en referencia de la dirección web del maps)}\color{black}. \\ % Paranay -26.701277, -54.759434
+Las imágenes a ser analizadas son imágenes satelitales obtenidas desde el sitio web Bing \cite{noauthor_mapas_nodate}, de distintas reservas de bosque nativo, tanto públicas como privadas, %\color{red}\textbf{(poner en referencia de la dirección web del maps)}\color{black}. \\ % Paranay -26.701277, -54.759434
 en los que se supone mayor presencia de especies de árboles de interés para el presente trabajo. 
 \subsubsection{Selección automática de regiones sombreadas usando método de recorrido de ventana} \label{metod_homo_ventana}
 En un primer paso se realizó la conversión de la imagen de color rojo, verde y azul (RGB) a la representación matiz, saturación e intensidad (HSI), trabajando sobre la componente de intensidad. La componente de intensidad se obtiene sumando los tres canales rojo, verde y azul y dividiendo por tres (ecuación \ref{RGB-HSI}). 
@@ -216,12 +217,12 @@ Partiendo de la imagen procesada con filtro homomórfico, se efectuó la selecci
     \label{flowchart_homofuzzy}
 \end{figure}
 
-En la primera implementando un sistema de inferencia difusa por el método Sugeno, mediante el cual se discriminaban los píxeles de determinada intensidad, que constituía la variable de entrada, estableciendo una salida según dos funciones de membresía trapezoidales, una correspondiente a píxeles "claros" y otra a "oscuros" (ver figura \ref{sug1}). La segunda etapa de inferencia difusa, también con el método Sugeno, implicaba dos variables de entrada, área e intensidad promedio. A cada variable se le asignaron funciones de membresía, tres en el caso de área, de forma trapezoidal, y dos en el caso de la variable intensidad promedio, de forma triangular (ver figura \ref{sug2}). La salida del sistema es una máscara binaria con las regiones de sombra designadas con píxeles blancos. 
+En la primera implementando un sistema de inferencia difusa por el método Sugeno \cite{takagi_fuzzy_1985, sugeno_structure_1988}, mediante el cual se discriminaban los píxeles de determinada intensidad, que constituía la variable de entrada, estableciendo una salida según dos funciones de membresía trapezoidales, una correspondiente a píxeles \say{claros} y otra a \say{oscuros} (ver figura \ref{sug1}). La segunda etapa de inferencia difusa, también con el método Sugeno, implicaba dos variables de entrada, área e intensidad promedio. A cada variable se le asignaron funciones de membresía, tres en el caso de área, de forma trapezoidal, y dos en el caso de la variable intensidad promedio, de forma triangular (ver figura \ref{sug2}). La salida del sistema es una máscara binaria con las regiones de sombra designadas con píxeles blancos. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\textwidth]{Imagenes/Homomorfico/sugeno1.png}
+    \includegraphics[width=0.75\textwidth]{Imagenes/Homomorfico/sugeno1.png}
      \hfill
      \caption{Esquema del sistema de inferencia difusa de la primera etapa}
     \label{sug1}
@@ -229,7 +230,7 @@ En la primera implementando un sistema de inferencia difusa por el método Sugen
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\textwidth]{Imagenes/Homomorfico/sugeno2.png}
+    \includegraphics[width=0.75\textwidth]{Imagenes/Homomorfico/sugeno2.png}
      \hfill
      \caption{Esquema del sistema de inferencia difusa de la segunda etapa}
     \label{sug2}
@@ -247,7 +248,7 @@ La varianza se calcula mediante la fórmula expresada en la ecuación \ref{varia
 \\
 siendo $x_i$ el valor de cada conteo automático de cada una de las $n$ imágenes analizadas, y $\overline{x}$ es el valor de conteo manual.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
-El desvío estándar se obtiene de la raíz cuadrada de la varianza (ecuación \ref{desvio}.
+El desvío estándar se obtiene de la raíz cuadrada de la varianza (ecuación \ref{desvio}).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ECUACIÓN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \\
 \begin{equation}
@@ -256,9 +257,9 @@ El desvío estándar se obtiene de la raíz cuadrada de la varianza (ecuación \
 \\
 \subsection{Procesamiento morfológico} %Ferreira, Wagner...
 
-El tratamiento automático de clasificación de especies arbóreas a partir de imágenes requiere de un conjunto de habilidades informáticas que van desde la manipulación el tratamiento de las imágenes hasta el entrenamiento de modelos de aprendizaje automático. Para obtener una aceptable clasificación de copas es necesario realizar procesamiento a la imagen aprovechando las características de textura y contraste que ésta exhibe. Los algoritmos matemáticos desarrollados en este trabajo posibilitan una adecuada segmentación de las copas individuales del dosel y capa emergente de la Selva Atlántica, lo que consecuentemente habilita en otro nivel la clasificación por especies. 
-Para obtener el segmentado se toma como punto de partida la imagen aérea en escala de grises, ya que se enfoca en los diferentes contrastes y texturas existentes entre el área de copas y el espacio entre ellas. Corresponde hacer una primer etapa de identificación gruesa entre copas y bordes, luego se homogeneiza el interior de las copas para eliminar huecos. La imagen es tratada matemáticamente como una matriz donde cada elemento es un píxel, cuyo valor se relaciona con la intensidad correspondiente al espacio de color HSI. Esta matriz es pasible de manipulación matemática, de modo que permite aplicarse filtros varios, algoritmos de procesamiento morfológicos, que permiten resaltar estructuras internas de la imagen, facilitando esto la segmentación de copas. Se aplica un criterio de distinción de tamaño de copas grandes y chicas, partiendo desde la resolución espacial de la imagen, definiendo aquellas grandes como las que superan el radio de tres píxeles. Diferentes algoritmos se aplican de forma secuenciada, procesando sobre los resultados de cada paso anterior. De modo que intervienen algoritmos de homogeneización como el filtro \textit{RollingBall} y el filtrado \textit{top-bottom-hat} basado en operadores morfológicos de apertura y clausura. En cada etapa se definen parámetros que se ajustan según las condiciones
-de la imagen, algunos de los cuales se obtienen por medio de herramientas de estadística (promedio, percentiles, etc.). Estos parámetros son tenidos en cuenta para definir umbrales de decisión. A los fines de visualizar el comportamiento de los algoritmos y la influencia de estos parámetros, se condujo una evaluación tipo \textit{gridsearch} en la que se definió un rango para cada parámetro y se expuso el resultado correspondiente. A continuación, se describe en detalle cada etapa de procesamiento, según lo ilustrado en la Figura \ref{flowchart_morfologico}. 
+Para obtener una aceptable clasificación de copas es necesario realizar procesamiento a la imagen aprovechando las características de textura y contraste que ésta exhibe. Los algoritmos matemáticos desarrollados en este trabajo buscan lograr una adecuada segmentación de las copas individuales del dosel y capa emergente de la Selva Atlántica, lo que consecuentemente habilita en otro nivel la clasificación por especies. 
+Para obtener el segmentado se tomó como punto de partida la imagen aérea en escala de grises, ya que se enfoca en los diferentes contrastes y texturas existentes entre el área de copas y el espacio entre ellas. Corresponde hacer una primer etapa de identificación gruesa entre copas y bordes, luego se homogeneiza el interior de las copas para eliminar huecos. La imagen es tratada matemáticamente como una matriz donde cada elemento es un píxel, cuyo valor se relaciona con la intensidad correspondiente al espacio de color HSL. Esta matriz es pasible de manipulación matemática, de modo que permite aplicarse filtros varios, algoritmos de procesamiento morfológicos, que permiten resaltar estructuras internas de la imagen, facilitando esto la segmentación de copas. Se aplica un criterio de distinción de tamaño de copas grandes y chicas, partiendo desde la resolución espacial de la imagen, definiendo aquellas grandes como las que superan el radio de tres píxeles. Diferentes algoritmos se aplican de forma secuenciada, procesando sobre los resultados de cada paso anterior. De modo que intervienen algoritmos de homogeneización como el filtro \textit{RollingBall} y el filtrado \textit{top-bottom-hat} basado en operadores morfológicos de apertura y clausura. En cada etapa se definen parámetros que se ajustan según las condiciones
+de la imagen, algunos de los cuales se obtienen por medio de herramientas de estadística (promedio, percentiles, etc.). Estos parámetros son tenidos en cuenta para definir umbrales de decisión. A los fines de visualizar el comportamiento de los algoritmos y la influencia de estos parámetros, se condujo una evaluación tipo \textit{gridsearch} en la que se definió un rango para cada parámetro y se expuso el resultado correspondiente. El código del algoritmo utilizado se expone en el apéndice \ref{script_morfo}. A continuación, se describe en detalle cada etapa de procesamiento, según lo ilustrado en la Figura \ref{flowchart_morfologico}. 
 
 Para el diagrama de bloques:
 
@@ -275,7 +276,7 @@ Para el diagrama de bloques:
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\textwidth]{Imagenes/Homomorfico/flowchart_fuzzy.png}
+    \includegraphics[width=0.5\textwidth]{Imagenes/Morfologico/flowchart_morfologico.png}
      \hfill
      \caption{Diagrama de flujo del procesamiento morfologico}
     \label{flowchart_morfologico}
@@ -283,12 +284,12 @@ Para el diagrama de bloques:
 
 
 \subsubsection{Preprocesamiento y eliminación de áreas sin sombra}
-La imagen es procesada en escala de grises, para ello se parte del formato original HSL (\textit{Hue}, \textit{Saturation}, \textit{Luminosity}) y se extrae solamente la componente de luminosidad, en la cual el valor de cada pixel varía en un rango entre 0 y 1, en el que los valores más altos corresponden a áreas más brillantes. También la imagen es recortada seleccionando las áreas de interés (las que contienen sombras).
+Partiendo de la imagen original, del formato RGB es convertido al formato HSL (ver \ref{espacio_color}) y se extrae la componente de luminosidad, en la cual el valor de cada pixel varía en un rango entre 0 y 1, en el que los valores más altos corresponden a áreas más brillantes. También la imagen es recortada seleccionando las áreas de interés (las que contienen sombras).
 \subsubsection{Primera identificación de objetos oscuros}
 Una primera identificación de objetos oscuros se logra a partir de definir a los píxeles de la imagen que tienen un valor menor que la media en la distribución de grises.
 \subsubsection{Relleno de sombras en copas}
 Este paso es para "suavizar" la textura de las copas de los árboles, rellenando los espacios de sombras.
-Si se invierte los valores de los píxeles de la imagen y se le suma el máximo valor de la escala de grises, se obtiene un equivalente a una imagen negativa. Luego se aplica un filtro \textit{Rolling Ball} con radio de tres píxeles. La imagen resultante se vuelve a invertir, quedando como resultado un área de píxeles homogéneo.
+Si se invierte los valores de los píxeles de la imagen y se le suma el máximo valor de la escala de grises, se obtiene un equivalente a una imagen negativa. Luego se aplica un filtro \textit{Rolling Ball} con radio de tres píxeles (el código se expone en el apéndice \ref{script_morfo}. La imagen resultante se vuelve a invertir, quedando como resultado un área de píxeles homogéneo.
 \subsubsection{Identificación y relleno de huecos en grandes copas}
 Según la resolución espacial de la imagen utilizada, una copa de árbol de 7,5 m de diámetro abarca 15 píxeles. Se lleva a cabo una transformación top hat, con un elemento estructurante circular de diámetro de 15 píxeles. Se obtiene entonces una máscara binaria que contiene solamente copas grandes (mayores a 7,5 metros de diámetro).
 \subsubsection{ Segunda identificación de objetos oscuros}
@@ -309,13 +310,14 @@ En esta etapa se calcula la distancia entre valores cero y distinto de cero, es 
 %\color{cyan} %color de texto con 70-80 % o más de avance
 \subsection{Método del Índice Invariante de color} \label{Metodología IIC}
 %\subsubsection{Metodología propuesta IIC}
-Un método que da resultados interesantes en la detección de sombras es el que implementaba el cálculo del índice invariante de color (IIC). 
+Otra metodología aplicada es una que permite la detección de sombras es el que implementaba el cálculo del índice invariante de color (IIC). 
 %Probando con distintos valores de umbral, se observó que el que producía resultados más satisfactorios era el que correspondía al 85º percentil de la distribución de los valores de IIC.
 El punto de partida del método es la adquisición de imágenes aéreas. No hay requerimientos especiales, excepto que se den las condiciones para proyección de sombras. Se tomaron imágenes de un área representativa de la selva nativa en la provincia de Misiones, las cuales fueron capturadas desde un VANT que sobrevoló las áreas de interés. A los efectos de obtener imágenes con presencia de sombras, se estableció un adecuado rango temporal de captura de imágenes, en este caso de 3 a 4 pm. Las imágenes fueron adquiridas en el invierno meridional, en el mes de agosto, cuando la proyección de sombras es mayor debido a la posición relativa del sol. Se utilizó un dron Mini 2, del fabricante DJI, equipado con una cámara de 12 megapíxeles. La altura de vuelo sobre el terreno fue de 50 metros. la resolución espacial de las imágenes son de 3 cm/píxel.
 
 En esta sección se describen los pasos del método de procesamiento necesarios para obtener la máscara automática de sombras de la imagen aérea. La figura \ref{diagrama_procesamiento} representa la secuencia de procesamiento.
 
 \begin{figure}
+     \centering
     \includegraphics[width=0.3\textwidth]{Imagenes/flowchart.png}
      \hfill
      \caption{Diagrama del procesamiento}
@@ -325,10 +327,10 @@ En esta sección se describen los pasos del método de procesamiento necesarios 
 \subsubsection{Adquisición de la imagen}
 Entre los pocos requerimientos en esta etapa se destaca que las condiciones de luz solar deben ser las apropiadas para generar proyecciones de sombra. Aquí se consideran imágenes representativas de un área de selva nativa en la provincia de Misiones, Argentina, que han sido capturadas mediante VANT sobrevolando porciones de selva en parques y reservas naturales, en las cuales habría presencia de ejemplares de árboles de interés. Para garantizar una mejor captura de imágenes con sombra, se seleccionó un intervalo de tiempo que abarca desde las 3 p.m. hasta las 4 p.m., que es cuando la posición relativa del sol facilita la proyección de sombras sobre el dosel. Las imágenes fueron capturadas durante el invierno meridional, específicamente en el mes de agosto, cuando las sombras proyectadas son mayores para ese horario. Se usó un VANT modelo Mini 2 del fabricante DJI, equipado con una cámara con resolución de 12 Megapíxeles. La altura de vuelo sobre el terreno fue de 50 metros, y el modo en que estuvo configurada la cámara era automático. Las imágens capturadas están en formato JPG con una resolución de 4000 x 2250 píxeles, con una resolución espacial de 3 cm/pixel aproximadamente. Para ejecutar el algoritmo se usó una computadora laptop común con un procesador Intel Core i5. En cuanto a los scripts, están basados en códigos de Octave. Se analizó un total de 19 imágenes.
 
-\subsubsection{Preprocesamiento de imagen} 
-Para facilitar el procesamiento y posterior análisis, las imágenes de los diferentes sitios deben ser recortadas par anormalizar el tamaó y ser filtradas para estandarizar algunos atributos.
+%\subsubsection{Preprocesamiento de imagen} 
+%Para facilitar el procesamiento y posterior análisis, las imágenes de los diferentes sitios deben ser recortadas para normalizar el tamaño y ser filtradas para estandarizar algunos atributos.
 \subsubsection{Cálculo de índice invariante de color}
-Con base en imágenes filtradas RGB, el invariante de color $\Psi$ se calcula por medio de la ecuación \ref{invariante de color}
+Con base en imágenes filtradas RGB, como se explica en \ref{seccion iic}, el invariante de color $\Psi$ se calcula por medio de la ecuación \ref{invariante de color}
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ECUACIÓN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \\
 \begin{equation}
@@ -336,7 +338,7 @@ Con base en imágenes filtradas RGB, el invariante de color $\Psi$ se calcula po
 \end{equation}
 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- donde $B_1$ y $B_2$ son dos bandas diferentes de color, rojo, verde o azul. El índice invariante de color $\Psi$ toma un valor entre -1 y 1. Si se aplica la ecuación a las bandas correspondientes $B_1$ y $B_2$, el resultado es una matriz de idéntico tamaño al de la imagen, en la que cada píxel contiene el valor del índice invariante de color. Según sea la combinación entre bandas, hay hasta seis posibilidades, siendo una mitad complementaria de la otra mitad. Por esta razón sólo se tienen en cuenta tres de esas posibilidades. La matriz de índice invariante de color se usó para analizar las partes sombreadas y no sombreadas de la imagen. Así, para las tres combinaciones a implementar, se describen en las ecuaciones \ref{psibr}, \ref{psibg} y \ref{psigr}:
+ donde $B_1$ y $B_2$ son dos bandas diferentes de color, rojo, verde o azul. El índice invariante de color $\Psi$ toma un valor entre -1 y 1 \cite{sirmacek_building_2008}. Si se aplica la ecuación a las bandas correspondientes $B_1$ y $B_2$, el resultado es una matriz de idéntico tamaño al de la imagen, en la que cada píxel contiene el valor del índice invariante de color. Según sea la combinación entre bandas, hay hasta seis posibilidades, siendo una mitad complementaria de la otra mitad. Por esta razón sólo se tienen en cuenta tres de esas posibilidades. La matriz de índice invariante de color se usó para analizar las partes sombreadas y no sombreadas de la imagen. Así, para las tres combinaciones a implementar, se describen en las ecuaciones \ref{psibr}, \ref{psibg} y \ref{psigr}:
  \\
  \\
 \begin{equation}
@@ -355,10 +357,10 @@ Con base en imágenes filtradas RGB, el invariante de color $\Psi$ se calcula po
 \\
 donde $B_{B}$, $B_{G}$, y $B_{R}$ son los canales azul, verde y rojo respectivamente.
 \subsubsection{Binarización automática}
- La binarización permite separar la imagen en dos regiones, con sombra y sin sombra, mediante la matriz de índice invariante de color y un valor de umbral, calculado como la frecuencia acumulada de la distribución de valores individuales de IIC. Esta máscara que se obtiene, denominada máscara automática, se compone de píxeles de valores 1 y 0, correspondiendo el valor de 1 al de las regiones sombreadas de la imagen. En la composición de la máscara binaria se asume un valor de 1 (visualizado en blanco) para las regiones sombreadas. Tomando la distribución de frecuencia acumulada del índice invariante de color, se determina el valor umbral que excede los percentiles 60º, 70º, 80º, 85º, 90º y 95º. De este modo, en el presente trabajo, se obtienen seis máscaras, cada una correspondiente al valor de umbral de cada percentil. Luego el valor de umbral es variable y es calculado para cada imagen para un percentil determinado. La calidad de cada máscara automática obtenida es evaluada al compararse con una máscara manual obtenida por un experto humano para la correspondiente imagen.
+ La binarización permite separar la imagen en dos regiones, con sombra y sin sombra, mediante la matriz de índice invariante de color y un valor de umbral, que en el presente trabajo es calculado como la frecuencia acumulada de la distribución de valores individuales de IIC. Esta máscara que se obtiene, denominada máscara automática, se compone de píxeles de valores 1 y 0, correspondiendo el valor de 1 al de las regiones sombreadas de la imagen. En la composición de la máscara binaria se asume un valor de 1 (visualizado en blanco) para las regiones sombreadas. Tomando la distribución de frecuencia acumulada del índice invariante de color, se determina el valor umbral que excede los percentiles 60º, 70º, 80º, 85º, 90º y 95º. De este modo, en el presente trabajo, se obtienen seis máscaras, cada una correspondiente al valor de umbral de cada percentil. Luego el valor de umbral es variable y es calculado para cada imagen para un percentil determinado. La calidad de cada máscara automática obtenida es evaluada al compararse con una máscara manual obtenida por un experto humano para la correspondiente imagen.
 
 \subsubsection{Comparación cuantitativa con un índice de calidad}
-Para establecer un índice de calidad (QI) del desempeño de la selección automática, se proponen tres índices: el primero ($QI_1$) se obtiene del cociente entre la suma de todos los píxeles de la matriz binaria, obtenida como consecuencia de la intersección de la máscara manual y la máscara automática, y la suma de todos los elementos de la máscara manual (\ref{qi1}). El segundo índice ($QI_2$) se obtiene dividiendo la suma de elementos de la intersección por la suma de los elementos de la máscara automática (\ref{qi2}); y el tercer índice ($QI_3$) se obtiene dividiendo la suma de los elementos de la intersección por la suma de los elementos de la unión de la máscara manual y automática (\ref{qi3}.
+Para establecer un índice de calidad (QI) del desempeño de la selección automática, en el presente trabajo se proponen tres índices: el primero ($QI_1$) se obtiene del cociente entre la suma de todos los píxeles de la matriz binaria, obtenida como consecuencia de la intersección de la máscara manual y la máscara automática, y la suma de todos los elementos de la máscara manual (\ref{qi1}). El segundo índice ($QI_2$) se obtiene dividiendo la suma de elementos de la intersección por la suma de los elementos de la máscara automática (\ref{qi2}); y el tercer índice ($QI_3$) se obtiene dividiendo la suma de los elementos de la intersección por la suma de los elementos de la unión de la máscara manual y automática (\ref{qi3}.
 \\
 \\
  \begin{equation}
@@ -379,11 +381,11 @@ Para establecer un índice de calidad (QI) del desempeño de la selección autom
 \end{equation}
 \\
 \\
-Donde $M_M$ es la máscara binaria manual y $M_A$ es la máscara binaria automática. Cada uno de los índices precedentes toma valores de 0 a 1, siendo 0 el caso en que no hay ninguna coincidencia entre máscaras, y 1 indica plena coincidencia. Para los tres índices, el numerador es la intersección entre ambas máscaras, manual y automática, ya que es un buen indicador de coincidencia entre ambas. El denominador en tanto da un valor de referencia que parametriza el índice. La intersección y la unión son operaciones lógicas que se aplican a cada píxel, de modo que es una condición necesaria que sendas máscaras binarias automática y manual que serán comparadas entre sí, sean del mismo tamaño y de áreas de captura coincidentes. En un nivel de píxel, la intersección es una operación lógica "and", por lo que, al ser cero uno de sendos píxeles comparados, el resultado de la operación dará cero. Por otro lado, la unión implica una operación a nivel de píxel de tipo "or", y siendo uno de sendos píxeles de valor uno, el resultado será uno. El objetivo de este índice es evaluar cuanto se asemeja la selección automática del algoritmo a la selección manual. Así, el mayor valor que corresponde a 1 implica una selección automática exacta, mientras que valores más bajos cercanos a cero corresponden a una pobre correlación entre sendas selecciones.
+Donde $M_M$ es la máscara binaria manual y $M_A$ es la máscara binaria automática. Cada uno de los índices precedentes toma valores de 0 a 1, siendo 0 el caso en que no hay ninguna coincidencia entre máscaras, y 1 indica plena coincidencia. Para los tres índices, el numerador es la intersección entre ambas máscaras, manual y automática, ya que es un buen indicador de coincidencia entre ambas. El denominador en tanto da un valor de referencia que parametriza el índice. La intersección y la unión son operaciones lógicas que se aplican a cada píxel, de modo que es una condición necesaria que sendas máscaras binarias automática y manual que serán comparadas entre sí, sean del mismo tamaño y de áreas de captura coincidentes. En un nivel de píxel, la intersección es una operación lógica \say{and}, por lo que, al ser 0 uno de sendos píxeles comparados, el resultado de la operación dará 0. Por otro lado, la unión implica una operación a nivel de píxel de tipo \say{or}, y siendo uno de sendos píxeles de valor 1, el resultado será 1. El objetivo de este índice es evaluar cuanto se asemeja la selección automática del algoritmo a la selección manual. Así, el mayor valor que corresponde a 1 implica una selección automática exacta, mientras que valores más bajos cercanos a cero corresponden a una pobre correlación entre sendas selecciones.
 
 
 \subsubsection{Etapa de filtrado}
-Para quitar el ruido de la imagen, se implementa un filtro de mediana. Para evaluar cómo la etapa de filtrado afecta el desempeño de la selección automática, se realizaron para cada imagen tres pruebas con diferentes configuraciones de filtro, con vecindad de tres por tres, seis por seis, y  doce por doce pixeles. Para cada caso se propuso un conjunto de tres índices de calidad, descriptos en las ecuaciones \ref{qi5}, \ref{qi6} y \ref{qi7}
+Para quitar el ruido de la imagen, se implementa un filtro de mediana, que cosniste en una operación sobre la matriz de la imagen en la que se toma un subgrupo de píxeles en torno a uno según el alcance de vecindad (los seis, nueve o doce que rodean al pixel en cuestión) y se obtiene el valor mediano entre ellos para reasignarlo al pixel evaluado, y así con cada pixel de la imagen \cite{lim_two-dimensional_1990}. Para evaluar cómo la etapa de filtrado afecta el desempeño de la selección automática, se realizaron para cada imagen tres pruebas con diferentes configuraciones de filtro, con vecindad de tres por tres, seis por seis, y  doce por doce pixeles. Para cada caso se propuso un conjunto de tres índices de calidad, descriptos en las ecuaciones \ref{qi5}, \ref{qi6} y \ref{qi7}
 \\
 \\
  \begin{equation}

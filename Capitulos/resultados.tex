@@ -72,7 +72,10 @@ El siguiente parámetro que se analizó es el umbral para la binarización (ver 
 
 Para la selección de sombras binarizadas se recorrió la matriz de la imagen con una ventana de inspección que abarcaba 25 píxeles por lado, de modo que se evaluó un conjunto de 625 píxeles. Luego de varias pruebas con diferentes imágenes, se estableció un umbral de 0,45 (45\%) para clasificar las sombras, de modo que los recintos de píxeles blancos que superaban ese umbral eran catalogados como sombras de árboles grandes.
 
-A los efectos de mostrar el funcionamiento del algoritmo de búsqueda y conteo de sombras, se expone la figura \ref{sombratorogris}, en la que se visualiza la imagen satelital en escala de grises de una porción de la reserva privada Sombra de Toro, luego la imagen de salida del filtro homomórfico (figura \ref{ST filtro}), la imagen binarizada luego del filtrado homomórfico en la figura \ref{mascaraST} y las sombras seleccionadas con el algoritmo en la figura \ref{seleccionadaST}. En la figura \ref{ST25} se muestra
+A los efectos de mostrar el funcionamiento del algoritmo de búsqueda y conteo de sombras, se expone la figura \ref{sombratorogris}, en la que se visualiza la imagen satelital en escala de grises de una porción de la reserva privada Sombra de Toro, luego la imagen de salida del filtro homomórfico (figura \ref{ST filtro}), la imagen binarizada luego del filtrado homomórfico en la figura \ref{mascaraST} y las sombras seleccionadas con el algoritmo en la figura \ref{seleccionadaST}. En la figura \ref{ST25} se muestra la superposición de selección automática y manual sobre la imagen en escala de grises de la reserva Sombra de Toro. Se observa allí una diferencia entre selección manual y automática por ventana deslizante, lo que denota una subvaloración de áreas sombreadas en el conteo automático.
+En las figuras \ref{PS1} a \ref{PS1 superpuesto} se muestra la imagen de la reserva Parque de la Sierra que, de modo similar a la anterior, se procesó con el método de la ventana deslizante. En este caso se utilizó un umbral de 0,75. En térmios comparativos resulta evidente que el valor de umbral más adecuado para la binarización es el de 0,45.
+%Luego vienen algunas figuras más la 4.8 , hasta la 4.12. con otra region (PS1) nuevamente puede ser una descricion similar.solo que en este caso se uso un umbral de 0.75, mencionar eso en el texto y al final escribir una comparacion encuanto a la calidad y eso confirma lo que se dijo antes de que 0.45 de valor de umbral para la binarizacion es el seleccinado como mejor umbral.
+
 
 \input{Figuras/img_resultados_homomorfico}
 
@@ -110,11 +113,13 @@ Para el procesamiento morfológico de imágenes se ha utilizado la herramienta R
 Un total de diecinueve imágenes aéreas de selva fueron consideradas para realizar el análisis. Dos de ellas representativas de los diferentes escenarios que fueron cubiertos, se muestran en las figuras \ref{calle} y \ref{tupido}. La figura \ref{calle} muestra una imagen en la que unas pocas copas de árboles se distribuyen por el área capturada, mientras que en la \ref{tupido} el dosel cubre prácticamente toda el área. La delineación manual de las sombras fue realizada como se describe en el apartado de \ref{Metodología IIC}
 Dos ejemplos de máscaras manuales se muestran en figuras \ref{contorno1} y \ref{contorno2}, con trazo rojo bordeando las regiones sombreadas. Las figuras \ref{p60} y \ref{p85} muestran el solapamiento de la máscara manual (en rojo) con la automática (en azul). En la figura \ref{p60} el valor de umbral para la máscara binaria se toma del 60º percentil de la distribución de frecuencias, mientras que en la figura \ref{p85} el valor de umbral es tomado del 85º percentil.
 
-\input{Figuras/img_resultados_invariante}
-
 \subsubsection{Influencia del valor de percentil y del índice invariante de color}
 
-La figura \ref{azulrojo}, \ref{azulverde} y \ref{verderojo} muestra para la misma escena, diferentes máscaras automáticas obtenidas con diferentes configuraciones de la ecuación \ref{invariante de color}, usando tres diferentes combinaciones de canales de dos colores. La figura \ref{azulrojo} corresponde a la máscara obtenida usando la diferencia entre el canal azul menos el canal rojo $\Psi_{BR}$, la figura \ref{azulverde} usando la diferencia entre el canal azul menos el canal verde $\Psi_{BG}$ y la figura \ref{verderojo} usando la diferencia entre el canal verde menos el canal rojo $\Psi_{GR}$. En todos los casos el valor de umbral fue tomado del 85º percentil de la distribución de frecuencia. El análisis de las figuras \ref{azulrojo} a \ref{verderojo} muestra que, aplicando la ecuación \ref{invariante de color} usando ya sea la combinación de canales azul con verde $\Psi_{BG}$ o azul con rojo $\Psi_{BR}$  las máscaras automáticas resultantes para un mismo valor de percentil son de área mayor que las que corresponden al índice calculado con la diferencia entre canal verde y rojo $\Psi_{GR}$, lo que resulta en valores de QI más altos para $\Psi_{BR}$ y $\Psi_{BG}$ que para $\Psi_{GR}$. La comparación entre las distintas influencias del valor de percentil puede observarse en la figura \ref{curvas_QI}, donde resulta evidente que $QI_1$ es el más alto en el percentil bajo 60º y $QI_2$ es el más alto para el percentil alto 95º. 
+La figura \ref{azulrojo}, \ref{azulverde} y \ref{verderojo} muestra para la misma escena, diferentes máscaras automáticas obtenidas con diferentes configuraciones de la ecuación \ref{invariante de color}, usando tres diferentes combinaciones de canales de dos colores.
+
+\input{Figuras/img_resultados_invariante}
+
+La figura \ref{azulrojo} corresponde a la máscara obtenida usando la diferencia entre el canal azul menos el canal rojo $\Psi_{BR}$, la figura \ref{azulverde} usando la diferencia entre el canal azul menos el canal verde $\Psi_{BG}$ y la figura \ref{verderojo} usando la diferencia entre el canal verde menos el canal rojo $\Psi_{GR}$. En todos los casos el valor de umbral fue tomado del 85º percentil de la distribución de frecuencia. El análisis de las figuras \ref{azulrojo} a \ref{verderojo} muestra que, aplicando la ecuación \ref{invariante de color} usando ya sea la combinación de canales azul con verde $\Psi_{BG}$ o azul con rojo $\Psi_{BR}$  las máscaras automáticas resultantes para un mismo valor de percentil son de área mayor que las que corresponden al índice calculado con la diferencia entre canal verde y rojo $\Psi_{GR}$, lo que resulta en valores de QI más altos para $\Psi_{BR}$ y $\Psi_{BG}$ que para $\Psi_{GR}$. La comparación entre las distintas influencias del valor de percentil puede observarse en la figura \ref{curvas_QI}, donde resulta evidente que $QI_1$ es el más alto en el percentil bajo 60º y $QI_2$ es el más alto para el percentil alto 95º. 
 
 Por otro lado el índice $QI_3$ se asemeja a una curva convexa, con valores similares a $QI_1$ para el percentil 60º y similares a $QI_2$ para el percentil 95º, cuyo valor máximo en la curva corresponde al 85º percentil. Un comportamiento similar se observa para los otros índices invariantes de color $\Psi_{BG}$ y $\Psi_{GR}$. La similitud entre QI1 y QI2 en el percentil más bajo se debe al hecho de que la máscara automática selecciona un área de sombra que resulta preponderante en la operación de unión binaria en el denominador de la ecuación \ref{qi3} en el caso de $QI_3$.
 Por otro lado, el índice $QI_3$ se aproxima a $QI_1$ cuando la máscara automática selecciona un área pequeña de sombra, por lo tanto la selección manual de sombra resulta dominante en la operación de unión de máscaras en el denominador de la ecuación \ref{qi3}.
@@ -163,7 +168,7 @@ Observando la imagen con la máscara superpuesta en color azul (ver Fig. \ref{In
 
 \paragraph{Informe 3 - COMBINACIÓN DE BANDAS}
 
-Tal como surge de la ecuación \ref{invariante de color 1}, las posibilidades de combinar dos entre tres bandas de color resultan en seis diferentes índices invariantes de color para una imagen dada. Lo que resulta notorio es que a priori no se sabe cuál de esas seis resulta la más adecuada para constituir la máscara de selección automática de sombras. 
+Tal como surge de la ecuación \ref{invariante de color 1}, las posibilidades de combinar dos entre tres bandas de color resultan en seis diferentes índices invariantes de color para una imagen dada, que se muestran en la figura \ref{hexagono}. Lo que resulta notorio es que a priori no se sabe cuál de esas seis resulta la más adecuada para constituir la máscara de selección automática de sombras. 
 
 \begin{figure}[H]
     \centering
@@ -172,17 +177,71 @@ Tal como surge de la ecuación \ref{invariante de color 1}, las posibilidades de
     \label{hexagono}
 \end{figure}
 
-Luego de observar las matrices resultantes de aplicar cada una de las seis variantes del índice invariante de color, se evidencia cuál es para el caso dado la combinación más adecuada:
+Luego de observar las matrices resultantes de aplicar cada una de las seis variantes del índice invariante de color en la figura \ref{sanjose}, se evidencia la combinación más adecuada (ver figura \ref{hexagono1})
 
-Las combinaciones que mejor evidencian las sombras son BE, RA y RV, y al menos parcialmente, AV, lo que sugeriría la necesidad de recurrir al uso de más de una de ellas para seleccionar las sombras.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes//Informes/info3_sanjose.JPG}
+    \caption{Imagen con presencia de sombras }
+    \label{sanjose}
+\end{figure}
 
-Para este caso hay varias posibles combinaciones que evidencian sombra (AV, VA, RA); la RV es mucho más sutil.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes//Informes/info3_hexagono.JPG}
+    \caption{Hexágono con resultados de las diferentes combinaciones del índice invariante de color \ref{invariante de color 1}}
+    \label{hexagono1}
+\end{figure}
 
-En este caso parece preponderar la combinación VERDE menos ROJO (RV)
+Según se aprecia en la figura \ref{hexagono1} las combinaciones que mejor evidencian las sombras son la resta de canal rojo menos canal azul y canal azul menos canal verde. 
 
-La presencia de sombras está mejor evidenciada con la combinación VA; RA y RV en forma más sutil
+Para el caso de la imagen de la figura \ref{costanera} la distinción de sombras es más nítida en las combinaciones de resta de canal verde menos canal rojo y canal rojo menos canal azul (ver figura \ref{hexagono2}.
 
-Figuras
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes//Informes/costanera_garupa.JPG}
+    \caption{Imagen con presencia de sombras}
+    \label{costanera}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes//Informes/info3_hexagono2.JPG}
+    \caption{Hexágono con resultados de las diferentes combinaciones del índice invariante de color \ref{invariante de color 1}}
+    \label{hexagono2}
+\end{figure}
+
+En el caso de aplicar las seis combinaciones posibles del índice invariante de color a la imagen de la figura \ref{planta}, la distinción de sombras es más evidente para la combinación de la resta entre canal verde menos canal rojo (ver figura \ref{hexagono3})
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes//Informes/info3_planta.JPG}
+    \caption{Imagen con presencia de sombras}
+    \label{planta}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes//Informes/info3_hexagono3.JPG}
+    \caption{Hexágono con resultados de las diferentes combinaciones del índice invariante de color \ref{invariante de color 1}}
+    \label{hexagono3}
+\end{figure}
+
+Aplicando las combinaciones del índice invariante de color a la imagen de la figura \ref{colon} resulta más notoria la distinción de sombras para la combinación de la resta de canal verde menos canal azul (ver figura \ref{hexagono4}) 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes//Informes/info3_colon.JPG}
+    \caption{Imagen con presencia de sombras}
+    \label{colon}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes//Informes/info3_hexagono4.JPG}
+    \caption{Hexágono con resultados de las diferentes combinaciones del índice invariante de color \ref{invariante de color 1}}
+    \label{hexagono4}
+\end{figure}
 
 \paragraph{Informe 4 - INVARIANTE A RESOLUCIÓN ESPACIAL}
  Según lo que se desprende de una serie de pruebas del algoritmo sobre distintas imágenes, puede observarse que la incidencia del tamaño de la imagen, vale decir, la resolución de la misma, es prácticamente insignificante. Para una misma imagen representada en mayor o menor resolución, las correspondientes máscaras binarias resultantes serán muy semejantes entre sí, como puede comprobarse a la vista:

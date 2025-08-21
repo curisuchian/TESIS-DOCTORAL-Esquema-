@@ -113,7 +113,7 @@ Para el procesamiento morfológico de imágenes se ha utilizado la herramienta R
 Un total de diecinueve imágenes aéreas de selva fueron consideradas para realizar el análisis. Dos de ellas representativas de los diferentes escenarios que fueron cubiertos, se muestran en las figuras \ref{calle} y \ref{tupido}. La figura \ref{calle} muestra una imagen en la que unas pocas copas de árboles se distribuyen por el área capturada, mientras que en la \ref{tupido} el dosel cubre prácticamente toda el área. La delineación manual de las sombras fue realizada como se describe en el apartado de \ref{Metodología IIC}
 Dos ejemplos de máscaras manuales se muestran en figuras \ref{contorno1} y \ref{contorno2}, con trazo rojo bordeando las regiones sombreadas. Las figuras \ref{p60} y \ref{p85} muestran el solapamiento de la máscara manual (en rojo) con la automática (en azul). En la figura \ref{p60} el valor de umbral para la máscara binaria se toma del 60º percentil de la distribución de frecuencias, mientras que en la figura \ref{p85} el valor de umbral es tomado del 85º percentil.
 
-\subsubsection{Influencia del valor de percentil y del índice invariante de color}
+\subsubsection{Influencia del valor de percentil y del método de cálculo del índice invariante de color}
 
 La figura \ref{azulrojo}, \ref{azulverde} y \ref{verderojo} muestra para la misma escena, diferentes máscaras automáticas obtenidas con diferentes configuraciones de la ecuación \ref{invariante de color}, usando tres diferentes combinaciones de canales de dos colores.
 
@@ -121,9 +121,50 @@ La figura \ref{azulrojo}, \ref{azulverde} y \ref{verderojo} muestra para la mism
 
 La figura \ref{azulrojo} corresponde a la máscara obtenida usando la diferencia entre el canal azul menos el canal rojo $\Psi_{BR}$, la figura \ref{azulverde} usando la diferencia entre el canal azul menos el canal verde $\Psi_{BG}$ y la figura \ref{verderojo} usando la diferencia entre el canal verde menos el canal rojo $\Psi_{GR}$. En todos los casos el valor de umbral fue tomado del 85º percentil de la distribución de frecuencia. El análisis de las figuras \ref{azulrojo} a \ref{verderojo} muestra que, aplicando la ecuación \ref{invariante de color} usando ya sea la combinación de canales azul con verde $\Psi_{BG}$ o azul con rojo $\Psi_{BR}$  las máscaras automáticas resultantes para un mismo valor de percentil son de área mayor que las que corresponden al índice calculado con la diferencia entre canal verde y rojo $\Psi_{GR}$, lo que resulta en valores de QI más altos para $\Psi_{BR}$ y $\Psi_{BG}$ que para $\Psi_{GR}$. La comparación entre las distintas influencias del valor de percentil puede observarse en la figura \ref{curvas_QI}, donde resulta evidente que $QI_1$ es el más alto en el percentil bajo 60º y $QI_2$ es el más alto para el percentil alto 95º. 
 
+\begin{figure} [h!]
+         \centering
+         \includegraphics[width=\textwidth]{Imagenes/grafico.png}
+         \hfill
+         \caption{Dispersión y tendencia de los índices de calidad al variar el percentil del umbral (60º a 95º) usando el IIC resultado de la resta entre banda azul menos banda roja. Las líneas continuas representan la tendencia para cada índice, mientras que los puntos subyacentes corresponden a los valores obtenidos para cada imagen analizada.}
+        \label{curvas_QI}
+\end{figure}
+
 Por otro lado el índice $QI_3$ se asemeja a una curva convexa, con valores similares a $QI_1$ para el percentil 60º y similares a $QI_2$ para el percentil 95º, cuyo valor máximo en la curva corresponde al 85º percentil. Un comportamiento similar se observa para los otros índices invariantes de color $\Psi_{BG}$ y $\Psi_{GR}$. La similitud entre QI1 y QI2 en el percentil más bajo se debe al hecho de que la máscara automática selecciona un área de sombra que resulta preponderante en la operación de unión binaria en el denominador de la ecuación \ref{qi3} en el caso de $QI_3$.
 Por otro lado, el índice $QI_3$ se aproxima a $QI_1$ cuando la máscara automática selecciona un área pequeña de sombra, por lo tanto la selección manual de sombra resulta dominante en la operación de unión de máscaras en el denominador de la ecuación \ref{qi3}.
 Al maximizar la intersección, se asegura la coincidencia entre las máscaras manual y automática, pero podría excederse en la máscara automática. Luego, al minimizar la unión, se puede controlar el tamaño pleno de la máscara automática. Un punto óptimo es el caso en el que el índice $QI_3$ alcanza el máximo valor. A pesar de la dispersión de los datos (ver figura \ref{curvas_QI}), se puede analizar los valores medios de los índices de calidad QI para los tres casos considerados (ver figuras \ref{psiBR}, \ref{psiBG}, \ref{psiGR}). Se observa que el valor que corresponde al 85º percentil de la distribución de frecuencia del índice invariante de color es el óptimo, ya que corresponde a un máximo del índice $QI_3$.
+
+%\input{Figuras/graficos_iic} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+     \centering
+     \begin{subfigure}[b]{0.8\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Imagenes/qibr.png}
+         \caption{\textpsi \textsubscript{BR}}
+         \label{psiBR}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.8\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Imagenes/qibg.png}
+         \caption{\textpsi \textsubscript{BG}}
+         \label{psiBG}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.8\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Imagenes/qigr.png}
+         \caption{\textpsi \textsubscript{GR}}
+         \label{psiGR}
+     \end{subfigure}
+        \caption{Índice de calidad}
+        \label{quality_index}
+\end{figure}
+
+%tamaño
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 En el análisis de la figura \ref{quality_index}, se observan grandes similitudes, donde se grafican las relaciones entre los tres índices de calidad propuestos y un índice adicional definido como la diferencia entre el valor máximo y el mínimo entre los tres índices en función del valor de percentil usado para calcular el umbral de la máscara binaria automática. En los tres casos se detecta un valor mínimo para la curva que corresponde al índice adicional, es decir el rango (max - min), y este valor mínimo corresponde al percentil 85º. Además para los casos que usan sendas combinaciones en la ecuación \ref{invariante de color} resta de canal azul menos rojo y azul menos verde, la curva del índice $QI_3$ alcanza un valor máximo en el que corresponde al 85º percentil, mientras que este punto máximo no se hace evidente para el caso de de la combinación verde menos rojo. Por lo tanto de los cuatro índices que fueron analizados, el más conveniente es el $QI_3$, que exhibe un valor óptimo de percentil más preciso por medio del mínimo en la curva, y en los tres casos de combinaciones de canales es coincidente.
 
@@ -133,33 +174,33 @@ La figura \ref{filter3x3}, \ref{filter6x6} y \ref{filter12x12} muestra cómo los
 
 \subsubsection{Evaluación humana de máscaras automáticas de sombra}
 
-En este trabajo los resultados del algoritmo se comparan con la selección manual llevada a cabo por expertos. Partiendo de que no hay una base de certeza absoluta (los expertos son personas humanas y por lo tanto proclives a errores de omisión o comisión), existe una limitación en el índice de calidad que se basa en este aspecto. El criterio para la selección manual de parte de los expertos depende de su particular percepción de la imagen, variando según el contexto. Por otro lado el algoritmo se basa en el cálculo de un índice y la definición de un valor umbral, obtenido de una serie de experimentos con imágenes de un determinado tipo. En otros contextos con otro tipo de imágenes el valor de umbral no sería el mismo, incluso la combinación de bandas usadas en la ecuación \ref{invariante de color} para obtener el índice sería diferente.
+En este trabajo los resultados del algoritmo se comparan con la selección manual llevada a cabo por expertos. Partiendo de que no hay una base de certeza absoluta, existe una limitación en el índice de calidad que se basa en este aspecto. El criterio para la selección manual de parte de los expertos depende de su particular percepción de la imagen, variando según el contexto. Por otro lado el algoritmo se basa en el cálculo de un índice y la definición de un valor umbral. En otros contextos con otro tipo de imágenes el valor de umbral no sería el mismo, incluso la combinación de bandas usadas en la ecuación \ref{invariante de color} para obtener el índice sería diferente.
 
 Luego de generar un conjunto de máscaras correspondientes a cada uno de los seis percentiles usando los tres índices invariantes de color de las ecuaciones \ref{psibr} a \ref{psigr} para las 19 imágenes seleccionadas, las 342 máscaras resultantes fueron comparadas con las obtenidas manualmente. Superponiendo ambas, la máscara automática y la manual sobre la imagen original, se evaluó la calidad de las similitudes mutuas, asignando un calificativo en tres niveles, <<bueno>>, <<regular>> y <<malo>>. Los resultados se muestran en la tabla \ref{tablaiic} y en la figura \ref{compara_mascara}. Tal como se puede apreciar, para los tres índices invariantes de color se puede observar un mínimo en el nivel <<malo>> alrededor del percentil 90º. Para los niveles <<regular>> y <<bueno>>, sin embargo, el mínimo no es tan claro, lo cual puede ser atribuido a cierta subjetividad de los observadores expertos.
 
 \input{Tablas/tabla_iic} 
 
-\input{Figuras/graficos_iic} 
-
-
 \subsubsection{Validación del método IIC} \label{Validacion}
 Superponiendo a una imagen las dos máscaras, una obtenida en forma manual y otra en forma automática, tres expertos realizaron un análisis, calificando el grado de ajuste entre ambas máscaras como <<bueno>>, <<regular>> o <<malo>>. Este procedimiento fue aplicado a cada una de las 19 imágenes analizadas, de modo que se obtuvieron 19 máscaras automáticas por medio del algoritmo para ser comparadas con las respectivas máscaras obtenidas en forma manual. Las superposiciones calificadas como <<buenas>> o <<regulares>> son usadas para seleccionar la mejor máscara automática. Un procedimiento similar se siguió para evaluar el filtrado de la imagen.
 
-\subsubsection{C5-IIC: Análisis de efecto de bandas utilizadas (sombras)} %esto va en capítulo IIC
-\paragraph{Informe 1}
-A partir de los resultados obtenidos y que se muestran en \ref{Resultados IIC}, se realizaron pruebas del algoritmo sobre distintas imágenes que contienen sombra para ver su desempeño en la selección automática de sombras. En todos los casos el umbral de binarización fue definido considerando el percentil 85 de la distribución de frecuencias del índice invariante de color calculado por la ecuación \ref{invariante de color 1}:
+\subsubsection{Validación del algoritmo IIC por umbral y por combinaciones de canales de color.} %esto va en capítulo IIC
+\paragraph{Validación del algoritmo IIC con umbral fijo (percentil 85°) en diferentes combinaciones de canales de color.}
+A partir de los resultados obtenidos y que se muestran en \ref{Resultados IIC}, se realizaron pruebas del algoritmo sobre distintas imágenes que contienen sombra para ver su desempeño en la selección automática de sombras. En todos los casos el umbral de binarización fue definido considerando el percentil 85° de la distribución de frecuencias del índice invariante de color calculado por la ecuación \ref{invariante de color 1}:
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ECUACIÓN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \\
 \begin{equation}
-	\psi=\frac{4}{\pi} arctan\left(\frac{B\textsubscript{1}-B\textsubscript{2}}{B\textsubscript{1}+B\textsubscript{2}}\right),\label{invariante de color 1}
+	\psi\textsubscript{B1B2}=\frac{4}{\pi} arctan\left(\frac{B\textsubscript{1}-B\textsubscript{2}}{B\textsubscript{1}+B\textsubscript{2}}\right),\label{invariante de color 1}
 \end{equation}
 \\
+donde $B_1$ y $B_2$ son dos bandas diferentes de color, correspondientes al espacio de color RGB.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
 La imagen de la izquierda se procesó con la combinación de las bandas azul y verde ($\Psi_{BG}$), la de la derecha con la combinación azul y rojo ($\Psi_{BR}$).
-Se observa que hay mucha similitud en las áreas marcadas, no obstante los diferentes valores de binarización, obtenidos por criterio del 85to percentil de la distribución de frecuencias de los valores de índice invariante de color hallados para cada combinación de bandas.
+Se observa que hay mucha similitud en las áreas marcadas, no obstante los diferentes valores de binarización, obtenidos por criterio del percentil 85° de la distribución de frecuencias de los valores de índice invariante de color hallados para cada combinación de bandas.
 \\
 \\
-\paragraph{Informe 2 - }
+\paragraph{Determinación de Umbral de Binarización por Histograma de Frecuencias
+}
 Aplicando el algoritmo sobre una imagen seleccionada que contiene sombras, usando la ecuación \ref{invariante de color 1} en la combinación de bandas verde y roja y sin utilizar el criterio de percentil para definir el umbral de binarización:
 
 Observando la imagen con la máscara superpuesta en color azul (ver Fig. \ref{Info2}) se nota una marcación altamente coincidente con la que corresponde al área sombreada. Además, mediante el gráfico de histograma de frecuencias del índice invariante de color (Fig. \ref{Info2_histoflor}) es posible advertir el valle entre dos picos situado en torno al valor 0,2 el cual fue usado como umbral de binarización.
@@ -173,7 +214,7 @@ Tal como surge de la ecuación \ref{invariante de color 1}, las posibilidades de
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Imagenes//Comparativo Homo-IIC/hexagono.JPG}
-    \caption{Hexágono de posibles combinaciones de la ecuación \ref{invariante de color 1}}
+    \caption{Hexágono de posibles combinaciones del índice invariante de color (ψ) a partir de dos de las tres bandas de color (Rojo, Verde y Azul).}
     \label{hexagono}
 \end{figure}
 
@@ -248,7 +289,7 @@ Aplicando las combinaciones del índice invariante de color a la imagen de la fi
 
 Figuras
 
-\paragraph{Informe 5 - IMPLEMENTACIÓN DE ALGORITMO EN DIFERENTES PLATAFORMAS}
+\paragraph{IMPLEMENTACIÓN DE ALGORITMO EN DIFERENTES PLATAFORMAS}
 Se probó implementar el algoritmo en diferentes plataformas, tanto en Matlab y Octave que comparten las líneas de código en los scripts, y también se adaptó para ser ejecutado en R. Asimismo se hizo una prueba usando una planilla de cálculo y por último se usó un programa GIS que permite el cálculo de capas ráster. En todos ellos se pudo obtener a la salida una máscara binaria que corresponde con las áreas sombreadas de la imagen. En el caso de la prueba realizada con la planilla de cálculo se observa que resulta una tarea muy pesada para el programa, ya que este no está optimizado para procesar imágenes. Por tal motivo a los efectos de comparar, se usó un tamaño de imagen reducido, de 400 x 225 píxeles para todos los casos.
 
 
@@ -257,11 +298,10 @@ Figuras
  
 Como puede apreciarse, en los cinco casos las máscaras obtenidas son muy similares. El tamaño de archivos que se generan con el procesamiento en hojas de cálculo hace que sea una opción menos atractiva para este tipo de tareas. Pero queda visto que igualmente puede implementarse.
 
-\paragraph{Informe 6 - TIEMPO DE EJECUCIÓN DEL ALGORITMO EN DIFERENTES PLATAFORMAS}
-Se hicieron algunas pruebas para evaluar el tiempo que lleva la ejecución del algoritmo, probando en diferentes plataformas, Matlab, Octave, R. Las pruebas se hicieron con imágenes en distintos tamaños (resoluciones), de 500 x 281 píxeles, 1000 x 562, 2000 x 1125, 4000 x 2250 y 8000 x 4500. Para esa última se simuló una resolución, ya que originalmente las imágenes del dron tienen una resolución de 4000 x 2250 píxeles. Las pruebas que se corrieron en las plataformas Matlab y Octave no difirieron demasiado en el tiempo, que prácticamente ha sido similar en todos los casos, con un tiempo de alrededor de 15 segundos para la imagen de 8000 x 4500 px en Matlab, y 22 segundos en Octave. En cambio fue notorio el incremento de tiempo de ejecución para el caso en R, para la imagen de 4000 x 2250 px llevó alrededor de 17 segundos, y la de 8000 x 4500 px fue imposible determinar el tiempo, ya que desbordó la memoria RAM utilizada. La proporción del incremento del tiempo de ejecución en relación al tamaño de la imagen es de alrededor de tres veces por cada cuadruplicación en tamaño de imagen.
+Se evaluó el tiempo que lleva la ejecución del algoritmo, probando en diferentes plataformas, Matlab, Octave, R. Las pruebas se hicieron con imágenes en distintas resoluciones, de 500 x 281, 1000 x 562, 2000 x 1125, 4000 x 2250 y 8000 x 4500 píxeles. Para esa última se simuló una resolución, ya que originalmente las imágenes del dron tienen una resolución de 4000 x 2250 píxeles. Las pruebas que se corrieron en las plataformas Matlab y Octave no difirieron demasiado en el tiempo, que prácticamente ha sido similar en todos los casos, con un tiempo de alrededor de 15 segundos para la imagen de 8000 x 4500 px en Matlab, y 22 segundos en Octave. En cambio fue notorio el incremento de tiempo de ejecución para el caso en R, para la imagen de 4000 x 2250 píxeles llevó alrededor de 17 segundos, y la de 8000 x 4500 píxeles fue imposible determinar el tiempo, ya que desbordó la memoria RAM utilizada, en este caso de 8 GB. La proporción del incremento del tiempo de ejecución en relación al tamaño de la imagen es de alrededor de tres veces por cada cuadruplicación en resolución de imagen.
 
 
-\paragraph{Informe 7 - MOMENTO DE LA CAPTURA}
+\paragraph{ANÁLISIS DEL EFECTO DE LA HORA DEL DÍA EN LA DETECCIÓN DE SOMBRAS}
 Para evaluar la incidencia del momento de captura de la imagen aérea en el valor de umbral seleccionado para obtener la máscara binaria de sombras, se comparan dos imágenes de la misma escena capturadas en momentos diferentes, uno alrededor de las ocho de la mañana y otro alrededor de las cuatro de la tarde en una jornada de fines del mes de julio. Procesando las imágenes con el algoritmo y probando diferentes valores de percentil (60, 70, 80, 85, 90 y 95 %)
 
 
@@ -282,7 +322,9 @@ percentil 90	percentil 95
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\subsection{COMPARACIÓN ENTRE ALGORITMOS}
-Tal como puede observarse en las figuras \ref{180_fzz}, \ref{180_eq_fzz}, \ref{180_iic} y \ref{180_eq_iic}, es destacable la robustez del algoritmo de procesamiento por IIC frente al homomórfico. 
+\subsection{COMPARACIÓN ENTRE ALGORITMOS DE DETECCIÓN DE SOMBRAS (PROCESAMIENTO HOMOMÓRFICO Y EL ÍNDICE INVARIANTE DE COLOR)}
+
+Las figuras \ref{180_fzz}, \ref{180_eq_fzz}, \ref{180_iic} y \ref{180_eq_iic} muestran la misma escena forestal, pero capturada bajo condiciones diferentes: una imagen está sin ecualizar y la otra ha sido ecualizada. El objetivo es evaluar y comparar la robustez de los dos algoritmos de identificación de sombras en las imágenes—el procesamiento homomórfico y el Índice Invariante de Color (IIC)—frente a estas variaciones en las condiciones de la imagen.
+
 \input{Figuras/comparativo_iic_fzz}
-Correspondiendo las imágenes a la misma escena pero alterando las condiciones de la misma (en este caso una imagen está sin ecualizar y la otra está ecualizada), si se someten al algoritmo de procesamiento homomórfico las diferencias de los resultados son considerables, mientras que al ejecutarse el algoritmo de IIC sobre las mismas, en los resultados apenas se advierte alguna diferencia.
+Analizando los resultados de ambos procesamientos se encontró que al aplicar el algoritmo homomórfico a las dos imágenes (una ecualizada y la otra sin ecualizar), se observan diferencias significativas en los resultados del procesamiento. Esto indica que el algoritmo es sensible a las alteraciones en la iluminación y el contraste de la imagen. Por otro lado, cuando se ejecuta el algoritmo de IIC en las mismas dos imágenes, los resultados son prácticamente idénticos. Esto confirma que el IIC es altamente insensible a las variaciones de la imagen, lo que lo convierte en un método más fiable para el análisis en condiciones no controladas. Por ello, los resultados demuestran la superioridad del algoritmo de IIC en términos de robustez.

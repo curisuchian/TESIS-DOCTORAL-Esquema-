@@ -166,11 +166,11 @@ Al maximizar la intersección, se asegura la coincidencia entre las máscaras ma
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-En el análisis de la figura \ref{quality_index}, se observan grandes similitudes, donde se grafican las relaciones entre los tres índices de calidad propuestos y un índice adicional definido como la diferencia entre el valor máximo y el mínimo entre los tres índices en función del valor de percentil usado para calcular el umbral de la máscara binaria automática. En los tres casos se detecta un valor mínimo para la curva que corresponde al índice adicional, es decir el rango (max - min), y este valor mínimo corresponde al percentil 85º. Además para los casos que usan sendas combinaciones en la ecuación \ref{invariante de color} resta de canal azul menos rojo y azul menos verde, la curva del índice $QI_3$ alcanza un valor máximo en el que corresponde al 85º percentil, mientras que este punto máximo no se hace evidente para el caso de de la combinación verde menos rojo. Por lo tanto de los cuatro índices que fueron analizados, el más conveniente es el $QI_3$, que exhibe un valor óptimo de percentil más preciso por medio del mínimo en la curva, y en los tres casos de combinaciones de canales es coincidente.
+En el análisis de la figura \ref{quality_index}, se observan grandes similitudes, donde se grafican las relaciones entre los tres índices de calidad propuestos y un índice adicional definido como la diferencia entre el valor máximo y el mínimo entre los tres índices en función del valor de percentil usado para calcular el umbral de la máscara binaria automática. En los tres casos se detecta un valor mínimo para la curva que corresponde al índice adicional, es decir el rango (max - min), y este valor mínimo corresponde al percentil 85º. Además para los casos que usan sendas combinaciones en la ecuación \ref{invariante de color} resta de canal azul menos rojo y azul menos verde, la curva del índice $QI_3$ alcanza un valor máximo en el que corresponde al 85º percentil, mientras que este punto máximo no se hace evidente para el caso de la combinación verde menos rojo. Por lo tanto de los cuatro índices que fueron analizados, el más conveniente es el $QI_3$, que exhibe un valor óptimo de percentil más preciso por medio del mínimo en la curva, y en los tres casos de combinaciones de canales es coincidente.
 
 \subsubsection{Influencia del filtro de mediana en la detección automática de sombras}
 
-La figura \ref{filter3x3}, \ref{filter6x6} y \ref{filter12x12} muestra cómo los índices que son obtenidos por las ecuaciones \ref{qi5} a \ref{qi7} son afectados por la implementación del filtro de mediana a cada imagen. En el caso del filtro de 3 x 3 píxeles, que tiene menor incidencia en los índices, los índices de calidad tienen valores mayores al 85\% para todas las imágenes. El peor desempeño lo tiene el filtro de 12 x 12, cuyo resultado comparado con la máscara automática obtenida sin filtro arrojaba una coincidencia de poco más que el 70\%.
+Las figuras \ref{filter3x3}, \ref{filter6x6} y \ref{filter12x12} ilustran el efecto de aplicar un filtro de mediana con ventanas de tamaño creciente (3x3, 6x6 y 12x12, respectivamente) sobre los índices de calidad obtenidos. La aplicación de un filtro de 3x3 produce una alteración despreciable en los resultados, ya que los índices de calidad se mantienen consistentemente por encima del 85\% para todas las imágenes. Por el contrario, el uso de una ventana de 12x12 demuestra ser contraproducente, pues genera la mayor degradación en el rendimiento y reduce la métrica de coincidencia a poco más del 70\%
 
 \subsubsection{Evaluación humana de máscaras automáticas de sombra}
 
@@ -207,7 +207,7 @@ Observando la imagen con la máscara superpuesta en color azul (ver Fig. \ref{In
 
 \input{Figuras/img_informes} 
 
-\paragraph{Informe 3 - COMBINACIÓN DE BANDAS}
+\paragraph{Evaluación de la Eficacia de Combinaciones de Bandas para la Selección de Sombras}
 
 Tal como surge de la ecuación \ref{invariante de color 1}, las posibilidades de combinar dos entre tres bandas de color resultan en seis diferentes índices invariantes de color para una imagen dada, que se muestran en la figura \ref{hexagono}. Lo que resulta notorio es que a priori no se sabe cuál de esas seis resulta la más adecuada para constituir la máscara de selección automática de sombras. 
 
@@ -236,7 +236,7 @@ Luego de observar las matrices resultantes de aplicar cada una de las seis varia
 
 Según se aprecia en la figura \ref{hexagono1} las combinaciones que mejor evidencian las sombras son la resta de canal rojo menos canal azul y canal azul menos canal verde. 
 
-Para el caso de la imagen de la figura \ref{costanera} la distinción de sombras es más nítida en las combinaciones de resta de canal verde menos canal rojo y canal rojo menos canal azul (ver figura \ref{hexagono2}.
+Para el caso de la imagen de la figura \ref{costanera} se seleccionó una imagen con un área grande de color rojo, en ese caso la distinción de sombras es más nítida en las combinaciones de resta de canal verde menos canal rojo y canal rojo menos canal azul (ver figura \ref{hexagono2}.
 
 \begin{figure}[H]
     \centering
@@ -284,8 +284,8 @@ Aplicando las combinaciones del índice invariante de color a la imagen de la fi
     \label{hexagono4}
 \end{figure}
 
-\paragraph{Informe 4 - INVARIANTE A RESOLUCIÓN ESPACIAL}
- Según lo que se desprende de una serie de pruebas del algoritmo sobre distintas imágenes, puede observarse que la incidencia del tamaño de la imagen, vale decir, la resolución de la misma, es prácticamente insignificante. Para una misma imagen representada en mayor o menor resolución, las correspondientes máscaras binarias resultantes serán muy semejantes entre sí, como puede comprobarse a la vista:
+\paragraph{Influencia de la Resolución de la Imagen en la Detección de Sombras}
+ Según lo que se desprende de una serie de pruebas del algoritmo sobre distintas imágenes, puede observarse que la incidencia de la resolución de la misma, es prácticamente insignificante. Para una misma imagen representada en mayor o menor resolución, las correspondientes máscaras binarias resultantes serán muy semejantes entre sí, como puede comprobarse a la vista:
 
 Figuras
 
@@ -295,7 +295,6 @@ Se probó implementar el algoritmo en diferentes plataformas, tanto en Matlab y 
 
 Figuras
 
- 
 Como puede apreciarse, en los cinco casos las máscaras obtenidas son muy similares. El tamaño de archivos que se generan con el procesamiento en hojas de cálculo hace que sea una opción menos atractiva para este tipo de tareas. Pero queda visto que igualmente puede implementarse.
 
 Se evaluó el tiempo que lleva la ejecución del algoritmo, probando en diferentes plataformas, Matlab, Octave, R. Las pruebas se hicieron con imágenes en distintas resoluciones, de 500 x 281, 1000 x 562, 2000 x 1125, 4000 x 2250 y 8000 x 4500 píxeles. Para esa última se simuló una resolución, ya que originalmente las imágenes del dron tienen una resolución de 4000 x 2250 píxeles. Las pruebas que se corrieron en las plataformas Matlab y Octave no difirieron demasiado en el tiempo, que prácticamente ha sido similar en todos los casos, con un tiempo de alrededor de 15 segundos para la imagen de 8000 x 4500 px en Matlab, y 22 segundos en Octave. En cambio fue notorio el incremento de tiempo de ejecución para el caso en R, para la imagen de 4000 x 2250 píxeles llevó alrededor de 17 segundos, y la de 8000 x 4500 píxeles fue imposible determinar el tiempo, ya que desbordó la memoria RAM utilizada, en este caso de 8 GB. La proporción del incremento del tiempo de ejecución en relación al tamaño de la imagen es de alrededor de tres veces por cada cuadruplicación en resolución de imagen.

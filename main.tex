@@ -110,6 +110,8 @@
 \usepackage{ragged2e} %Para justificar
 \usepackage{jupynotex}  %Para meter notebooks de jupyter en el apéndice
 \usepackage{listings}
+\usepackage{longtable} %para tablas extensas incorporar saltos de pàgina
+\usepackage{booktabs}
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -182,13 +184,13 @@
   \large {\textbf{TRIBUNAL EXAMINADOR} (Resolución Consejo Directivo Nº...)}\\ \par
   \vskip 1.5em
   \begin{multicols}{2}
-Dr. Fulano FULANEZ, \\
-Dr. Mengano MENGANEZ, \\
-Dr. Algún MENGUECHE, \\
+Dr. Eduardo BATISTA, \\
+Dr. Fernando BOTTERON, \\
+Dr. Dra. María Genoveva GATTI, \\
 
-Universidad Nacional de ...\\
-Universidad Nacional de ...\\
-Universidad Nacional de ...\\
+UFSC-Brasil\\
+IMAM-FCEQyN-UNaM\\
+IBS-FIO-UNaM\\
 \end{multicols}
 
   \vskip 1.5em
@@ -273,8 +275,10 @@ Gracias... totales
 \chapter{Trabajos futuros}      
     \input{Capitulos/trabajos.tex}
 \appendix
+\chapter{Lista de áreas naturales protegidas en la provincia de Misiones} \label{reservas}
+\input{Tablas/lista_reservas}
 \chapter{Algoritmo de procesamiento homomórfico}
-%\input{script_homo}
+\label{script_homo}
 Código basado en Matlab/Octave
 \lstinputlisting[
 frame=single,
@@ -283,7 +287,7 @@ style=Matlab-editor
 ]{Scripts/script_rgb_gris.m}
 
 \chapter{Algoritmo de procesamiento morfológico} \label{script_morfo}
-   
+Código basado en R  
 \lstinputlisting[
 frame=single,
 numbers=left,
@@ -291,7 +295,8 @@ language=R
 ]{Scripts/steps-Copy1.r}
 
 \chapter{Algoritmo de procesamiento con índice invariante de color} 
-
+\label{script_iic}
+Código basado en Matlab/Octave
 \lstinputlisting[
 frame=single,
 numbers=left,
@@ -299,18 +304,18 @@ style=Matlab-editor
 ]{Scripts/AZULROJO.m}
 
 \chapter{Imágenes procesadas por filtro homomórfico} \label{anexo_homo}
-% \input{Figuras/img_hom_completo}
+ \input{Figuras/img_hom_completo}
 \chapter{Imágenes procesadas por método morfológico} \label{anexo_morfo}
-  %\input{Capitulos/img_hom_completo}
+\input{Figuras/img_hom_completo}
  \chapter{Imágenes procesadas por índice invariante de color} \label{anexo_IIC}
- %\input{Figuras/img_IIC_completo}
-\chapter{Machine learning} 
-\subsection{C3-Filtros de texturas (probados con fantomas)} %va en apéndice
-Mediante el filtrado por textura puede implementarse una segmentación o clasificación en imágenes. Se hicieron varias pruebas con imágenes simuladas (cuadrados y rombos)
+ \input{Figuras/img_IIC_completo}
+%\chapter{Machine learning} 
+%\subsection{C3-Filtros de texturas (probados con fantomas)} %va en apéndice
+%Mediante el filtrado por textura puede implementarse una segmentación o clasificación en imágenes. Se hicieron varias pruebas con imágenes simuladas (cuadrados y rombos)
 
 
-\chapter{Fuzzy logic} 
-    \input{apen1}
+%\chapter{Fuzzy logic} 
+%    \input{apen1}
 
 %●	Carátula (con el formato solicitado por el DCA que se adjunta al presente Anexo)
 %●	Agradecimientos
